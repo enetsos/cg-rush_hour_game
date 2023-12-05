@@ -16,7 +16,7 @@ DEPENDENCIES_DIR := dependencies
 CXX = g++
 CXX_FLAGS = -std=c++11 -O2
 CXX_FLAGS += -I../$(ENGINE_DIR)
-LDFLAGS = -L../$(ENGINE_DIR) -l$(ENGINE_LIB_NAME) -std=c++11
+LDFLAGS = -L../$(ENGINE_DIR) -l$(ENGINE_LIB_NAME) -std=c++11 -lstdc++
 TAR_GZ = tar zcvf
 
 package: $(TARGET_ARCHIVE)
