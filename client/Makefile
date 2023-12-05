@@ -16,7 +16,7 @@ DEPENDENCIES_DIR := dependencies
 CXX = g++
 CXX_FLAGS = -std=c++11 -O2
 CXX_FLAGS += -I../$(ENGINE_DIR)
-LDFLAGS = -L../$(ENGINE_DIR) -l$(ENGINE_LIB_NAME)
+LDFLAGS = -L../$(ENGINE_DIR) -l$(ENGINE_LIB_NAME) -std=c++11
 TAR_GZ = tar zcvf
 
 package: $(TARGET_ARCHIVE)
@@ -30,7 +30,7 @@ $(TARGET_ARCHIVE): $(TARGET)
 $(TARGET): $(MAIN_OBJ_FILES) $(TESTS_RUNNER)
 	# build your client here
 	# ...
-	$(CXX) $(CXX_FLAGS) -o $@ $< $(LDFLAGS)
+	$(CXX) -o $@ $< $(CXX_FLAGS) $(LDFLAGS)
 	@echo "$(TARGET) compile done!"
         
 $(TESTS_RUNNER): $(TEST_OBJ_FILES)
