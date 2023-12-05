@@ -30,7 +30,7 @@ $(TARGET_ARCHIVE): $(TARGET)
 $(TARGET): $(MAIN_OBJ_FILES) $(TESTS_RUNNER)
 	# build your client here
 	# ...
-	$(CXX) -o $@ $< $(CXX_FLAGS) $(LDFLAGS)
+	# $(CXX) $(CXX_FLAGS) -o $@ $(MAIN_OBJ_FILES) $(LDFLAGS)
 	@echo "$(TARGET) compile done!"
         
 $(TESTS_RUNNER): $(TEST_OBJ_FILES)

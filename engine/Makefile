@@ -8,7 +8,6 @@ TEST_SRC_FILES := $(wildcard *_test.cpp)
 TEST_OBJ_FILES := $(patsubst %.cpp,%.o,$(TEST_SRC_FILES))
 DEPENDENCIES_DIR := dependencies
 
-
 CXX = g++
 CXX_FLAGS = -c -fPIC -std=c++11 -O2
 CXX_FLAGS += -I../$(DEPENDENCIES_DIR)/glm/include
@@ -16,17 +15,13 @@ CXX_FLAGS += -I../$(DEPENDENCIES_DIR)/freeimage/include
 LD_FLAGS = -shared
 LIBS = -lglut -lGL -lGLU -lfreeimage
 
-
 install: $(TARGET)
 	@echo "all done!"
 
-
 $(TARGET): $(MAIN_OBJ_FILES) $(TESTS_RUNNER)
-    # build your .so library here
-    # ...
-	$(CXX) $(CXX_FLAGS) $(LD_FLAGS) -o $@ $(MAIN_OBJ_FILES) $(LIBS)
+	# build your .so library here
+	# ...
 	@echo "$(TARGET) build done!"
-
 
 $(TESTS_RUNNER): $(TEST_OBJ_FILES)
 	# build your test runner executable here
@@ -36,18 +31,14 @@ $(TESTS_RUNNER): $(TEST_OBJ_FILES)
 	# ...
 	@echo "tests execution done!"
 
-
 %.o: %.cpp
 	# compile your sources here
 	# ...
-	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
-
-clean: 
+clean:
 	@rm -f $(TESTS_RUNNER)
 	@rm -f $(TEST_OBJ_FILES)
 	@rm -f $(TARGET)
 	@rm -f $(MAIN_OBJ_FILES)
-
 
 .PHONY: clean install
