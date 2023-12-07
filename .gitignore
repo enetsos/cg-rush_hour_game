@@ -1,4 +1,5 @@
 .vs
+.vscode
 x64
 ./client/x64
 ./engine/x64
