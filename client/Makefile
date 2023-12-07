@@ -45,7 +45,7 @@ $(TESTS_RUNNER): $(TEST_OBJ_FILES)
 %.o: %.cpp
 	# compile your sources here
 	# ...
-	$(CXX) $(CXX_FLAGS) -o $@ $<
+	#$(CXX) $(CXX_FLAGS) -o $@ $<
 
 clean:
 	@rm -f $(TESTS_RUNNER)
