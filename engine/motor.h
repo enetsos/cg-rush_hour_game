@@ -21,10 +21,12 @@
 #define LIB_API  // Dummy declaration
 #endif
 
-#include <glm.cpp>
-#include <gtx/string_cast.cpp>
-#include <gtc/matrix_transform.cpp>
-#include <gtc/type_ptr.cpp>
+//include glm
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
+#include <gtx/string_cast.hpp>
+
 using namespace std;
 
 #endif //SHARED_H
