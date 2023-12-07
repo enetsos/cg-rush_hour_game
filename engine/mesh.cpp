@@ -1,0 +1,68 @@
+#include "mesh.h"
+#include <GL/freeglut.h>
+
+bool LIB_API Mesh::render(glm::mat4 m){
+	m+=glm::vec4{0.0f};
+	displayCube(20.0f);
+	return true;
+}
+
+void LIB_API Mesh::displayCube(float length) {
+	
+    float size = length / 2.0f;
+
+    // Back:
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0.0f, 0.0f, -1.0f);
+    glVertex3f(size, -size, -size);
+    glVertex3f(-size, -size, -size);
+    glVertex3f(size, size, -size);
+    glVertex3f(-size, size, -size);
+    glEnd();
+
+    // Front:	      
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(-size, -size, size);
+    glVertex3f(size, -size, size);
+    glVertex3f(-size, size, size);
+    glVertex3f(size, size, size);
+    glEnd();
+
+    // Left:	      
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(-1.0f, 0.0f, 0.0f);
+    glVertex3f(-size, size, -size);
+    glVertex3f(-size, -size, -size);
+    glVertex3f(-size, size, size);
+    glVertex3f(-size, -size, size);
+    glEnd();
+
+    // Right:	      
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(size, -size, -size);
+    glVertex3f(size, size, -size);
+    glVertex3f(size, -size, size);
+    glVertex3f(size, size, size);
+    glEnd();
+
+    // Bottom:	      
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0.0f, -1.0f, 0.0f);
+    glVertex3f(-size, -size, -size);
+    glVertex3f(size, -size, -size);
+    glVertex3f(-size, -size, size);
+    glVertex3f(size, -size, size);
+    glEnd();
+
+    // Top:	      
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(size, size, -size);
+    glVertex3f(-size, size, -size);
+    glVertex3f(size, size, size);
+    glVertex3f(-size, size, size);
+    glEnd();
+	material->render(glm::mat4{0.0f});
+}
