@@ -1,0 +1,378 @@
+\doxysection{func\+\_\+integer.\+inl}
+\hypertarget{func__integer_8inl_source}{}\label{func__integer_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/detail/func\_integer.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/detail/func\_integer.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\_vectorize.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#if(GLM\_ARCH\ \&\ GLM\_ARCH\_X86\ \&\&\ GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC)}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\ \ \ include\ <intrin.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\ \ \ pragma\ intrinsic(\_BitScanReverse)}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//(GLM\_ARCH\ \&\ GLM\_ARCH\_X86\ \&\&\ GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#if\ !GLM\_HAS\_EXTENDED\_INTEGER\_TYPE}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_COMPILER\ \&\ GLM\_COMPILER\_GCC}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ GCC\ diagnostic\ ignored\ "{}-\/Wlong-\/long"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#\ \ \ if\ (GLM\_COMPILER\ \&\ GLM\_COMPILER\_CLANG)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ clang\ diagnostic\ ignored\ "{}-\/Wc++11-\/long-\/long"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}\{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00023\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ T\ mask(T\ Bits)}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Bits\ >=\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(\textcolor{keyword}{sizeof}(T)\ *\ 8)\ ?\ \string~static\_cast<T>(0)\ :\ (static\_cast<T>(1)\ <<\ Bits)\ -\/\ static\_cast<T>(1);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned,\ \textcolor{keywordtype}{bool}\ EXEC>}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{compute\_bitfieldReverseStep}}}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{T}})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{v}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned>}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{compute\_bitfieldReverseStep}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1vec}{Aligned}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Mask}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Shift}})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}})\ <<\ \mbox{\hyperlink{structglm_1_1vec}{Shift}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ \&\ (\mbox{\hyperlink{structglm_1_1vec}{\string~Mask}}))\ >>\ \mbox{\hyperlink{structglm_1_1vec}{Shift}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned,\ \textcolor{keywordtype}{bool}\ EXEC>}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{compute\_bitfieldBitCountStep}}}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{T}})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{v}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned>}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{compute\_bitfieldBitCountStep}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1vec}{Aligned}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Mask}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Shift}})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}})\ +\ ((\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \mbox{\hyperlink{structglm_1_1vec}{Shift}})\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType,\ \textcolor{keywordtype}{size\_t}\ Bits>}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__find_l_s_b}{compute\_findLSB}}}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ call(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}})}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Value}}\ ==\ 0)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::bitCount(\string~\mbox{\hyperlink{structglm_1_1vec}{Value}}\ \&\ (\mbox{\hyperlink{structglm_1_1vec}{Value}}\ -\/\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(1)));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__find_l_s_b}{compute\_findLSB}}<\mbox{\hyperlink{structglm_1_1vec}{genIUType}},\ 32>}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ call(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}})}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structglm_1_1vec}{Result}}(0);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structglm_1_1vec}{IsNotNull}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{\_BitScanForward}}(\&\mbox{\hyperlink{structglm_1_1vec}{Result}},\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&\mbox{\hyperlink{structglm_1_1vec}{Value}}));}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{IsNotNull}}\ ?\ \mbox{\hyperlink{structglm_1_1vec}{int}}(\mbox{\hyperlink{structglm_1_1vec}{Result}})\ :\ -\/1;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ !((GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC)\ \&\&\ (GLM\_MODEL\ ==\ GLM\_MODEL\_32))}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }compute\_findLSB<genIUType,\ 64>}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ call(genIUType\ Value)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Result(0);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ IsNotNull\ =\ \_BitScanForward64(\&Result,\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \_\_int64*\textcolor{keyword}{>}(\&Value));}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsNotNull\ ?\ int(Result)\ :\ -\/1;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#\ \ \ endif}\textcolor{comment}{//GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ EXEC\ =\ true>}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Shift}})}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x\ |\ (x\ >>\ \mbox{\hyperlink{structglm_1_1vec}{Shift}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1vec}{false}}>}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{T}})}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{int}>}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__vec}{compute\_findMSB\_vec}}}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}})}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ x(\mbox{\hyperlink{structglm_1_1vec}{v}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ \ 8>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 1));}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ \ 8>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 2));}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ \ 8>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 4));}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ 16>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 8));}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ 32>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(16));}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__step__vec}{compute\_findMSB\_step\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ >=\ 64>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(32));}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8\ -\/\ 1)\ -\/\ glm::bitCount(\string~x);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{compute\_findMSB\_32}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}})}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structglm_1_1vec}{Result}}(0);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structglm_1_1vec}{IsNotNull}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{\_BitScanReverse}}(\&\mbox{\hyperlink{structglm_1_1vec}{Result}},\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&\mbox{\hyperlink{structglm_1_1vec}{Value}}));}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{IsNotNull}}\ ?\ \mbox{\hyperlink{structglm_1_1vec}{int}}(\mbox{\hyperlink{structglm_1_1vec}{Result}})\ :\ -\/1;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }compute\_findMSB\_vec<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ 32>}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1functor1}{detail::functor1<vec,\ L,\ int,\ T,\ Q>::call}}(\mbox{\hyperlink{structglm_1_1vec}{compute\_findMSB\_32}},\ x);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ !((GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC)\ \&\&\ (GLM\_MODEL\ ==\ GLM\_MODEL\_32))}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ compute\_findMSB\_64(genIUType\ Value)}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Result(0);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ IsNotNull\ =\ \_BitScanReverse64(\&Result,\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \_\_int64*\textcolor{keyword}{>}(\&Value));}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsNotNull\ ?\ int(Result)\ :\ -\/1;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }compute\_findMSB\_vec<L,\ T,\ Q,\ 64>}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<L,\ int,\ Q>\ call(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ detail::functor1<vec,\ L,\ int,\ T,\ Q>::call(compute\_findMSB\_64,\ x);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#\ \ \ endif}\textcolor{comment}{//GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00173\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ uaddCarry}}
+\DoxyCodeLine{00176\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ uint\ uaddCarry(uint\ \textcolor{keyword}{const}\&\ x,\ uint\ \textcolor{keyword}{const}\&\ y,\ uint\ \&\ Carry)}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ detail::uint64\ \textcolor{keyword}{const}\ Value64(\textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(x)\ +\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(y));}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ detail::uint64\ \textcolor{keyword}{const}\ Max32((\textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1)\ <<\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(32))\ -\/\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ Carry\ =\ Value64\ >\ Max32\ ?\ 1u\ :\ 0u;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint\textcolor{keyword}{>}(Value64\ \%\ (Max32\ +\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1)));}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{00185\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ uaddCarry(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{Carry}})}
+\DoxyCodeLine{00186\ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Value64}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}(x)\ +\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}(y));}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Max32}}((\textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1)\ <<\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(32))\ -\/\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Carry}}\ =\ \mbox{\hyperlink{group__core__func__common_ga8e93f374aae27d1a88b921860351f8d4}{mix}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(0),\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(1),\ \mbox{\hyperlink{group__core__func__vector__relational_ga9987ddebd3528e92f84e23d995320861}{greaterThan}}(\mbox{\hyperlink{structglm_1_1vec}{Value64}},\ \mbox{\hyperlink{structglm_1_1vec}{Max32}}));}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(\mbox{\hyperlink{structglm_1_1vec}{Value64}}\ \%\ (\mbox{\hyperlink{structglm_1_1vec}{Max32}}\ +\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(1)));}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ usubBorrow}}
+\DoxyCodeLine{00194\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ uint\ usubBorrow(uint\ \textcolor{keyword}{const}\&\ x,\ uint\ \textcolor{keyword}{const}\&\ y,\ uint\ \&\ Borrow)}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ Borrow\ =\ x\ >=\ y\ ?\ \textcolor{keyword}{static\_cast<}uint\textcolor{keyword}{>}(0)\ :\ static\_cast<uint>(1);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(y\ >=\ x)}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y\ -\/\ x;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint\textcolor{keyword}{>}((\textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(1)\ <<\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(32))\ +\ (\textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(y)\ -\/\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(x)));}
+\DoxyCodeLine{00201\ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{00204\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ usubBorrow(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{Borrow}})}
+\DoxyCodeLine{00205\ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Borrow}}\ =\ \mbox{\hyperlink{group__core__func__common_ga8e93f374aae27d1a88b921860351f8d4}{mix}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(1),\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(0),\ \mbox{\hyperlink{group__core__func__vector__relational_ga932c94a34799d65dfe36762158a58d90}{greaterThanEqual}}(x,\ y));}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{YgeX}}(y\ -\/\ x);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{XgeY}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}((\textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(1)\ <<\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(32))\ +\ (\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::int64,\ Q>}}(y)\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::int64,\ Q>}}(x))));}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga8e93f374aae27d1a88b921860351f8d4}{mix}}(\mbox{\hyperlink{structglm_1_1vec}{XgeY}},\ \mbox{\hyperlink{structglm_1_1vec}{YgeX}},\ \mbox{\hyperlink{group__core__func__vector__relational_ga932c94a34799d65dfe36762158a58d90}{greaterThanEqual}}(y,\ x));}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ umulExtended}}
+\DoxyCodeLine{00213\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{void}\ umulExtended(uint\ \textcolor{keyword}{const}\&\ x,\ uint\ \textcolor{keyword}{const}\&\ y,\ uint\ \&\ msb,\ uint\ \&\ lsb)}
+\DoxyCodeLine{00214\ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ detail::uint64\ Value64\ =\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(x)\ *\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(y);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ msb\ =\ \textcolor{keyword}{static\_cast<}uint\textcolor{keyword}{>}(Value64\ >>\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(32));}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ lsb\ =\ \textcolor{keyword}{static\_cast<}uint\textcolor{keyword}{>}(Value64);}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{00221\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{void}\ umulExtended(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{msb}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{lsb}})}
+\DoxyCodeLine{00222\ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Value64}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}(x)\ *\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::uint64,\ Q>}}(y));}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{msb}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(\mbox{\hyperlink{structglm_1_1vec}{Value64}}\ >>\ \textcolor{keyword}{static\_cast<}detail::uint64\textcolor{keyword}{>}(32));}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{lsb}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ uint,\ Q>}}(\mbox{\hyperlink{structglm_1_1vec}{Value64}});}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ imulExtended}}
+\DoxyCodeLine{00229\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{void}\ imulExtended(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\&\ msb,\ \textcolor{keywordtype}{int}\&\ lsb)}
+\DoxyCodeLine{00230\ \ \ \ \ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ detail::int64\ Value64\ =\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(x)\ *\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(y);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ msb\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(Value64\ >>\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(32));}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ lsb\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(Value64);}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{00237\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{void}\ imulExtended(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ \textcolor{keyword}{const}\&\ x,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ \textcolor{keyword}{const}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{msb}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{lsb}})}
+\DoxyCodeLine{00238\ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::int64,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Value64}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::int64,\ Q>}}(x)\ *\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ detail::int64,\ Q>}}(y));}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{lsb}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}(\mbox{\hyperlink{structglm_1_1vec}{Value64}}\ \&\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(0xFFFFFFFF));}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{msb}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}((\mbox{\hyperlink{structglm_1_1vec}{Value64}}\ >>\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(32))\ \&\ \textcolor{keyword}{static\_cast<}detail::int64\textcolor{keyword}{>}(0xFFFFFFFF));}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{//\ bitfieldExtract}}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00246\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ genIUType\ bitfieldExtract(genIUType\ Value,\ \textcolor{keywordtype}{int}\ Offset,\ \textcolor{keywordtype}{int}\ Bits)}
+\DoxyCodeLine{00247\ \ \ \ \ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bitfieldExtract(vec<1,\ genIUType>(Value),\ Offset,\ Bits).x;}
+\DoxyCodeLine{00249\ \ \ \ \ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00252\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ bitfieldExtract(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Offset}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Bits}})}
+\DoxyCodeLine{00253\ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'bitfieldExtract'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{Value}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\mbox{\hyperlink{structglm_1_1vec}{Offset}}))\ \&\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(detail::mask(\mbox{\hyperlink{structglm_1_1vec}{Bits}}));}
+\DoxyCodeLine{00257\ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//\ bitfieldInsert}}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00261\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ genIUType\ bitfieldInsert(genIUType\ \textcolor{keyword}{const}\&\ Base,\ genIUType\ \textcolor{keyword}{const}\&\ Insert,\ \textcolor{keywordtype}{int}\ Offset,\ \textcolor{keywordtype}{int}\ Bits)}
+\DoxyCodeLine{00262\ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'bitfieldInsert'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bitfieldInsert(vec<1,\ genIUType>(Base),\ vec<1,\ genIUType>(Insert),\ Offset,\ Bits).x;}
+\DoxyCodeLine{00266\ \ \ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00269\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ bitfieldInsert(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Base}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Insert}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Offset}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Bits}})}
+\DoxyCodeLine{00270\ \ \ \ \ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'bitfieldInsert'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{Mask}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(detail::mask(\mbox{\hyperlink{structglm_1_1vec}{Bits}})\ <<\ \mbox{\hyperlink{structglm_1_1vec}{Offset}});}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{Base}}\ \&\ \string~\mbox{\hyperlink{structglm_1_1vec}{Mask}})\ |\ ((\mbox{\hyperlink{structglm_1_1vec}{Insert\ <<\ static\_cast<T>}}(\mbox{\hyperlink{structglm_1_1vec}{Offset}}))\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}});}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{comment}{//\ bitfieldReverse}}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00279\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ genIUType\ bitfieldReverse(genIUType\ x)}
+\DoxyCodeLine{00280\ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'bitfieldReverse'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bitfieldReverse(\mbox{\hyperlink{structglm_1_1vec}{glm::vec<1,\ genIUType,\ glm::defaultp>}}(x)).x;}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00287\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ bitfieldReverse(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}})}
+\DoxyCodeLine{00288\ \ \ \ \ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'bitfieldReverse'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ x(\mbox{\hyperlink{structglm_1_1vec}{v}});}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 2>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x5555555555555555ull),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 1));}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 4>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x3333333333333333ull),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 2));}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 8>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x0F0F0F0F0F0F0F0Full),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 4));}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 16>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x00FF00FF00FF00FFull),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(\ 8));}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 32>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x0000FFFF0000FFFFull),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(16));}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_reverse_step}{detail::compute\_bitfieldReverseStep<L,\ T,\ Q,\ detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 64>::call(x,\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0x00000000FFFFFFFFull),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(32));}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{comment}{//\ bitCount}}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00303\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ bitCount(genIUType\ x)}
+\DoxyCodeLine{00304\ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'bitCount'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bitCount(\mbox{\hyperlink{structglm_1_1vec}{glm::vec<1,\ genIUType,\ glm::defaultp>}}(x)).x;}
+\DoxyCodeLine{00308\ \ \ \ \ \}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00311\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ bitCount(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}})}
+\DoxyCodeLine{00312\ \ \ \ \ \{}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'bitCount'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC}}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ pragma\ warning(push)}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ pragma\ warning(disable\ :\ 4310)\ }\textcolor{comment}{//cast\ truncates\ constant\ value}}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ x(*\textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}\textcolor{keyword}{>}\ \textcolor{keyword}{const}\ *>(\&\mbox{\hyperlink{structglm_1_1vec}{v}}));}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 2>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x5555555555555555ull),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(\ 1));}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 4>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x3333333333333333ull),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(\ 2));}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ \ 8>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x0F0F0F0F0F0F0F0Full),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(\ 4));}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 16>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x00FF00FF00FF00FFull),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(\ 8));}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 32>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x0000FFFF0000FFFFull),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(16));}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ x\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__bitfield_bit_count_step}{detail::compute\_bitfieldBitCountStep<L,\ typename\ detail::make\_unsigned<T>::type}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1detail_1_1is__aligned}{detail::is\_aligned<Q>::value}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>=\ 64>::call(x,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(0x00000000FFFFFFFFull),\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structglm_1_1detail_1_1make__unsigned}{detail::make\_unsigned<T>::type}}(32));}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}(x);}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ GLM\_COMPILER\ \&\ GLM\_COMPILER\_VC}}
+\DoxyCodeLine{00330\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ pragma\ warning(pop)}}
+\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{//\ findLSB}}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00336\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__core__func__integer_gaf74c4d969fa34ab8acb9d390f5ca5274}{findLSB}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}})}
+\DoxyCodeLine{00337\ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'findLSB'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_l_s_b}{detail::compute\_findLSB}}<\mbox{\hyperlink{structglm_1_1vec}{genIUType}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}})\ *\ 8>::call(\mbox{\hyperlink{structglm_1_1vec}{Value}});}
+\DoxyCodeLine{00341\ \ \ \ \ \}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00344\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ \mbox{\hyperlink{group__core__func__integer_gaf74c4d969fa34ab8acb9d390f5ca5274}{findLSB}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{00345\ \ \ \ \ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'findLSB'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1functor1}{detail::functor1<vec,\ L,\ int,\ T,\ Q>::call}}(\mbox{\hyperlink{group__core__func__integer_gaf74c4d969fa34ab8acb9d390f5ca5274}{findLSB}},\ x);}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{comment}{//\ findMSB}}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00353\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__core__func__integer_ga7e4a794d766861c70bc961630f8ef621}{findMSB}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{v}})}
+\DoxyCodeLine{00354\ \ \ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'findMSB'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__integer_ga7e4a794d766861c70bc961630f8ef621}{findMSB}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genIUType>}}(\mbox{\hyperlink{structglm_1_1vec}{v}})).x;}
+\DoxyCodeLine{00358\ \ \ \ \ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00361\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ int,\ Q>}}\ \mbox{\hyperlink{group__core__func__integer_ga7e4a794d766861c70bc961630f8ef621}{findMSB}}(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}})}
+\DoxyCodeLine{00362\ \ \ \ \ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<T>::is\_integer,\ \textcolor{stringliteral}{"{}'findMSB'\ only\ accept\ integer\ values"{}});}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__vec}{detail::compute\_findMSB\_vec}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ *\ 8>::call(\mbox{\hyperlink{structglm_1_1vec}{v}});}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#if\ GLM\_CONFIG\_SIMD\ ==\ GLM\_ENABLE}}
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\#\ \ \ include\ "{}func\_integer\_simd.inl"{}}}
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00372\ }
+
+\end{DoxyCode}

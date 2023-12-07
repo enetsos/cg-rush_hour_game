@@ -1,0 +1,33 @@
+\doxysection{normalize\+\_\+dot.\+hpp}
+\hypertarget{normalize__dot_8hpp_source}{}\label{normalize__dot_8hpp_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/normalize\_dot.hpp@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/normalize\_dot.hpp}}
+\mbox{\hyperlink{normalize__dot_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../gtx/fast\_square\_root.hpp"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#if\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#\ \ \ ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_normalize\_dot\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{})}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_normalize\_dot\ extension\ included"{})}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00037\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__normalize__dot_gacb140a2b903115d318c8b0a2fb5a5daa}{normalizeDot}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00044\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__normalize__dot_ga2746fb9b5bd22b06b2f7c8babba5de9e}{fastNormalizeDot}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}normalize\_dot.inl"{}}}
+
+\end{DoxyCode}

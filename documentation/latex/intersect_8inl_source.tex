@@ -1,0 +1,203 @@
+\doxysection{intersect.\+inl}
+\hypertarget{intersect_8inl_source}{}\label{intersect_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/intersect.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/intersect.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00006\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_gad3697a9700ea379739a667ea02573488}{intersectRayPlane}}}
+\DoxyCodeLine{00007\ \ \ \ \ (}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{orig}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{dir}},}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{planeOrig}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{planeNormal}},}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionDistance}}}
+\DoxyCodeLine{00011\ \ \ \ \ )}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{d}}\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{planeNormal}});}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ =\ std::numeric\_limits<typename\ genType::value\_type>::epsilon();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{d}}\ <\ -\/\mbox{\hyperlink{structglm_1_1vec}{Epsilon}})}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionDistance}}\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{planeOrig}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{orig}},\ \mbox{\hyperlink{structglm_1_1vec}{planeNormal}})\ /\ \mbox{\hyperlink{structglm_1_1vec}{d}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00026\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_ga65bf2c594482f04881c36bc761f9e946}{intersectRayTriangle}}}
+\DoxyCodeLine{00027\ \ \ \ \ (}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{orig}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{dir}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert0}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert1}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert2}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\&\ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\&\ distance}
+\DoxyCodeLine{00031\ \ \ \ \ )}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ vectors\ for\ two\ edges\ sharing\ vert0}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{edge1}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vert1}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{edge2}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vert2}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ begin\ calculating\ determinant\ -\/\ also\ used\ to\ calculate\ U\ parameter}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\ p\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{glm::cross}}(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{edge2}});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ determinant\ is\ near\ zero,\ ray\ lies\ in\ plane\ of\ triangle}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{det}}\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{edge1}},\ p);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}}(0);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{det}}\ >\ std::numeric\_limits<T>::epsilon())}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ distance\ from\ vert0\ to\ ray\ origin}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{dist}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{orig}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ U\ parameter\ and\ test\ bounds}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{dist}},\ p);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ <\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0)\ ||\ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ >\ \mbox{\hyperlink{structglm_1_1vec}{det}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prepare\ to\ test\ V\ parameter}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}}\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{glm::cross}}(\mbox{\hyperlink{structglm_1_1vec}{dist}},\ \mbox{\hyperlink{structglm_1_1vec}{edge1}});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ V\ parameter\ and\ test\ bounds}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y\ <\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0))\ ||\ ((\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ +\ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y)\ >\ \mbox{\hyperlink{structglm_1_1vec}{det}}))}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{det}}\ <\ -\/std::numeric\_limits<T>::epsilon())}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ distance\ from\ vert0\ to\ ray\ origin}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{dist}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{orig}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ U\ parameter\ and\ test\ bounds}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{dist}},\ p);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ >\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0))\ ||\ (\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ <\ \mbox{\hyperlink{structglm_1_1vec}{det}}))}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prepare\ to\ test\ V\ parameter}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}}\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{glm::cross}}(\mbox{\hyperlink{structglm_1_1vec}{dist}},\ \mbox{\hyperlink{structglm_1_1vec}{edge1}});}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ V\ parameter\ and\ test\ bounds}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y\ >\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0))\ ||\ (\mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.x\ +\ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}.y\ <\ \mbox{\hyperlink{structglm_1_1vec}{det}}))}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ ray\ is\ parallel\ to\ the\ plane\ of\ the\ triangle}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1)\ /\ \mbox{\hyperlink{structglm_1_1vec}{det}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calculate\ distance,\ ray\ intersects\ triangle}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ distance\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{edge2}},\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}})\ *\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{baryPosition}}\ *=\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00094\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_ga9d29b9b3acb504d43986502f42740df4}{intersectLineTriangle}}}
+\DoxyCodeLine{00095\ \ \ \ \ (}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{orig}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{dir}},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert0}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert1}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{vert2}},}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{position}}}
+\DoxyCodeLine{00099\ \ \ \ \ )}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ =\ std::numeric\_limits<typename\ genType::value\_type>::epsilon();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{edge1}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vert1}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{edge2}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vert2}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}}\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{cross}}(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{edge2}});}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structglm_1_1vec}{det}}\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{edge1}},\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structglm_1_1vec}{det}}\ >\ -\/\mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ \&\&\ \mbox{\hyperlink{structglm_1_1vec}{det}}\ <\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}})}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}}\ =\ \textcolor{keyword}{typename}\ genType::value\_type(1)\ /\ \mbox{\hyperlink{structglm_1_1vec}{det}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Tengant}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{orig}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{vert0}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{position}}.y\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{Tengant}},\ \mbox{\hyperlink{structglm_1_1vec}{Perpendicular}})\ *\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structglm_1_1vec}{position}}.y\ <\ \textcolor{keyword}{typename}\ genType::value\_type(0)\ ||\ \mbox{\hyperlink{structglm_1_1vec}{position}}.y\ >\ \textcolor{keyword}{typename}\ genType::value\_type(1))}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Cotengant}}\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{cross}}(\mbox{\hyperlink{structglm_1_1vec}{Tengant}},\ \mbox{\hyperlink{structglm_1_1vec}{edge1}});}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{position}}.z\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{dir}},\ \mbox{\hyperlink{structglm_1_1vec}{Cotengant}})\ *\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structglm_1_1vec}{position}}.z\ <\ \textcolor{keyword}{typename}\ genType::value\_type(0)\ ||\ \mbox{\hyperlink{structglm_1_1vec}{position}}.y\ +\ \mbox{\hyperlink{structglm_1_1vec}{position}}.z\ >\ \textcolor{keyword}{typename}\ genType::value\_type(1))}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{position}}.x\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{edge2}},\ \mbox{\hyperlink{structglm_1_1vec}{Cotengant}})\ *\ \mbox{\hyperlink{structglm_1_1vec}{inv\_det}};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00132\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_gac88f8cd84c4bcb5b947d56acbbcfa56e}{intersectRaySphere}}}
+\DoxyCodeLine{00133\ \ \ \ \ (}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{rayStarting}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{rayNormalizedDirection}},}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}},\ \textcolor{keyword}{const}\ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadiusSquered}},}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionDistance}}}
+\DoxyCodeLine{00137\ \ \ \ \ )}
+\DoxyCodeLine{00138\ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ =\ std::numeric\_limits<typename\ genType::value\_type>::epsilon();}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{diff}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{rayStarting}};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{diff}},\ \mbox{\hyperlink{structglm_1_1vec}{rayNormalizedDirection}});}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{diff}},\ \mbox{\hyperlink{structglm_1_1vec}{diff}})\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{t0}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadiusSquered}}\ )}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ =\ \mbox{\hyperlink{group__core__func__exponential_ga1f904e09827e939a56e4158f45ca8ede}{sqrt}}(\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadiusSquered}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ );}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionDistance}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ ?\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ :\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{t1}};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{intersectionDistance}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}};}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00153\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_gac88f8cd84c4bcb5b947d56acbbcfa56e}{intersectRaySphere}}}
+\DoxyCodeLine{00154\ \ \ \ \ (}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{rayStarting}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{rayNormalizedDirection}},}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}},\ \textcolor{keyword}{const}\ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}},}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionPosition}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal}}}
+\DoxyCodeLine{00158\ \ \ \ \ )}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ distance;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{group__gtx__intersect_gac88f8cd84c4bcb5b947d56acbbcfa56e}{intersectRaySphere}}(\ \mbox{\hyperlink{structglm_1_1vec}{rayStarting}},\ \mbox{\hyperlink{structglm_1_1vec}{rayNormalizedDirection}},\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}},\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}},\ distance\ )\ )}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionPosition}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{rayStarting}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{rayNormalizedDirection}}\ *\ distance;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal}}\ =\ (\mbox{\hyperlink{structglm_1_1vec}{intersectionPosition}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}})\ /\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00171\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__intersect_ga9c68139f3d8a4f3d7fe45f9dbc0de5b7}{intersectLineSphere}}}
+\DoxyCodeLine{00172\ \ \ \ \ (}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{point0}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{point1}},}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}},\ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}},}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionPoint1}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal1}},}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionPoint2}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal2}}}
+\DoxyCodeLine{00177\ \ \ \ \ )}
+\DoxyCodeLine{00178\ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ =\ std::numeric\_limits<typename\ genType::value\_type>::epsilon();}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{dir}}\ =\ \mbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\mbox{\hyperlink{structglm_1_1vec}{point1}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{point0}});}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{diff}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{point0}};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{diff}},\ \mbox{\hyperlink{structglm_1_1vec}{dir}});}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{diff}},\ \mbox{\hyperlink{structglm_1_1vec}{diff}})\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{t0}};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}}\ )}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ genType::value\_type\ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ =\ \mbox{\hyperlink{group__core__func__exponential_ga1f904e09827e939a56e4158f45ca8ede}{sqrt}}(\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{dSquared}}\ );}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \mbox{\hyperlink{structglm_1_1vec}{t0}}\ <\ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{Epsilon}}\ )}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{t1}}\ =\ -\/\mbox{\hyperlink{structglm_1_1vec}{t1}};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionPoint1}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{point0}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{dir}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{t0}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{t1}});}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal1}}\ =\ (\mbox{\hyperlink{structglm_1_1vec}{intersectionPoint1}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}})\ /\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionPoint2}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{point0}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{dir}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{t0}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{t1}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{intersectionNormal2}}\ =\ (\mbox{\hyperlink{structglm_1_1vec}{intersectionPoint2}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{sphereCenter}})\ /\ \mbox{\hyperlink{structglm_1_1vec}{sphereRadius}};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

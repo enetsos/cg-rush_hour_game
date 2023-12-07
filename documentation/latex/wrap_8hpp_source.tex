@@ -1,0 +1,40 @@
+\doxysection{wrap.\+hpp}
+\hypertarget{wrap_8hpp_source}{}\label{wrap_8hpp_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/wrap.hpp@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/wrap.hpp}}
+\mbox{\hyperlink{wrap_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../glm.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../gtc/vec1.hpp"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#if\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#\ \ \ ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_wrap\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{})}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_wrap\ extension\ included"{})}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00035\ \ \ \ \ GLM\_FUNC\_DECL\ genType\ \mbox{\hyperlink{group__core__func__common_ga7cd77683da6361e297c56443fc70806d}{clamp}}(genType\ \textcolor{keyword}{const}\&\ Texcoord);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00040\ \ \ \ \ GLM\_FUNC\_DECL\ genType\ \mbox{\hyperlink{group__gtx__wrap_ga809650c6310ea7c42666e918c117fb6f}{repeat}}(genType\ \textcolor{keyword}{const}\&\ Texcoord);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00045\ \ \ \ \ GLM\_FUNC\_DECL\ genType\ \mbox{\hyperlink{group__gtx__wrap_gaa6856a0a048d2749252848da35e10c8b}{mirrorClamp}}(genType\ \textcolor{keyword}{const}\&\ Texcoord);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00050\ \ \ \ \ GLM\_FUNC\_DECL\ genType\ \mbox{\hyperlink{group__gtx__wrap_ga16a89b0661b60d5bea85137bbae74d73}{mirrorRepeat}}(genType\ \textcolor{keyword}{const}\&\ Texcoord);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \}\textcolor{comment}{//\ namespace\ glm}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}wrap.inl"{}}}
+
+\end{DoxyCode}

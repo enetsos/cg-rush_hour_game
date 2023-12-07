@@ -1,0 +1,187 @@
+\doxysection{io.\+hpp}
+\hypertarget{io_8hpp_source}{}\label{io_8hpp_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/io.hpp@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/io.hpp}}
+\mbox{\hyperlink{io_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}../glm.hpp"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}../gtx/quaternion.hpp"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#if\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#\ \ \ ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_io\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{})}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_io\ extension\ included"{})}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <iosfwd>}\ \ \textcolor{comment}{//\ std::basic\_ostream<>\ (fwd)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <locale>}\ \ \textcolor{comment}{//\ std::locale,\ std::locale::facet,\ std::locale::id}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//\ std::pair<>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{namespace\ }io}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ order\_type\ \{\ column\_major,\ row\_major\};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy>}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classglm_1_1io_1_1format__punct}{format\_punct}}\ :\ \textcolor{keyword}{public}\ std::locale::facet}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{CTy}}\ \mbox{\hyperlink{structglm_1_1vec}{char\_type}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::locale::id\ id;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ formatted;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \mbox{\hyperlink{structglm_1_1io_1_1precision}{precision}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \mbox{\hyperlink{structglm_1_1io_1_1width}{width}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{char\_type}}\ \ separator;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{char\_type}}\ \ delim\_left;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{char\_type}}\ \ delim\_right;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{char\_type}}\ \ space;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{char\_type}}\ \ newline;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ order\_type\ \mbox{\hyperlink{structglm_1_1io_1_1order}{order}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classglm_1_1io_1_1format__punct}{format\_punct}}(\textcolor{keywordtype}{size\_t}\ a\ =\ 0);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classglm_1_1io_1_1format__punct}{format\_punct}}(\mbox{\hyperlink{classglm_1_1io_1_1format__punct}{format\_punct}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr\ =\ std::\textcolor{keywordtype}{char}\_traits<CTy>\ >}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classglm_1_1io_1_1basic__state__saver}{basic\_state\_saver}}\ \{}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classglm_1_1io_1_1basic__state__saver}{basic\_state\_saver}}(std::basic\_ios<CTy,CTr>\&);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{classglm_1_1io_1_1basic__state__saver}{\string~basic\_state\_saver}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ typedef\ ::std::basic\_ios<CTy,CTr>\ \ \ \ \ \ state\_type;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{typename}\ state\_type::char\_type\ char\_type;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ::std::ios\_base::fmtflags\ \ \ \ \ \ flags\_type;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ::std::streamsize\ \ \ \ \ \ \ \ \ \ \ \ \ \ streamsize\_type;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ::std::locale\ \textcolor{keyword}{const}\ \ \ \ \ \ \ \ \ \ \ \ locale\_type;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ state\_type\&\ \ \ \ \ state\_;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ flags\_type\ \ \ \ \ \ flags\_;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ streamsize\_type\ precision\_;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ streamsize\_type\ width\_;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ char\_type\ \ \ \ \ \ \ fill\_;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ locale\_type\ \ \ \ \ locale\_;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{classglm_1_1io_1_1basic__state__saver}{basic\_state\_saver}}\&\ operator=(\mbox{\hyperlink{classglm_1_1io_1_1basic__state__saver}{basic\_state\_saver}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{basic\_state\_saver<char>}}\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{state\_saver}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{basic\_state\_saver<wchar\_t>}}\ \mbox{\hyperlink{structglm_1_1vec}{wstate\_saver}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr\ =\ std::\textcolor{keywordtype}{char}\_traits<CTy>\ >}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classglm_1_1io_1_1basic__format__saver}{basic\_format\_saver}}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classglm_1_1io_1_1basic__format__saver}{basic\_format\_saver}}(std::basic\_ios<CTy,CTr>\&);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{classglm_1_1io_1_1basic__format__saver}{\string~basic\_format\_saver}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{basic\_state\_saver<CTy>}}\ \textcolor{keyword}{const}\ bss\_;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{classglm_1_1io_1_1basic__format__saver}{basic\_format\_saver}}\&\ operator=(\mbox{\hyperlink{classglm_1_1io_1_1basic__format__saver}{basic\_format\_saver}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{basic\_format\_saver<char>}}\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{format\_saver}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{basic\_format\_saver<wchar\_t>}}\ \mbox{\hyperlink{structglm_1_1vec}{wformat\_saver}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1io_1_1precision}{precision}}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ value;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structglm_1_1io_1_1precision}{precision}}(\textcolor{keywordtype}{unsigned});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1io_1_1width}{width}}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ value;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structglm_1_1io_1_1width}{width}}(\textcolor{keywordtype}{unsigned});}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy>}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1io_1_1delimeter}{delimeter}}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{CTy}}\ value[3];}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structglm_1_1io_1_1delimeter}{delimeter}}(\mbox{\hyperlink{structglm_1_1vec}{CTy}}\ \textcolor{comment}{/*\ left\ */},\ \mbox{\hyperlink{structglm_1_1vec}{CTy}}\ \textcolor{comment}{/*\ right\ */},\ \mbox{\hyperlink{structglm_1_1vec}{CTy}}\ \textcolor{comment}{/*\ separator\ */}\ =\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1io_1_1order}{order}}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ order\_type\ value;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structglm_1_1io_1_1order}{order}}(order\_type);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ functions,\ inlined\ (inline)}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ FTy,\ \textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{FTy}}\ \textcolor{keyword}{const}\&\ get\_facet(std::basic\_ios<CTy,CTr>\&);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ FTy,\ \textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ std::basic\_ios<CTy,CTr>\&\ formatted(std::basic\_ios<CTy,CTr>\&);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ FTy,\ \textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ std::basic\_ios<CTy,CTr>\&\ unformattet(std::basic\_ios<CTy,CTr>\&);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ std::basic\_ostream<CTy,\ CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,\ CTr>\&,\ \mbox{\hyperlink{structglm_1_1io_1_1precision}{precision}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ std::basic\_ostream<CTy,\ CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,\ CTr>\&,\ \mbox{\hyperlink{structglm_1_1io_1_1width}{width}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ std::basic\_ostream<CTy,\ CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,\ CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{delimeter<CTy>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr>}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ std::basic\_ostream<CTy,\ CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,\ CTr>\&,\ \mbox{\hyperlink{structglm_1_1io_1_1order}{order}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00163\ \ \ \ \ \}\textcolor{comment}{//namespace\ io}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00166\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{qua<T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00168\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00170\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00172\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00174\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00176\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<2,\ 2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00178\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<2,\ 3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00180\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<2,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00182\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<3,\ 2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00184\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<3,\ 3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00186\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<3,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00188\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00190\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00192\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\&,\ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CTy,\ \textcolor{keyword}{typename}\ CTr,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00195\ \ \ \ \ GLM\_FUNC\_DECL\ std::basic\_ostream<CTy,CTr>\ \&\ \mbox{\hyperlink{structglm_1_1vec}{operator<<}}(std::basic\_ostream<CTy,CTr>\ \&,}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<\mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const},\ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}>\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00199\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#include\ "{}io.inl"{}}}
+
+\end{DoxyCode}

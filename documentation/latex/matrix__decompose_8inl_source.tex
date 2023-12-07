@@ -1,0 +1,190 @@
+\doxysection{matrix\+\_\+decompose.\+inl}
+\hypertarget{matrix__decompose_8inl_source}{}\label{matrix__decompose_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/matrix\_decompose.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/matrix\_decompose.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../gtc/constants.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../gtc/epsilon.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}\{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ result\ =\ (a\ *\ ascl)\ +\ (b\ *\ bscl)}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00012\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<3,\ T,\ Q>\ combine(}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ a,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ b,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ T\ ascl,\ T\ bscl)}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ *\ ascl)\ +\ (b\ *\ bscl);}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00021\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<3,\ T,\ Q>\ \mbox{\hyperlink{group__ext__matrix__transform_gaae2f8b2080622b24b85e1096748599b6}{scale}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v,\ T\ desiredLength)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v\ *\ desiredLength\ /\ length(v);}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Matrix\ decompose}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ http://www.opensource.apple.com/source/WebCore/WebCore-\/514/platform/graphics/transforms/TransformationMatrix.cpp}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Decomposes\ the\ mode\ matrix\ to\ translations,rotation\ scale\ components}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00032\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__gtx__matrix__decompose_gac0e342656ba09a9bc97c57182ba73124}{decompose}}(\mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{ModelMatrix}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Scale}},\ \mbox{\hyperlink{structglm_1_1vec}{qua<T,\ Q>}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Orientation}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Translation}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Skew}},\ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Perspective}})}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}(\mbox{\hyperlink{structglm_1_1vec}{ModelMatrix}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Normalize\ the\ matrix.}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{group__gtc__epsilon_ga7f8df975688289781ee26998c73d6798}{epsilonEqual}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3][3],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0),\ \mbox{\hyperlink{structglm_1_1vec}{epsilon<T>}}()))}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ i\ =\ 0;\ i\ <\ 4;\ ++i)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ \mbox{\hyperlink{structglm_1_1vec}{j}}\ =\ 0;\ \mbox{\hyperlink{structglm_1_1vec}{j}}\ <\ 4;\ ++\mbox{\hyperlink{structglm_1_1vec}{j}})}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[i][\mbox{\hyperlink{structglm_1_1vec}{j}}]\ /=\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3][3];}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ perspectiveMatrix\ is\ used\ to\ solve\ for\ perspective,\ but\ it\ also\ provides}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ an\ easy\ way\ to\ test\ for\ singularity\ of\ the\ upper\ 3x3\ component.}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{PerspectiveMatrix}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ i\ =\ 0;\ i\ <\ 3;\ i++)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{PerspectiveMatrix}}[i][3]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{PerspectiveMatrix}}[3][3]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{group__gtc__epsilon_ga7f8df975688289781ee26998c73d6798}{epsilonEqual}}(\mbox{\hyperlink{group__core__func__matrix_gad7928795124768e058f99dce270f5c8d}{determinant}}(\mbox{\hyperlink{structglm_1_1vec}{PerspectiveMatrix}}),\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0),\ \mbox{\hyperlink{structglm_1_1vec}{epsilon<T>}}()))}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First,\ isolate\ perspective.\ \ This\ is\ the\ messiest.}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtc__epsilon_ga5a19d270e1912843d95f476fe2d3882d}{epsilonNotEqual}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[0][3],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0),\ \mbox{\hyperlink{structglm_1_1vec}{epsilon<T>}}())\ ||}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtc__epsilon_ga5a19d270e1912843d95f476fe2d3882d}{epsilonNotEqual}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[1][3],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0),\ \mbox{\hyperlink{structglm_1_1vec}{epsilon<T>}}())\ ||}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtc__epsilon_ga5a19d270e1912843d95f476fe2d3882d}{epsilonNotEqual}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[2][3],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0),\ \mbox{\hyperlink{structglm_1_1vec}{epsilon<T>}}()))}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rightHandSide\ is\ the\ right\ hand\ side\ of\ the\ equation.}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}}[0]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[0][3];}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}}[1]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[1][3];}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}}[2]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[2][3];}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}}[3]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3][3];}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Solve\ the\ equation\ by\ inverting\ PerspectiveMatrix\ and\ multiplying}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rightHandSide\ by\ the\ inverse.\ \ (This\ is\ the\ easiest\ way,\ not}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ necessarily\ the\ best.)}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{InversePerspectiveMatrix}}\ =\ \mbox{\hyperlink{group__core__func__matrix_gace61e11fc177491beeca0c6971e2f3fc}{glm::inverse}}(\mbox{\hyperlink{structglm_1_1vec}{PerspectiveMatrix}});\textcolor{comment}{//\ \ \ inverse(PerspectiveMatrix,\ inversePerspectiveMatrix);}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mat<4,\ 4,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{TransposedInversePerspectiveMatrix}}\ =\ \mbox{\hyperlink{group__core__func__matrix_ga4d251df5957b62996391bccb61cc9974}{glm::transpose}}(\mbox{\hyperlink{structglm_1_1vec}{InversePerspectiveMatrix}});\textcolor{comment}{//\ \ \ transposeMatrix4(inversePerspectiveMatrix,\ transposedInversePerspectiveMatrix);}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Perspective}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{TransposedInversePerspectiveMatrix}}\ *\ \mbox{\hyperlink{structglm_1_1vec}{RightHandSide}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ v4MulPointByMatrix(rightHandSide,\ transposedInversePerspectiveMatrix,\ perspectivePoint);}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ the\ perspective\ partition}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[0][3]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[1][3]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[2][3]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3][3]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ No\ perspective.}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Perspective}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}(0,\ 0,\ 0,\ 1);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Next\ take\ care\ of\ translation\ (easy).}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Translation}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}(\mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3]);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3]\ =\ \mbox{\hyperlink{structglm_1_1vec}{vec<4,\ T,\ Q>}}(0,\ 0,\ 0,\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[3].w);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[3],\ \mbox{\hyperlink{structglm_1_1vec}{Pdum3}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now\ get\ scale\ and\ shear.}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ i\ =\ 0;\ i\ <\ 3;\ ++i)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ \mbox{\hyperlink{structglm_1_1vec}{j}}\ =\ 0;\ \mbox{\hyperlink{structglm_1_1vec}{j}}\ <\ 3;\ ++\mbox{\hyperlink{structglm_1_1vec}{j}})}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[i][\mbox{\hyperlink{structglm_1_1vec}{j}}]\ =\ \mbox{\hyperlink{structglm_1_1vec}{LocalMatrix}}[i][\mbox{\hyperlink{structglm_1_1vec}{j}}];}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ X\ scale\ factor\ and\ normalize\ first\ row.}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.x\ =\ length(\mbox{\hyperlink{structglm_1_1vec}{Row}}[0]);\textcolor{comment}{//\ v3Length(Row[0]);}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0]\ =\ detail::scale(\mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ XY\ shear\ factor\ and\ make\ 2nd\ row\ orthogonal\ to\ 1st.}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.z\ =\ dot(\mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1]);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1]\ =\ detail::combine(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1),\ -\/\mbox{\hyperlink{structglm_1_1vec}{Skew}}.z);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now,\ compute\ Y\ scale\ and\ normalize\ 2nd\ row.}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.y\ =\ length(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1]);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1]\ =\ detail::scale(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.z\ /=\ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.y;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ XZ\ and\ YZ\ shears,\ orthogonalize\ 3rd\ row.}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.y\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]\ =\ detail::combine(\mbox{\hyperlink{structglm_1_1vec}{Row}}[2],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1),\ -\/\mbox{\hyperlink{structglm_1_1vec}{Skew}}.y);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.x\ =\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]\ =\ detail::combine(\mbox{\hyperlink{structglm_1_1vec}{Row}}[2],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1),\ -\/\mbox{\hyperlink{structglm_1_1vec}{Skew}}.x);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Next,\ get\ Z\ scale\ and\ normalize\ 3rd\ row.}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.z\ =\ length(\mbox{\hyperlink{structglm_1_1vec}{Row}}[2]);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]\ =\ detail::scale(\mbox{\hyperlink{structglm_1_1vec}{Row}}[2],\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.y\ /=\ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.z;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Skew}}.x\ /=\ \mbox{\hyperlink{structglm_1_1vec}{Scale}}.z;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ At\ this\ point,\ the\ matrix\ (in\ rows[])\ is\ orthonormal.}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ a\ coordinate\ system\ flip.\ \ If\ the\ determinant}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ -\/1,\ then\ negate\ the\ matrix\ and\ the\ scaling\ factors.}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Pdum3}}\ =\ \mbox{\hyperlink{group__core__func__geometric_gaa9583340130a6b700eced5b100c5ccaa}{cross}}(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1],\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2]);\ \textcolor{comment}{//\ v3Cross(row[1],\ row[2],\ Pdum3);}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dot(\mbox{\hyperlink{structglm_1_1vec}{Row}}[0],\ \mbox{\hyperlink{structglm_1_1vec}{Pdum3}})\ <\ 0)}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(length\_t\ i\ =\ 0;\ i\ <\ 3;\ i++)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Scale}}[i]\ *=\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(-\/1);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Row}}[i]\ *=\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(-\/1);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now,\ get\ the\ rotations\ out,\ as\ described\ in\ the\ gem.}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ FIXME\ -\/\ Add\ the\ ability\ to\ return\ either\ quaternions\ (which\ are}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ easier\ to\ recompose\ with)\ or\ Euler\ angles\ (rx,\ ry,\ rz),\ which}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ are\ easier\ for\ authors\ to\ deal\ with.\ The\ latter\ will\ only\ be\ useful}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ when\ we\ fix\ https://bugs.webkit.org/show\_bug.cgi?id=23799,\ so\ I}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ leave\ the\ Euler\ angle\ code\ here\ for\ now.}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ret.rotateY\ =\ asin(-\/Row[0][2]);}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (cos(ret.rotateY)\ !=\ 0)\ \{}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ ret.rotateX\ =\ atan2(Row[1][2],\ Row[2][2]);}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ ret.rotateZ\ =\ atan2(Row[0][1],\ Row[0][0]);}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ ret.rotateX\ =\ atan2(-\/Row[2][0],\ Row[1][1]);}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ ret.rotateZ\ =\ 0;}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ \mbox{\hyperlink{structglm_1_1vec}{j}},\ \mbox{\hyperlink{structglm_1_1vec}{k}}\ =\ 0;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{root}},\ \mbox{\hyperlink{structglm_1_1vec}{trace}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0].x\ +\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1].y\ +\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2].z;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{trace}}\ >\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0))}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{root}}\ =\ \mbox{\hyperlink{group__core__func__exponential_ga1f904e09827e939a56e4158f45ca8ede}{sqrt}}(\mbox{\hyperlink{structglm_1_1vec}{trace}}\ +\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1.0));}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}.w\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0.5)\ *\ \mbox{\hyperlink{structglm_1_1vec}{root}};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{root}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0.5)\ /\ \mbox{\hyperlink{structglm_1_1vec}{root}};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}.x\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[1].z\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[2].y);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}.y\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[2].x\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0].z);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}.z\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[0].y\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[1].x);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ End\ if\ >\ 0}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Next}}[3]\ =\ \{1,\ 2,\ 0\};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Row}}[1].y\ >\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[0].x)\ i\ =\ 1;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Row}}[2].z\ >\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[i][i])\ i\ =\ 2;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{j}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Next}}[i];}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{k}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Next}}[\mbox{\hyperlink{structglm_1_1vec}{j}}];}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{root}}\ =\ \mbox{\hyperlink{group__core__func__exponential_ga1f904e09827e939a56e4158f45ca8ede}{sqrt}}(\mbox{\hyperlink{structglm_1_1vec}{Row}}[i][i]\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{j}}][\mbox{\hyperlink{structglm_1_1vec}{j}}]\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{k}}][\mbox{\hyperlink{structglm_1_1vec}{k}}]\ +\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1.0));}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}[i]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0.5)\ *\ \mbox{\hyperlink{structglm_1_1vec}{root}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{root}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(0.5)\ /\ \mbox{\hyperlink{structglm_1_1vec}{root}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}[\mbox{\hyperlink{structglm_1_1vec}{j}}]\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[i][\mbox{\hyperlink{structglm_1_1vec}{j}}]\ +\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{j}}][i]);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}[\mbox{\hyperlink{structglm_1_1vec}{k}}]\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[i][\mbox{\hyperlink{structglm_1_1vec}{k}}]\ +\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{k}}][i]);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Orientation}}.w\ =\ \mbox{\hyperlink{structglm_1_1vec}{root}}\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{j}}][\mbox{\hyperlink{structglm_1_1vec}{k}}]\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Row}}[\mbox{\hyperlink{structglm_1_1vec}{k}}][\mbox{\hyperlink{structglm_1_1vec}{j}}]);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ End\ if\ <=\ 0}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

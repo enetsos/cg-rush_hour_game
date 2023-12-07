@@ -1,0 +1,119 @@
+\doxysection{freeglut\+\_\+ucall.\+h}
+\hypertarget{freeglut__ucall_8h_source}{}\label{freeglut__ucall_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/freeglut/include/GL/freeglut\_ucall.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/freeglut/include/GL/freeglut\_ucall.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \ \_\_FREEGLUT\_UCALL\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \ \_\_FREEGLUT\_UCALL\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ freeglut\_ucall.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Callbacks\ with\ user\ data\ arguments.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ \ IN\ NO\ EVENT\ SHALL}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ PAWEL\ W.\ OLSZTA\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ Menu\ stuff,\ see\ fg\_menu.c}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00024\ FGAPI\ \textcolor{keywordtype}{int}\ \ FGAPIENTRY\ glutCreateMenuUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int}\ menu,\ \textcolor{keywordtype}{void}*\ user\_data\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ Global\ callback\ functions,\ see\ fg\_callbacks.c}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00029\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutTimerFuncUcall(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time,\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00030\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutIdleFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Window-\/specific\ callback\ functions,\ see\ fg\_callbacks.c}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00035\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutKeyboardFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00036\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutSpecialFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00037\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutReshapeFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00038\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutVisibilityFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00039\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutDisplayFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00040\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMouseFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00041\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMotionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00042\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutPassiveMotionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00043\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutEntryFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutKeyboardUpFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00046\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutSpecialUpFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00047\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutJoystickFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{int}\ pollInterval,\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00048\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMenuStatusFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00049\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutOverlayDisplayFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00050\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutWindowStatusFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutSpaceballMotionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00053\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutSpaceballRotateFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00054\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutSpaceballButtonFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00055\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutButtonBoxFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00056\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutDialsFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00057\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutTabletMotionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00058\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutTabletButtonFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMouseWheelFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00061\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutPositionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00062\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutCloseFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00063\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutWMCloseFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00064\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMenuDestroyFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ *\ Multi-\/touch/multi-\/pointer\ extensions}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00069\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMultiEntryFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00070\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMultiButtonFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00071\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMultiMotionFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00072\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutMultiPassiveFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ *\ Initialization\ functions,\ see\ fg\_init.c}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00078\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutInitErrorFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ va\_list\ ap,\ \textcolor{keywordtype}{void}*\ user\_data\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00079\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutInitWarningFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ va\_list\ ap,\ \textcolor{keywordtype}{void}*\ user\_data\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*\ Mobile\ platforms\ lifecycle\ */}}
+\DoxyCodeLine{00082\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutInitContextFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00083\ FGAPI\ \textcolor{keywordtype}{void}\ FGAPIENTRY\ glutAppStatusFuncUcall(\ \textcolor{keywordtype}{void}\ (*\ callback)(\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*\ ),\ \textcolor{keywordtype}{void}*\ user\_data\ );}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ *\ Continued\ "{}hack"{}\ from\ GLUT\ applied\ to\ Ucall\ functions.}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ *\ For\ more\ info,\ see\ bottom\ of\ freeglut\_std.h}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{/*\ to\ get\ the\ prototype\ for\ exit()\ */}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ \&\&\ !defined(GLUT\_DISABLE\_ATEXIT\_HACK)\ \&\&\ !defined(\_\_WATCOMC\_\_)}}
+\DoxyCodeLine{00094\ FGAPI\ \textcolor{keywordtype}{int}\ FGAPIENTRY\ \_\_glutCreateMenuUcallWithExit(\textcolor{keywordtype}{void}(*func)(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{void}(\_\_cdecl\ *exitfunc)(\textcolor{keywordtype}{int}),\ \textcolor{keywordtype}{void}*\ user\_data);}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#ifndef\ FREEGLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ FGUNUSED\ \_\_attribute\_\_((unused))}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ FGUNUSED}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ FGAPIENTRY\ FGUNUSED\ glutCreateMenuUcall\_ATEXIT\_HACK(\textcolor{keywordtype}{void}(*func)(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{void}*\ user\_data)\ \{\ \textcolor{keywordflow}{return}\ \_\_glutCreateMenuUcallWithExit(func,\ exit,\ user\_data);\ \}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ glutCreateMenuUcall\ glutCreateMenuUcall\_ATEXIT\_HACK}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{/***\ END\ OF\ FILE\ ***/}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_FREEGLUT\_UCALL\_H\_\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00113\ }
+
+\end{DoxyCode}

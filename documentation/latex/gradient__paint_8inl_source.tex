@@ -1,0 +1,42 @@
+\doxysection{gradient\+\_\+paint.\+inl}
+\hypertarget{gradient__paint_8inl_source}{}\label{gradient__paint_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/gradient\_paint.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/gradient\_paint.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00006\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{group__gtx__gradient__paint_gaaecb1e93de4cbe0758b882812d4da294}{radialGradient}}}
+\DoxyCodeLine{00007\ \ \ \ \ (}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Center}},}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Radius}},}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Focal}},}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Position}}}
+\DoxyCodeLine{00012\ \ \ \ \ )}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{F}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Focal}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Center}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{D}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Position}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Focal}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Radius2}}\ =\ pow2(\mbox{\hyperlink{structglm_1_1vec}{Radius}});}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Fx2}}\ =\ pow2(\mbox{\hyperlink{structglm_1_1vec}{F}}.x);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Fy2}}\ =\ pow2(\mbox{\hyperlink{structglm_1_1vec}{F}}.y);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Numerator}}\ =\ (\mbox{\hyperlink{structglm_1_1vec}{D}}.x\ *\ \mbox{\hyperlink{structglm_1_1vec}{F}}.x\ +\ \mbox{\hyperlink{structglm_1_1vec}{D}}.y\ *\ \mbox{\hyperlink{structglm_1_1vec}{F}}.y)\ +\ \mbox{\hyperlink{group__core__func__exponential_ga1f904e09827e939a56e4158f45ca8ede}{sqrt}}(\mbox{\hyperlink{structglm_1_1vec}{Radius2}}\ *\ (pow2(\mbox{\hyperlink{structglm_1_1vec}{D}}.x)\ +\ pow2(\mbox{\hyperlink{structglm_1_1vec}{D}}.y))\ -\/\ pow2(\mbox{\hyperlink{structglm_1_1vec}{D}}.x\ *\ \mbox{\hyperlink{structglm_1_1vec}{F}}.y\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{D}}.y\ *\ \mbox{\hyperlink{structglm_1_1vec}{F}}.x));}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Denominator}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Radius2}}\ -\/\ (\mbox{\hyperlink{structglm_1_1vec}{Fx2}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{Fy2}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Numerator}}\ /\ \mbox{\hyperlink{structglm_1_1vec}{Denominator}};}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00026\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{group__gtx__gradient__paint_ga849241df1e55129b8ce9476200307419}{linearGradient}}}
+\DoxyCodeLine{00027\ \ \ \ \ (}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Point0}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Point1}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Position}}}
+\DoxyCodeLine{00031\ \ \ \ \ )}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<2,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{Dist}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Point1}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Point0}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{Dist}}.x\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Position}}.x\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Point0}}.x)\ +\ \mbox{\hyperlink{structglm_1_1vec}{Dist}}.y\ *\ (\mbox{\hyperlink{structglm_1_1vec}{Position}}.y\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Point0}}.y))\ /\ glm::dot(\mbox{\hyperlink{structglm_1_1vec}{Dist}},\ \mbox{\hyperlink{structglm_1_1vec}{Dist}});}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

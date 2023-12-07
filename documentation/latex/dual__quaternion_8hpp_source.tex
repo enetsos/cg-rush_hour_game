@@ -1,0 +1,203 @@
+\doxysection{dual\+\_\+quaternion.\+hpp}
+\hypertarget{dual__quaternion_8hpp_source}{}\label{dual__quaternion_8hpp_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/dual\_quaternion.hpp@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/dual\_quaternion.hpp}}
+\mbox{\hyperlink{dual__quaternion_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../glm.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../gtc/constants.hpp"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../gtc/quaternion.hpp"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_dual\_quaternion\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{})}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_dual\_quaternion\ extension\ included"{})}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q\ =\ defaultp>}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Implementation\ detail\ -\/-\/}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{value\_type}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{qua<T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{part\_type}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Data\ -\/-\/}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{qua<T,\ Q>}}\ real,\ dual;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Component\ accesses\ -\/-\/}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ length\_t\ length\_type;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keyword}{static}\ GLM\_CONSTEXPR\ length\_type\ \mbox{\hyperlink{structglm_1_1tdualquat_a79fe24c72a3f26d906b080de34b92b4e}{length}}()\{\textcolor{keywordflow}{return}\ 2;\}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ part\_type\ \&\ operator[](length\_type\ i);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ part\_type\ \textcolor{keyword}{const}\&\ operator[](length\_type\ i)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Implicit\ basic\ constructors\ -\/-\/}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}()\ GLM\_DEFAULT;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{d}})\ GLM\_DEFAULT;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{P}}>}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{P}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{d}});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Explicit\ basic\ constructors\ -\/-\/}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1qua}{qua}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ real);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1qua}{qua}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{group__gtx__rotate__vector_ga83099d005b4af6a7a0d882ff6eb1a536}{orientation}},\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<3,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{translation}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1qua}{qua}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ real,\ \mbox{\hyperlink{structglm_1_1qua}{qua}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ dual);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Conversion\ constructors\ -\/-\/}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{U}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{P}}>}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_CONSTEXPR\ GLM\_EXPLICIT\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{U}},\ \mbox{\hyperlink{structglm_1_1vec}{P}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_EXPLICIT\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1mat}{mat}}<2,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{holder\_mat}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ GLM\_EXPLICIT\ GLM\_CONSTEXPR\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}(\mbox{\hyperlink{structglm_1_1mat}{mat}}<3,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{aug\_mat}});}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Unary\ arithmetic\ operators\ -\/-\/}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \&\ \mbox{\hyperlink{structglm_1_1vec}{operator}}=(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{m}})\ GLM\_DEFAULT;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{U}}>}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \&\ \mbox{\hyperlink{structglm_1_1vec}{operator}}=(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{U}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{m}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{U}}>}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \&\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*=(\mbox{\hyperlink{structglm_1_1vec}{U}}\ s);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{U}}>}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \&\ \mbox{\hyperlink{structglm_1_1vec}{operator}}/=(\mbox{\hyperlink{structglm_1_1vec}{U}}\ s);}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Unary\ bit\ operators\ -\/-\/}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00093\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}+(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00096\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}-\/(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Binary\ operators\ -\/-\/}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00101\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}+(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ p);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00104\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ p);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00107\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<3,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<3,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00110\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<3,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1vec}{vec}}<3,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00113\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}});}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00116\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1vec}{vec}}<4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1vec}{vec}}<4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00119\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ s);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00122\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}*(\mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ s,\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00125\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{operator}}/(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q,\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ s);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ -\/-\/\ Boolean\ operators\ -\/-\/}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00130\ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structglm_1_1vec}{operator}}==(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{q1}},\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{q2}});}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00133\ \ \ \ \ GLM\_FUNC\_DECL\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structglm_1_1vec}{operator}}!=(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{q1}},\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ \mbox{\hyperlink{structglm_1_1vec}{q2}});}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}\ <\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00139\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__gtx__dual__quaternion_ga41273c54a79788b6a4a5063f557921e4}{dual\_quat\_identity}}();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00145\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00151\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__ext__quaternion__common_gac81141eb679f52c4eae9df570b597690}{lerp}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ x,\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ y,\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ a);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00157\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__core__func__matrix_gace61e11fc177491beeca0c6971e2f3fc}{inverse}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ q);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00163\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1mat}{mat}}<2,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__gtx__dual__quaternion_ga5a0b3bf8ca6d42e6fbfd590cea3b5795}{mat2x4\_cast}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ x);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00169\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1mat}{mat}}<3,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__gtx__dual__quaternion_gacd7c91027b92e07cc5596145b87027b5}{mat3x4\_cast}}(\mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ x);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00175\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__gtx__dual__quaternion_ga752ed38a7e05cea2cd8aa5936f7187dc}{dualquat\_cast}}(\mbox{\hyperlink{structglm_1_1mat}{mat}}<2,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ x);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{template}}<\mbox{\hyperlink{structglm_1_1vec}{typename}}\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}}\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>}
+\DoxyCodeLine{00181\ \ \ \ \ GLM\_FUNC\_DECL\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{group__gtx__dual__quaternion_ga752ed38a7e05cea2cd8aa5936f7187dc}{dualquat\_cast}}(\mbox{\hyperlink{structglm_1_1mat}{mat}}<3,\ 4,\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}}>\ \mbox{\hyperlink{structglm_1_1vec}{const}}\&\ x);}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ae161af3fc695e696ce3bf69f7332bc2d}{lowp}}>\ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{lowp\_dualquat}};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25a6416f3ea0c9025fb21ed50c4d6620482}{mediump}}>\ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mediump\_dualquat}};}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ac6f7eab42eacbb10d59a58e95e362074}{highp}}>\ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{highp\_dualquat}};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ae161af3fc695e696ce3bf69f7332bc2d}{lowp}}>\ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{lowp\_fdualquat}};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25a6416f3ea0c9025fb21ed50c4d6620482}{mediump}}>\ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{mediump\_fdualquat}};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{float},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ac6f7eab42eacbb10d59a58e95e362074}{highp}}>\ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{highp\_fdualquat}};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{double},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ae161af3fc695e696ce3bf69f7332bc2d}{lowp}}>\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{lowp\_ddualquat}};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{double},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25a6416f3ea0c9025fb21ed50c4d6620482}{mediump}}>\ \ \ \mbox{\hyperlink{structglm_1_1vec}{mediump\_ddualquat}};}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{typedef}}\ \mbox{\hyperlink{structglm_1_1tdualquat}{tdualquat}}<\textcolor{keywordtype}{double},\ \mbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25ac6f7eab42eacbb10d59a58e95e362074}{highp}}>\ \ \ \mbox{\hyperlink{structglm_1_1vec}{highp\_ddualquat}};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#if(!defined(GLM\_PRECISION\_HIGHP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_FLOAT))}}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga2f6227b5f9dc08a2e7682065a84b3aa9}{dualquat}};}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga436906129bc69ca5059555cafcbac9fd}{fdualquat}};}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#elif(defined(GLM\_PRECISION\_HIGHP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_FLOAT))}}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga2f6227b5f9dc08a2e7682065a84b3aa9}{dualquat}};}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga436906129bc69ca5059555cafcbac9fd}{fdualquat}};}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#elif(!defined(GLM\_PRECISION\_HIGHP\_FLOAT)\ \&\&\ defined(GLM\_PRECISION\_MEDIUMP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_FLOAT))}}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{mediump\_fdualquat}}\ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga2f6227b5f9dc08a2e7682065a84b3aa9}{dualquat}};}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{mediump\_fdualquat}}\ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga436906129bc69ca5059555cafcbac9fd}{fdualquat}};}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#elif(!defined(GLM\_PRECISION\_HIGHP\_FLOAT)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_FLOAT)\ \&\&\ defined(GLM\_PRECISION\_LOWP\_FLOAT))}}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{lowp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga2f6227b5f9dc08a2e7682065a84b3aa9}{dualquat}};}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{lowp\_fdualquat}}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga436906129bc69ca5059555cafcbac9fd}{fdualquat}};}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#\ \ \ error\ "{}GLM\ error:\ multiple\ default\ precision\ requested\ for\ single-\/precision\ floating-\/point\ types"{}}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#if(!defined(GLM\_PRECISION\_HIGHP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_DOUBLE))}}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_ddualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga373431ffdd82d5c03c258217a9e1f1a6}{ddualquat}};}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#elif(defined(GLM\_PRECISION\_HIGHP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_DOUBLE))}}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{highp\_ddualquat}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga373431ffdd82d5c03c258217a9e1f1a6}{ddualquat}};}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#elif(!defined(GLM\_PRECISION\_HIGHP\_DOUBLE)\ \&\&\ defined(GLM\_PRECISION\_MEDIUMP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_LOWP\_DOUBLE))}}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{mediump\_ddualquat}}\ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga373431ffdd82d5c03c258217a9e1f1a6}{ddualquat}};}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#elif(!defined(GLM\_PRECISION\_HIGHP\_DOUBLE)\ \&\&\ !defined(GLM\_PRECISION\_MEDIUMP\_DOUBLE)\ \&\&\ defined(GLM\_PRECISION\_LOWP\_DOUBLE))}}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structglm_1_1vec}{lowp\_ddualquat}}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__gtx__dual__quaternion_ga373431ffdd82d5c03c258217a9e1f1a6}{ddualquat}};}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#\ \ \ error\ "{}GLM\ error:\ Multiple\ default\ precision\ requested\ for\ double-\/precision\ floating-\/point\ types"{}}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00272\ \}\ \textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#include\ "{}dual\_quaternion.inl"{}}}
+
+\end{DoxyCode}

@@ -1,0 +1,249 @@
+\doxysection{scalar\+\_\+integer.\+inl}
+\hypertarget{scalar__integer_8inl_source}{}\label{scalar__integer_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/ext/scalar\_integer.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/ext/scalar\_integer.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../integer.hpp"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}\{}
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ compute\ =\ false>}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}}
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}})}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{v}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \ \ \ \ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{v}},\ \mbox{\hyperlink{structglm_1_1vec}{T}}\ \mbox{\hyperlink{structglm_1_1vec}{Shift}})}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \mbox{\hyperlink{structglm_1_1vec}{Shift}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ isSigned\ =\ true>}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_power_of_two}{compute\_ceilPowerOfTwo}}}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(!std::numeric\_limits<T>::is\_iec559,\ \textcolor{stringliteral}{"{}'ceilPowerOfTwo'\ only\ accept\ integer\ scalar\ or\ vector\ inputs"{}});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{Sign}}(\mbox{\hyperlink{group__core__func__common_gaf749e7f029eb88580a45493e41002629}{sign}}(x));}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{v}}(\mbox{\hyperlink{group__core__func__common_ga439e60a72eadecfeda2df5449c613a64}{abs}}(x));}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ -\/\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(2));}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(4));}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 2>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 8);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 4>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 16);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 8>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 32);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ +\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1))\ *\ \mbox{\hyperlink{structglm_1_1vec}{Sign}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_power_of_two}{compute\_ceilPowerOfTwo}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \mbox{\hyperlink{structglm_1_1vec}{false}}>}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ call(\mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(!std::numeric\_limits<T>::is\_iec559,\ \textcolor{stringliteral}{"{}'ceilPowerOfTwo'\ only\ accept\ integer\ scalar\ or\ vector\ inputs"{}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \mbox{\hyperlink{structglm_1_1vec}{v}}(x);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ -\/\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(2));}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ |\ (\mbox{\hyperlink{structglm_1_1vec}{v}}\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(4));}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 2>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 8);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 4>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 16);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{v}}\ =\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_shift}{compute\_ceilShift}}<\mbox{\hyperlink{structglm_1_1vec}{L}},\ \mbox{\hyperlink{structglm_1_1vec}{T}},\ \mbox{\hyperlink{structglm_1_1vec}{Q}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structglm_1_1vec}{T}})\ >=\ 8>::call(\mbox{\hyperlink{structglm_1_1vec}{v}},\ 32);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{v}}\ +\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{T}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ is\_\textcolor{keywordtype}{float},\ \textcolor{keywordtype}{bool}\ is\_\textcolor{keywordtype}{signed}>}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_multiple}{compute\_ceilMultiple}}\{\};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_multiple}{compute\_ceilMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{true}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Source}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0))}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ +\ (\mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ -\/\ std::fmod(\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}}));}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ +\ std::fmod(-\/\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_multiple}{compute\_ceilMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{false}},\ \mbox{\hyperlink{structglm_1_1vec}{false}}>}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(1);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ +\ (\mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ -\/\ (\mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}}));}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_multiple}{compute\_ceilMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{false}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{assert}}(\mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0));}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Source}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0))}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(1);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ +\ (\mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ -\/\ (\mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}}));}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ +\ (-\/\mbox{\hyperlink{structglm_1_1vec}{Source}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}});}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ is\_\textcolor{keywordtype}{float},\ \textcolor{keywordtype}{bool}\ is\_\textcolor{keywordtype}{signed}>}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__floor_multiple}{compute\_floorMultiple}}\{\};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__floor_multiple}{compute\_floorMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{true}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00115\ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Source}}\ >=\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0))}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ std::fmod(\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ std::fmod(\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__floor_multiple}{compute\_floorMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{false}},\ \mbox{\hyperlink{structglm_1_1vec}{false}}>}
+\DoxyCodeLine{00128\ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Source}}\ >=\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0))}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(1);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structglm_1_1detail_1_1compute__floor_multiple}{compute\_floorMultiple}}<\mbox{\hyperlink{structglm_1_1vec}{false}},\ \mbox{\hyperlink{structglm_1_1vec}{true}}>}
+\DoxyCodeLine{00144\ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ call(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structglm_1_1vec}{Source}}\ >=\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(0))}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{Source}}\ +\ \mbox{\hyperlink{structglm_1_1vec}{genType}}(1);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Tmp}}\ \%\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}}\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \};}
+\DoxyCodeLine{00157\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00160\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__ext__scalar__integer_gadf491730354aa7da67fbe23d4d688763}{isPowerOfTwo}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}})}
+\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'isPowerOfTwo'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{Result}}\ =\ \mbox{\hyperlink{group__core__func__common_ga439e60a72eadecfeda2df5449c613a64}{glm::abs}}(\mbox{\hyperlink{structglm_1_1vec}{Value}});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(\mbox{\hyperlink{structglm_1_1vec}{Result}}\ \&\ (\mbox{\hyperlink{structglm_1_1vec}{Result}}\ -\/\ 1));}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00169\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{group__ext__scalar__integer_ga3a37c2f2fd347886c9af6a3ca3db04dc}{nextPowerOfTwo}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ value)}
+\DoxyCodeLine{00170\ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'nextPowerOfTwo'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_power_of_two}{detail::compute\_ceilPowerOfTwo<1,\ genIUType,\ defaultp,\ std::numeric\_limits<genIUType>::is\_signed}}>::call(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genIUType,\ defaultp>}}(value)).x;}
+\DoxyCodeLine{00174\ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00177\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{group__ext__scalar__integer_gab21902a0e7e5a8451a7ad80333618727}{prevPowerOfTwo}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ value)}
+\DoxyCodeLine{00178\ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'prevPowerOfTwo'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__ext__scalar__integer_gadf491730354aa7da67fbe23d4d688763}{isPowerOfTwo}}(value)\ ?\ value\ :\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(1)\ <<\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(\mbox{\hyperlink{group__core__func__integer_ga7e4a794d766861c70bc961630f8ef621}{findMSB}}(value)));}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00185\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__ext__scalar__integer_gaec593d33956a8fe43f78fccc63ddde9a}{isMultiple}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Value}},\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00186\ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'isMultiple'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__ext__scalar__integer_gaec593d33956a8fe43f78fccc63ddde9a}{isMultiple}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genIUType>}}(\mbox{\hyperlink{structglm_1_1vec}{Value}}),\ \mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genIUType>}}(\mbox{\hyperlink{structglm_1_1vec}{Multiple}})).x;}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00193\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{group__ext__scalar__integer_gab770a3835c44c8a6fd225be4f4e6b317}{nextMultiple}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'nextMultiple'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__ceil_multiple}{detail::compute\_ceilMultiple<std::numeric\_limits<genIUType>::is\_iec559}},\ std::numeric\_limits<genIUType>::is\_signed>::call(\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}});}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00201\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{group__ext__scalar__integer_gada3bdd871ffe31f2d484aa668362f636}{prevMultiple}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}})}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'prevMultiple'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structglm_1_1detail_1_1compute__floor_multiple}{detail::compute\_floorMultiple<std::numeric\_limits<genIUType>::is\_iec559}},\ std::numeric\_limits<genIUType>::is\_signed>::call(\mbox{\hyperlink{structglm_1_1vec}{Source}},\ \mbox{\hyperlink{structglm_1_1vec}{Multiple}});}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genIUType>}
+\DoxyCodeLine{00209\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ext__scalar__integer_ga2777901e41ad6e1e9d0ad6cc855d1075}{findNSB}}(\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ x,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{significantBitCount}})}
+\DoxyCodeLine{00210\ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ GLM\_STATIC\_ASSERT(std::numeric\_limits<genIUType>::is\_integer,\ \textcolor{stringliteral}{"{}'findNSB'\ only\ accept\ integer\ inputs"{}});}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bitCount(x)\ <\ \mbox{\hyperlink{structglm_1_1vec}{significantBitCount}})}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structglm_1_1vec}{One}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{bitPos}}\ =\ 0;}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{key}}\ =\ x;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{nBitCount}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{significantBitCount}};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{Step}}\ =\ \textcolor{keyword}{sizeof}(x)\ *\ 8\ /\ 2;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{structglm_1_1vec}{key}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{One}})}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{Mask}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}((\mbox{\hyperlink{structglm_1_1vec}{One}}\ <<\ \mbox{\hyperlink{structglm_1_1vec}{Step}})\ -\/\ \mbox{\hyperlink{structglm_1_1vec}{One}});}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{genIUType}}\ \mbox{\hyperlink{structglm_1_1vec}{currentKey}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{key}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structglm_1_1vec}{currentBitCount}}\ =\ bitCount(\mbox{\hyperlink{structglm_1_1vec}{currentKey}});}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structglm_1_1vec}{nBitCount}}\ >\ \mbox{\hyperlink{structglm_1_1vec}{currentBitCount}})}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{nBitCount}}\ -\/=\ \mbox{\hyperlink{structglm_1_1vec}{currentBitCount}};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{bitPos}}\ +=\ \mbox{\hyperlink{structglm_1_1vec}{Step}};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{key}}\ >>=\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structglm_1_1vec}{genIUType}}\textcolor{keyword}{>}(\mbox{\hyperlink{structglm_1_1vec}{Step}});}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{key}}\ =\ \mbox{\hyperlink{structglm_1_1vec}{key}}\ \&\ \mbox{\hyperlink{structglm_1_1vec}{Mask}};}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structglm_1_1vec}{Step}}\ >>=\ 1;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{structglm_1_1vec}{bitPos}});}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

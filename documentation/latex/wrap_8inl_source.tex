@@ -1,0 +1,63 @@
+\doxysection{wrap.\+inl}
+\hypertarget{wrap_8inl_source}{}\label{wrap_8inl_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/wrap.inl@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/dependencies/glm/include/glm/gtx/wrap.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00006\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<L,\ T,\ Q>\ \mbox{\hyperlink{group__core__func__common_ga7cd77683da6361e297c56443fc70806d}{clamp}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ Texcoord)}
+\DoxyCodeLine{00007\ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga7cd77683da6361e297c56443fc70806d}{glm::clamp}}(Texcoord,\ vec<L,\ T,\ Q>(0),\ vec<L,\ T,\ Q>(1));}
+\DoxyCodeLine{00009\ \ \ \ \ \}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00012\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{group__core__func__common_ga7cd77683da6361e297c56443fc70806d}{clamp}}(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Texcoord}})}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga7cd77683da6361e297c56443fc70806d}{clamp}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genType,\ defaultp>}}(\mbox{\hyperlink{structglm_1_1vec}{Texcoord}})).x;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00018\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<L,\ T,\ Q>\ \mbox{\hyperlink{group__gtx__wrap_ga809650c6310ea7c42666e918c117fb6f}{repeat}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ Texcoord)}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga8ba89e40e55ae5cdf228548f9b7639c7}{glm::fract}}(Texcoord);}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00024\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{group__gtx__wrap_ga809650c6310ea7c42666e918c117fb6f}{repeat}}(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Texcoord}})}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtx__wrap_ga809650c6310ea7c42666e918c117fb6f}{repeat}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genType,\ defaultp>}}(\mbox{\hyperlink{structglm_1_1vec}{Texcoord}})).x;}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00030\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<L,\ T,\ Q>\ \mbox{\hyperlink{group__gtx__wrap_gaa6856a0a048d2749252848da35e10c8b}{mirrorClamp}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ Texcoord)}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga8ba89e40e55ae5cdf228548f9b7639c7}{glm::fract}}(\mbox{\hyperlink{group__core__func__common_ga439e60a72eadecfeda2df5449c613a64}{glm::abs}}(Texcoord));}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00036\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{group__gtx__wrap_gaa6856a0a048d2749252848da35e10c8b}{mirrorClamp}}(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Texcoord}})}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtx__wrap_gaa6856a0a048d2749252848da35e10c8b}{mirrorClamp}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genType,\ defaultp>}}(\mbox{\hyperlink{structglm_1_1vec}{Texcoord}})).x;}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00042\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ vec<L,\ T,\ Q>\ \mbox{\hyperlink{group__gtx__wrap_ga16a89b0661b60d5bea85137bbae74d73}{mirrorRepeat}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ Texcoord)}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\ Abs\ =\ \mbox{\hyperlink{group__core__func__common_ga439e60a72eadecfeda2df5449c613a64}{glm::abs}}(Texcoord);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\ Clamp\ =\ glm::mod(\mbox{\hyperlink{group__core__func__common_gac433646923ab80af6d9964f1570855d5}{glm::floor}}(Abs),\ vec<L,\ T,\ Q>(2));}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\ Floor\ =\ \mbox{\hyperlink{group__core__func__common_gac433646923ab80af6d9964f1570855d5}{glm::floor}}(Abs);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\ Rest\ =\ Abs\ -\/\ Floor;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\ Mirror\ =\ Clamp\ +\ Rest;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__core__func__common_ga8e93f374aae27d1a88b921860351f8d4}{mix}}(Rest,\ vec<L,\ T,\ Q>(1)\ -\/\ Rest,\ \mbox{\hyperlink{group__core__func__vector__relational_ga932c94a34799d65dfe36762158a58d90}{glm::greaterThanEqual}}(Mirror,\ vec<L,\ T,\ Q>(1)));}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ genType>}
+\DoxyCodeLine{00053\ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \mbox{\hyperlink{structglm_1_1vec}{genType}}\ \mbox{\hyperlink{group__gtx__wrap_ga16a89b0661b60d5bea85137bbae74d73}{mirrorRepeat}}(\mbox{\hyperlink{structglm_1_1vec}{genType}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structglm_1_1vec}{Texcoord}})}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__gtx__wrap_ga16a89b0661b60d5bea85137bbae74d73}{mirrorRepeat}}(\mbox{\hyperlink{structglm_1_1vec}{vec<1,\ genType,\ defaultp>}}(\mbox{\hyperlink{structglm_1_1vec}{Texcoord}})).x;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}
