@@ -21,7 +21,7 @@
 #define LIB_API  // Dummy declaration
 #endif
 
-#include <glm.hpp>
+//#include <glm.hpp>
 #include <gtx/string_cast.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
