@@ -1,18 +1,14 @@
-/**
- * @file main.cpp
- * @brief Main file for the engine
- *
- * This file contains the main function for the engine.
- */
-
- /**
-  * @brief The client main the application.
-  * @return 0 on success.
-  */
-
 #include <iostream>
+#include "engine.h"
 
-int main() {
-    std::cout << "Hello World!" << std::endl;
-    return 0;
+
+int main(int argc, char* argv[])
+{
+	Engine* engine = Engine::GetInstance();
+	engine->init("Test", 200, 200, argc, argv);
+	while (engine->isRunning()) {
+		cout << "engine is running..." << endl;
+	}
+	return 0;
 }
+
