@@ -8,21 +8,18 @@
 class LIB_API Camera : public Node {
 private:
 
-
 public:
-    Camera();
+    Camera(glm::mat4 _matrix, bool _isOrtho);
 
-    // Functions to retrieve camera matrices
-    glm::mat4 getViewMatrix();
+    //get orthographic matrix
+    glm::mat4 getOrthographicMatrix();
+
+    //get projection matrix
     glm::mat4 getProjectionMatrix();
 
     //get inverse matrix
     glm::mat4 getInverseMatrix();
 
-    // Override the get_final_matrix() method
-    void get_final_matrix() override;
-
-    // Other camera-related methods...
 
 };
 
