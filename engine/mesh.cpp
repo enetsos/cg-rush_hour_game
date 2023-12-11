@@ -2,11 +2,6 @@
 #include <GL/freeglut.h>
 
 
-Mesh::Mesh(string name) : Node(name) {
-    // Initialize material or set it to null, depending on your requirements
-    // material_ = nullptr;  // Uncomment if using materials
-}
-
 Mesh::~Mesh() {
     // Release any allocated resources or cleanup, if needed
 }

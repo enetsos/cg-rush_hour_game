@@ -5,13 +5,14 @@
 
 #include "node.h"
 #include "motor.h"
+#include "material.h"
 #include <vector>
 //#include "material.h"  // Assuming there is a Material class
 
 class LIB_API Mesh : public Node {
 public:
     // Constructor
-    Mesh(string name);
+    Mesh(string _name, Material* _material) : Node(_name), material(_material) {};
 
     // Destructor
     ~Mesh();
@@ -28,7 +29,7 @@ private:
     std::vector<glm::vec3> vertices_;
 
     // Reference to the material used by the mesh
-    //Material* material_;
+    Material* material;
 };
 
 #endif // MESH_H

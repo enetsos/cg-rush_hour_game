@@ -21,6 +21,10 @@
 #define LIB_API  // Dummy declaration
 #endif
 
+//include string.h
+#include <iostream>
+#include <string>
+
 //include glm
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>

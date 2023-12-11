@@ -1,6 +1,7 @@
 #include <iostream>
 #include "engine.h"
 #include "mesh.h"
+#include "material.h"
 #include <GL/freeglut.h>
 //#include "mesh.h"
 //////////////
@@ -113,8 +114,8 @@ void LIB_API Engine::displayCallback() {   // Clear the screen:
 	glm::mat4 f = translation * rotation;
 	glLoadMatrixf(glm::value_ptr(f));
 	//display mesh
-	//Mesh m("nome", new Material("material1"));
-	//m.displayCube(20);
+	Mesh m("nome", new Material("material1"));
+	m.displayCube(20);
 	glutSwapBuffers();
 	glutPostWindowRedisplay(glutGetWindow());
 }
