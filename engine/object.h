@@ -10,7 +10,7 @@
 class LIB_API Object {
 protected:
     int id;
-    static int current_id;
+    static unsigned int current_id;
     string name;
 
 public:
