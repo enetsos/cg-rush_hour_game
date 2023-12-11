@@ -1,5 +1,6 @@
 #include <iostream>
 #include "engine.h"
+#include "mesh.h"
 #include <GL/freeglut.h>
 //#include "mesh.h"
 //////////////
@@ -88,6 +89,7 @@ bool LIB_API Engine::isRunning() {
 }
 
 void LIB_API Engine::clearWindow() {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 }
 
