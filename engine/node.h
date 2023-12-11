@@ -24,7 +24,7 @@ public:
     Node* getParent();
     void set_position(glm::vec3 pos);
     void set_rotation(float degree, glm::vec3 rot);
-    void get_final_matrix();
+    virtual void get_final_matrix();
 protected:
     glm::mat4 matrix = glm::mat4(1.0f);
 };
