@@ -9,8 +9,12 @@ class LIB_API Node : public Object {
 private:
     Node* parent;
     vector<Node*> childs;
+    glm::vec3 position;
 
 public:
+    // default Constructor
+    Node();
+
     Node(string _name) : Object(_name) {
         this->parent = nullptr;
     }

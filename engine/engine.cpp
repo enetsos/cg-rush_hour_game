@@ -1,7 +1,5 @@
 #include <iostream>
 #include "engine.h"
-#include "mesh.h"
-#include "material.h"
 #include <GL/freeglut.h>
 //#include "mesh.h"
 //////////////
@@ -102,23 +100,42 @@ void LIB_API Engine::free() {
 	delete engine_;
 }
 
+void LIB_API Engine::setLightPosition(glm::vec3 position) {
+	light_position = position;
+}
 
-//private methods
-void LIB_API Engine::displayCallback() {   // Clear the screen:
-	//clear screen
+void Engine::displayCallback() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//matrix to move shape
-	glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, engine_->distance));
-	glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), glm::radians(engine_->angleX), glm::vec3(1.0f, 0.0f, 0.0f));
-	rotation = glm::rotate(rotation, glm::radians(engine_->angleY), glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 f = translation * rotation;
-	glLoadMatrixf(glm::value_ptr(f));
-	//display mesh
+
+	// Set up camera
+	Camera camera;
+	camera.set_position(glm::vec3(0.0f, 0.0f, 5.0f));
+
+	// Get view and projection matrices from the camera
+	glm::mat4 view = camera.getViewMatrix();
+	glm::mat4 projection = camera.getProjectionMatrix(800.0f / 600.0f);
+	glm::mat4 viewProjection = projection * view;
+
+		
+	// Render the mesh
 	Mesh m("nome", new Material("material1"));
+	m.set_position(glm::vec3(0.0f, 0.0f, 0.0f)); // Set mesh position
+	m.set_rotation(45.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Set mesh rotation
 	m.displayCube(20);
+
+	// Render the light (assuming you have a Light class with a render method)
+	Light light("light1");
+	light.setLightColor(glm::vec3(1.0f, 1.0f, 1.0f)); // Set light color
+	light.setIntensity(1.0f); // Set light intensity
+	light.set_position(glm::vec3(2.0f, 2.0f, 2.0f)); // Set light position
+	light.render(viewProjection);
+
+	glLoadMatrixf(glm::value_ptr(viewProjection));
+
 	glutSwapBuffers();
 	glutPostWindowRedisplay(glutGetWindow());
 }
+
 void LIB_API Engine::reshapeCallback(int width, int height) {
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);

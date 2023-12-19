@@ -6,6 +6,10 @@
 #include <iostream>
 #include <string>
 #include "motor.h"
+#include "light.h"
+#include "mesh.h"
+#include "camera.h"
+#include "material.h"
 
 //#include "mesh.h"
 /////////////
@@ -42,6 +46,8 @@ public:
 	void swapBuffers();
 	void free();
 
+	void setLightPosition(glm::vec3 position);
+
 protected:
 	float angleX, angleY, distance;
 	static Engine* engine_;
@@ -57,5 +63,7 @@ protected:
 	//Mesh* test;
 	Engine();
 	~Engine();
+private:
+	glm::vec3 light_position;
 };
 #endif //ENGINE_H

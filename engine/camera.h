@@ -1,26 +1,14 @@
 #pragma once
-#ifndef CAMERA_H
-#define CAMERA_H
 
-#include "node.h"
 #include "motor.h"
 
-class LIB_API Camera : public Node {
-private:
-
+class Camera {
 public:
-    Camera(glm::mat4 _matrix, bool _isOrtho);
+    Camera();
+    void set_position(const glm::vec3& position);
+    glm::mat4 getViewMatrix() const;
+    glm::mat4 getProjectionMatrix(float aspectRatio) const;
 
-    //get orthographic matrix
-    glm::mat4 getOrthographicMatrix();
-
-    //get projection matrix
-    glm::mat4 getProjectionMatrix();
-
-    //get inverse matrix
-    glm::mat4 getInverseMatrix();
-
-
+private:
+    glm::vec3 position;
 };
-
-#endif // CAMERA_H
