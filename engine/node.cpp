@@ -1,70 +1,71 @@
 #include "node.h"
 
-bool Node::addChild(Node* _child) {
-    if (_child == nullptr) {
-        return false;
-    }
+bool Node::addChild(Node *_child) {
+  if (_child == nullptr) {
+    return false;
+  }
 
-    // Check if the child already has a parent
-    if (_child->getParent() != nullptr) {
-        return false;
-    }
+  // Check if the child already has a parent
+  if (_child->getParent() != nullptr) {
+    return false;
+  }
 
-    // Set this node as the parent of the child
-    _child->parent = this;
+  // Set this node as the parent of the child
+  _child->parent = this;
 
-    // Add the child to the vector of children
-    childs.push_back(_child);
+  // Add the child to the vector of children
+  childs.push_back(_child);
 
-    return true;
+  return true;
 }
 
-Node* Node::getChild(int _id) {
-    for (Node* child : childs) {
-        if (child->get_id() == _id) {
-            return child;
-        }
+Node *Node::getChild(int _id) {
+  for (Node *child : childs) {
+    if (child->get_id() == _id) {
+      return child;
     }
+  }
 
-    return nullptr;
+  return nullptr;
 }
 
-Node* Node::getChild(Node* _child) {
-    for (Node* child : childs) {
-        if (child == _child) {
-            return child;
-        }
+Node *Node::getChild(Node *_child) {
+  for (Node *child : childs) {
+    if (child == _child) {
+      return child;
     }
+  }
 
-    return nullptr;
+  return nullptr;
 }
 
-bool Node::setParent(Node* _parent) {
-    if (_parent == nullptr) {
-        return false;
+bool Node::setParent(Node *_parent) {
+  if (_parent == nullptr) {
+    return false;
+  }
+
+  // Remove this node from its current parent's child list
+  if (parent != nullptr) {
+    auto it = std::find(parent->childs.begin(), parent->childs.end(), this);
+    if (it != parent->childs.end()) {
+      parent->childs.erase(it);
     }
+  }
 
-    // Remove this node from its current parent's child list
-    if (parent != nullptr) {
-        parent->childs.erase(std::remove(parent->childs.begin(), parent->childs.end(), this), parent->childs.end());
-    }
+  // Set the new parent
+  _parent->addChild(this);
 
-    // Set the new parent
-    _parent->addChild(this);
-
-    return true;
+  return true;
 }
 
-Node* Node::getParent() {
-    return parent;
-}
+Node *Node::getParent() { return parent; }
 
 void Node::set_position(glm::vec3 pos) {
-    matrix = glm::translate(glm::mat4(1.0f), pos);
+  matrix = glm::translate(glm::mat4(1.0f), pos);
 }
 
 void Node::set_rotation(float degree, glm::vec3 rot) {
-    matrix = glm::rotate(matrix, glm::radians(degree), rot);
+  matrix = glm::rotate(matrix, glm::radians(degree), rot);
 }
 
 /*
