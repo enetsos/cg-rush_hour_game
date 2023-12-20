@@ -3,3 +3,7 @@
 x64
 ./client/x64
 ./engine/x64
+*.o
+*.so
+rush-hour
+rush-hour.tar.gz
