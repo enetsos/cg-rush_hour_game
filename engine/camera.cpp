@@ -1,15 +1,31 @@
 #include "camera.h"
 
-Camera::Camera() : position(glm::vec3(0.0f)) {}
-
-void Camera::set_position(const glm::vec3& _position) {
-    position = _position;
+// Constructor
+Camera::Camera() : isPerspective(true) {
+    // Default perspective setup
+    setPerspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f);
 }
 
-glm::mat4 Camera::getViewMatrix() const {
-    return glm::lookAt(position, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+// Destructor
+Camera::~Camera() {
+    // Cleanup code
 }
 
-glm::mat4 Camera::getProjectionMatrix(float aspectRatio) const {
-    return glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
+// Set perspective projection
+void Camera::setPerspective(float fov, float aspectRatio, float nearPlane, float farPlane) {
+    projectionMatrix = glm::perspective(fov, aspectRatio, nearPlane, farPlane);
+    isPerspective = true;
 }
+
+// Set orthographic projection
+void Camera::setOrthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane) {
+    projectionMatrix = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
+    isPerspective = false;
+}
+
+// Get the projection matrix
+const glm::mat4& Camera::getProjectionMatrix() const {
+    return projectionMatrix;
+}
+
+// Other implementation details...

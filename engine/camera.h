@@ -1,14 +1,25 @@
 #pragma once
+#ifndef CAMERA_H
+#define CAMERA_H
 
 #include "motor.h"
+#include "node.h"
 
-class Camera {
+class LIB_API Camera : public Node {
 public:
+    // Constructors and Destructor
     Camera();
-    void set_position(const glm::vec3& position);
-    glm::mat4 getViewMatrix() const;
-    glm::mat4 getProjectionMatrix(float aspectRatio) const;
+    virtual ~Camera();
+
+    // Camera setup methods
+    void setPerspective(float fov, float aspectRatio, float nearPlane, float farPlane);
+    void setOrthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane);
+
+    // Getters for the projection matrix
+    const glm::mat4& getProjectionMatrix() const;
 
 private:
-    glm::vec3 position;
+    glm::mat4 projectionMatrix;
+    bool isPerspective;
 };
+#endif // CAMERA_H

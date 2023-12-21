@@ -1,37 +1,26 @@
 #pragma once
 #ifndef NODE_H
 #define NODE_H
-#include <vector>
-#include "object.h"
+
 #include "motor.h"
+#include "object.h"
 
 class LIB_API Node : public Object {
-private:
-    Node* parent;
-    vector<Node*> childs;
-    glm::vec3 position;
-
 public:
-    // default Constructor
+    // Constructors and Destructor
     Node();
+    virtual ~Node();
 
-    Node(string _name) : Object(_name) {
-        this->parent = nullptr;
-    }
-    virtual ~Node() {
-        delete parent;
-    }
-    bool addChild(Node* _child);
-    Node* getChild(int _id);
-    Node* getChild(Node* _child);
-    bool setParent(Node* _parent);
-    Node* getParent();
-    void set_position(glm::vec3 pos);
-    void set_rotation(float degree, glm::vec3 rot);
-    void get_final_matrix();
-protected:
-    glm::mat4 matrix = glm::mat4(1.0f);
+    // Spatial transformation methods
+    void setPosition(const glm::vec3& pos);
+    glm::vec3 getPosition() const;
+
+    // Hierarchy methods
+    void addChild(Node* child);
+    void removeChild(Node* child);
+
+private:
+    glm::vec3 position;
+    std::vector<Node*> children; // List of child nodes
 };
-
 #endif // NODE_H
-

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SHARED_H
-#define SHARED_H
+#ifndef MOTOR_H
+#define MOTOR_H
 /////////////
 // VERSION //
 /////////////
@@ -25,7 +25,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
-
+#include <vector>
 // include glm
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>

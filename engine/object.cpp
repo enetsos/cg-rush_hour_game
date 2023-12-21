@@ -1,7 +1,21 @@
-#include "object.h"
-unsigned int LIB_API Object::current_id = 0;
+#include "Object.h"
 
-/**
-* LIB_API is used to export/import functions and classes from/to the DLL.
-* int LIB_API Object::current_id = 0 --> it initializes the static variable current_id to 0.
-*/
+// Initialize static member
+unsigned int Object::globalIdCounter = 0;
+
+// Constructor
+Object::Object() {
+    id = ++globalIdCounter; // Assign a unique ID to the object
+}
+
+// Destructor
+Object::~Object() {
+    // Destructor code (if any)
+}
+
+// Get object ID
+unsigned int Object::getId() const {
+    return id;
+}
+
+// Other implementation details...

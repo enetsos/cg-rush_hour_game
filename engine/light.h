@@ -22,7 +22,6 @@ public:
 
     float getIntensity() const;
 
-    virtual bool render(glm::mat4 m) override;
 };
 
 #endif // LIGHT_H

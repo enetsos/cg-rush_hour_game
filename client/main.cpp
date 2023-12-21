@@ -1,14 +1,14 @@
-#include <iostream>
-#include "engine.h"
+#include "Engine.h"
 
+int main(int argc, char* argv[]) {
+    // Get the instance of the engine
+    Engine& engine = Engine::getInstance();
 
-int main(int argc, char* argv[])
-{
-	Engine* engine = Engine::GetInstance();
-	engine->init("Test", 200, 200, argc, argv);
-	while (engine->isRunning()) {
-		cout << "engine is running..." << endl;
-	}
-	return 0;
+    // Initialize the engine
+    engine.initialize(argc, argv);
+
+    // Run the engine
+    engine.run();
+
+    return 0;
 }
-

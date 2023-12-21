@@ -32,7 +32,6 @@ public:
 	vec4 getDiffuse() {
 		return diffuse;
 	}
-	bool render(glm::mat4 m) override;
 };
 
 #endif // MATERIAL_H
