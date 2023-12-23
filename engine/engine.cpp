@@ -14,18 +14,18 @@ glm::mat4 perspective;
 glm::mat4 ortho;
 
 // Material properties:
-glm::vec4 materialAmbient(0.5f, 0.5f, 0.5f, 1.0f);
-glm::vec4 materialDiffuse(0.5f, 0.5f, 0.5f, 1.0f);
-glm::vec4 materialSpecular(1.0f, 1.0f, 1.0f, 1.0f);
-float materialShininess = 128.0f;
+Material material;
 
-// Light properties:
-glm::vec3 lightPosition(0.0f, -3.0f, -30.0f);
-glm::vec4 lightAmbient(0.5f, 0.5f, 0.5f, 1.0f);
-glm::vec4 lightDiffuse(0.5f, 0.5f, 0.5f, 1.0f);
-glm::vec4 lightSpecular(1.0f, 1.0f, 1.0f, 1.0f);
-glm::vec3 lightDirection(0.0f, 0.0f, 0.0f);
-float lightCutoff = 180.0f;
+//list of lights:
+Light light (LightType::Point);
+
+//Camera:
+Camera camera;
+
+
+// Window size:
+int windowWidth;
+int windowHeight;
 
 // FPS:
 int fps = 0;
@@ -78,38 +78,19 @@ void Engine::run() {
 }
 
 void Engine::displayCallback() {
-    // Rendering logic from your original main.cpp display logic
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    ////////////////
-    // 3D rendering:
-
-    // Set perpsective matrix:
     glMatrixMode(GL_PROJECTION);
-    glLoadMatrixf(glm::value_ptr(instance->perspective));
+    glLoadMatrixf(glm::value_ptr(camera.getProjectionMatrix()));
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-    // Set light position:
-    glm::mat4 transLight = glm::translate(glm::mat4(1.0f), lightPosition);
-    glLoadMatrixf(glm::value_ptr(transLight));
 
-    // Draw a small emissive sphere to show light position:   
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, glm::value_ptr(glm::vec4(1.0f)));
-    glutSolidSphere(0.5, 8, 8);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, glm::value_ptr(glm::vec4(0.0f)));
 
-    // Light position is set to object coordinates and is modified by the current OpenGL matrix (as with any other object):
-    glm::vec4 objectCoordPosition(0.0f, 0.0f, 0.0f, 1.0f);
-    glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(objectCoordPosition));
-    glLightfv(GL_LIGHT0, GL_AMBIENT, glm::value_ptr(lightAmbient));
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, glm::value_ptr(lightDiffuse));
-    glLightfv(GL_LIGHT0, GL_SPECULAR, glm::value_ptr(lightSpecular));
-
+    light.render();
+    
     // Set material properties:
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, materialShininess);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(materialAmbient));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(materialDiffuse));
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, glm::value_ptr(materialSpecular));
+    material.apply();
 
     // Position and render the grid:
     glm::mat4 transGrid = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -10.0f, -50.0f));
@@ -167,11 +148,9 @@ void Engine::displayCallback() {
 
 void Engine::reshapeCallback(int width, int height) {
     glViewport(0, 0, width, height);
-
-    // Refresh projection matrices:
-    instance->perspective = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 1.0f, 100.0f);
-    instance->ortho = glm::ortho(0.0f, (float)width, 0.0f, (float)height, -1.0f, 1.0f);
+    camera.setProjection(45.0f, (float)width / (float)height, 0.1f, 100.0f);
 }
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
@@ -193,12 +172,11 @@ void Engine::keyboardCallback(unsigned char key, int mouseX, int mouseY)
         break;
 
     case 'r':
-        materialDiffuse.x = (rand() % 100) / 100.0f;
-        materialDiffuse.y = (rand() % 100) / 100.0f;
-        materialDiffuse.z = (rand() % 100) / 100.0f;
-        materialAmbient = materialDiffuse;
-        materialSpecular = materialDiffuse;
-        materialShininess = (float)(rand() % 128);
+        glm::vec4 materialDiffuse((rand() % 100) / 100.0f);
+        material.setDiffuse(materialDiffuse);
+        material.setAmbient(materialDiffuse);
+        material.setSpecular(materialDiffuse);
+        material.setShininess((float)(rand() % 128));
         break;
 
     case 'w':
@@ -230,10 +208,13 @@ void Engine::keyboardCallback(unsigned char key, int mouseX, int mouseY)
     // Force rendering refresh:
     glutPostWindowRedisplay(instance->windowId);
 }
+
+
 void Engine::specialCallback(int key, int mouseX, int mouseY) {
     // Special key handling based on your original main.cpp
     // Change box rotation:
     const float speed = 1.0f;
+    glm::vec3 pos = light.getPosition();
     switch (key)
     {
     case GLUT_KEY_F1:
@@ -246,35 +227,36 @@ void Engine::specialCallback(int key, int mouseX, int mouseY) {
     case GLUT_KEY_F8:
     case GLUT_KEY_F9:
     case GLUT_KEY_F10:
-        lightDiffuse.x = ((float)(key - GLUT_KEY_F1)) / 10.0f;
-        lightDiffuse.y = lightDiffuse.x;
-        lightDiffuse.z = lightDiffuse.x;
-        lightAmbient = lightDiffuse;
-        lightSpecular = lightDiffuse;
-        break;
 
     case GLUT_KEY_UP:
-        lightPosition.z -= speed;
+      
+        pos.z -= speed;
+        light.setPosition(pos);
         break;
 
     case GLUT_KEY_DOWN:
-        lightPosition.z += speed;
+        pos.z += speed;
+        light.setPosition(pos);
         break;
 
     case GLUT_KEY_LEFT:
-        lightPosition.x -= speed;
+        pos.x -= speed;
+        light.setPosition(pos);
         break;
 
     case GLUT_KEY_RIGHT:
-        lightPosition.x += speed;
+        pos.x += speed;
+        light.setPosition(pos);
         break;
 
     case GLUT_KEY_PAGE_UP:
-        lightPosition.y += speed;
+        pos.y -= speed;
+        light.setPosition(pos);
         break;
 
     case GLUT_KEY_PAGE_DOWN:
-        lightPosition.y -= speed;
+        pos.y += speed;
+        light.setPosition(pos);
         break;
     }
 
@@ -289,7 +271,19 @@ void Engine::timerCallback(int value) {
 }
 
 void Engine::setupInitialState() {
-    // Set up initial states like lighting, materials, etc.
+    // Get the window dimensions after creating the window
+    windowWidth = glutGet(GLUT_WINDOW_WIDTH);
+    windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+
+    material.setAmbient(glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+    material.setDiffuse(glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+    material.setSpecular(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+    material.setShininess(128.0f); 
+
+    camera.setPosition(glm::vec3(0.0f, 0.0f, 3.0f)); // Example position
+    camera.setLookAt(glm::vec3(0.0f, 0.0f, 0.0f)); // Look at origin
+    camera.setUpVector(glm::vec3(0.0f, 1.0f, 0.0f)); // Up vector
+    camera.setProjection(45.0f, (float)windowWidth / (float)windowHeight, 0.1f, 100.0f); // Perspective projection
 }
 
 void Engine::drawGrid(float size, int tesselation)

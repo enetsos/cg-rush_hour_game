@@ -4,34 +4,24 @@
 
 #include "object.h"
 #include "motor.h"
-using namespace glm;
-class LIB_API Material : public Object {
+
+
+class LIB_API Material {
+public:
+    Material();
+
+    void setAmbient(const glm::vec4& ambient);
+    void setDiffuse(const glm::vec4& diffuse);
+    void setSpecular(const glm::vec4& specular);
+    void setShininess(float shininess);
+
+    void apply();
 
 private:
-	float shininess;
-	vec4 ambient{ 0.5f, 0.5f, 0.5f, 1.0f };
-	vec4 specular{ 1.0f, 1.0f, 1.0f, 1.0f };
-	vec4 diffuse{ 0.5f, 0.5f, 0.5f, 1.0f };
-	// Add other material properties
-
-public:
-	Material(string _name) : Object(_name), shininess(32.0f) {}
-
-	virtual ~Material() {}
-
-	float getShininess() const {
-		return shininess;
-	}
-	//add other methods
-	vec4 getAmbient() {
-		return ambient;
-	}
-	vec4 getSpecular() {
-		return specular;
-	}
-	vec4 getDiffuse() {
-		return diffuse;
-	}
+    glm::vec4 ambient;
+    glm::vec4 diffuse;
+    glm::vec4 specular;
+    float shininess;
 };
 
 #endif // MATERIAL_H

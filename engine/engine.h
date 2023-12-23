@@ -4,6 +4,10 @@
 
 #include "motor.h"
 #include "mesh.h"
+#include "node.h"
+#include "light.h"
+#include "material.h"
+#include "camera.h"
 
 class LIB_API Engine {
 public:

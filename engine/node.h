@@ -19,6 +19,7 @@ public:
     void addChild(Node* child);
     void removeChild(Node* child);
 
+
 private:
     glm::vec3 position;
     std::vector<Node*> children; // List of child nodes
