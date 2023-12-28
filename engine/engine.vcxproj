@@ -140,6 +140,8 @@
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="OvObject.h" />
+    <ClCompile Include="ovoReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -150,6 +152,9 @@
     <ClInclude Include="motor.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="OvLight.h" />
+    <ClInclude Include="OvMesh.h" />
+    <ClInclude Include="ovoReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

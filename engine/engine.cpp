@@ -128,12 +128,10 @@ void Engine::displayCallback() {
 
   // Write some text:
   char text[64];
-  sprintf(text, "FPS: %d", fps);
   glColor3f(1.0f, 1.0f, 1.0f);
   glRasterPos2f(1.0f, 2.0f);
   glutBitmapString(GLUT_BITMAP_8_BY_13, (unsigned char *)text);
 
-  sprintf(text, "LOD: %d", detail);
   glRasterPos2f(1.0f, 14.0f);
   glutBitmapString(GLUT_BITMAP_8_BY_13, (unsigned char *)text);
 
