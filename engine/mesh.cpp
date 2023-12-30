@@ -1,34 +1,37 @@
 #include "mesh.h"
-#include <GL/freeglut.h>
 
-// Constructor
-Mesh::Mesh() {
-    // Initialization code for older OpenGL
+// Constructor implementation
+Mesh::Mesh(const std::string& name, const glm::mat4& matrix, unsigned int children,
+    const std::string& targetName, bool isSkinned, const std::string& subtypeName,
+    const std::string& materialName, float radius, const glm::vec3& bBoxMin,
+    const glm::vec3& bBoxMax, bool hasPhysics)
+    : Node(name, matrix, children, targetName),
+    isSkinned_(isSkinned),
+    subtypeName_(subtypeName),
+    materialName_(materialName),
+    radius_(radius),
+    bBoxMin_(bBoxMin),
+    bBoxMax_(bBoxMax),
+    hasPhysics_(hasPhysics) {}
+
+void Mesh::printData() const{
+    Node::printData();
+    
+    cout << "   Is skinned . .:  " << (int)isSkinned_ << endl;
+    cout << "   Subtype . . . :  " << subtypeName_ << endl;
+    cout << "   Material  . . :  " << materialName_ << endl;
+    cout << "   Radius  . . . :  " << radius_ << endl;
+    cout << "   BBox minimum  :  " << bBoxMin_.x << ", " << bBoxMin_.y << ", " << bBoxMin_.z << endl;
+    cout << "   BBox maximum  :  " << bBoxMax_.x << ", " << bBoxMax_.y << ", " << bBoxMax_.z << endl;
+    cout << "   Physics . . . :  " << (int)hasPhysics_ << endl;
+
 }
 
-// Destructor
-Mesh::~Mesh() {
-    // Cleanup code for older OpenGL
-}
-
-// Set vertices (for older OpenGL, this might store vertices in a custom format)
-void Mesh::setVertices(const std::vector<Vertex>& vertices) {
-    this->vertices = vertices;
-    // Process vertices as needed for older OpenGL rendering
-}
-
-// Set indices (might not be used in older OpenGL)
-void Mesh::setIndices(const std::vector<unsigned int>& indices) {
-    this->indices = indices;
-    // Process indices as needed for older OpenGL rendering
-}
-
-// Render the mesh using older OpenGL methods
-void Mesh::render() {
-    glBegin(GL_TRIANGLES);
-    for (const auto& vertex : vertices) {
-        glVertex3f(vertex.position.x, vertex.position.y, vertex.position.z);
-        // Similarly for normals and texture coordinates, if used
-    }
-    glEnd();
-}
+// Getters
+bool Mesh::isSkinned() const { return isSkinned_; }
+std::string Mesh::getSubtypeName() const { return subtypeName_; }
+std::string Mesh::getMaterialName() const { return materialName_; }
+float Mesh::getRadius() const { return radius_; }
+glm::vec3 Mesh::getBoundingBoxMin() const { return bBoxMin_; }
+glm::vec3 Mesh::getBoundingBoxMax() const { return bBoxMax_; }
+bool Mesh::hasPhysics() const { return hasPhysics_; }

@@ -2,26 +2,46 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "object.h"
+#include "node.h"
 #include "motor.h"
+#include <string>
 
-
-class LIB_API Material {
+class LIB_API Material{
 public:
-    Material();
+    // Constructor with parameters
+    Material(const std::string& name, const glm::vec3& emission, const glm::vec3& albedo, float roughness, float metalness, float alpha,
+        const std::string& textureName, const std::string& normalMapName, const std::string& heightMapName,
+        const std::string& roughnessMapName, const std::string& metalnessMapName);
 
-    void setAmbient(const glm::vec4& ambient);
-    void setDiffuse(const glm::vec4& diffuse);
-    void setSpecular(const glm::vec4& specular);
-    void setShininess(float shininess);
+    void printData() const;
 
-    void apply();
+    // Getters
+    string getName() const;
+    glm::vec3 getEmission() const;
+    glm::vec3 getAlbedo() const;
+    float getRoughness() const;
+    float getMetalness() const;
+    float getAlpha() const;
+    std::string getTextureName() const;
+    std::string getNormalMapName() const;
+    std::string getHeightMapName() const;
+    std::string getRoughnessMapName() const;
+    std::string getMetalnessMapName() const;
 
+    
 private:
-    glm::vec4 ambient;
-    glm::vec4 diffuse;
-    glm::vec4 specular;
-    float shininess;
+
+    string name;
+    glm::vec3 emission;
+    glm::vec3 albedo;
+    float roughness;
+    float metalness;
+    float alpha;
+    std::string textureName;
+    std::string normalMapName;
+    std::string heightMapName;
+    std::string roughnessMapName;
+    std::string metalnessMapName;
 };
 
 #endif // MATERIAL_H

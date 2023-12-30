@@ -156,6 +156,9 @@
     <ClInclude Include="OvMesh.h" />
     <ClInclude Include="ovoReader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\cg_ovosdk\examples\scene.ovo" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

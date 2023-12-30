@@ -14,13 +14,10 @@ int windowId;
 glm::mat4 perspective;
 glm::mat4 ortho;
 
-// Material properties:
-Material material;
+//OvoReader
+OvoReader ovoReader;
 
-// list of lights:
-Light light(LightType::Point);
 
-// Camera:
 Camera camera;
 
 // Window size:
@@ -83,10 +80,7 @@ void Engine::displayCallback() {
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  light.render();
 
-  // Set material properties:
-  material.apply();
 
   // Position and render the grid:
   glm::mat4 transGrid =
@@ -168,10 +162,7 @@ void Engine::keyboardCallback(unsigned char key, int mouseX, int mouseY) {
 
   case 'r':
     materialDiffuse = glm::vec4((rand() % 100) / 100.0f);
-    material.setDiffuse(materialDiffuse);
-    material.setAmbient(materialDiffuse);
-    material.setSpecular(materialDiffuse);
-    material.setShininess((float)(rand() % 128));
+    
     break;
 
   case 'w':
@@ -208,7 +199,6 @@ void Engine::specialCallback(int key, int mouseX, int mouseY) {
   // Special key handling based on your original main.cpp
   // Change box rotation:
   const float speed = 1.0f;
-  glm::vec3 pos = light.getPosition();
   switch (key) {
   case GLUT_KEY_F1:
   case GLUT_KEY_F2:
@@ -223,33 +213,21 @@ void Engine::specialCallback(int key, int mouseX, int mouseY) {
 
   case GLUT_KEY_UP:
 
-    pos.z -= speed;
-    light.setPosition(pos);
     break;
 
   case GLUT_KEY_DOWN:
-    pos.z += speed;
-    light.setPosition(pos);
     break;
 
   case GLUT_KEY_LEFT:
-    pos.x -= speed;
-    light.setPosition(pos);
     break;
 
   case GLUT_KEY_RIGHT:
-    pos.x += speed;
-    light.setPosition(pos);
     break;
 
   case GLUT_KEY_PAGE_UP:
-    pos.y -= speed;
-    light.setPosition(pos);
     break;
 
   case GLUT_KEY_PAGE_DOWN:
-    pos.y += speed;
-    light.setPosition(pos);
     break;
   }
 
@@ -267,11 +245,10 @@ void Engine::setupInitialState() {
   windowWidth = glutGet(GLUT_WINDOW_WIDTH);
   windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
 
-  material.setAmbient(glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-  material.setDiffuse(glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
-  material.setSpecular(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-  material.setShininess(128.0f);
+  ovoReader.loadFromFile("scene.ovo");
+  ovoReader.printData();
 
+ 
   camera.setPosition(glm::vec3(0.0f, 0.0f, 3.0f)); // Example position
   camera.setLookAt(glm::vec3(0.0f, 0.0f, 0.0f));   // Look at origin
   camera.setUpVector(glm::vec3(0.0f, 1.0f, 0.0f)); // Up vector

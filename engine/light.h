@@ -3,39 +3,33 @@
 #define LIGHT_H
 
 #include "node.h"
+#include "OvLight.h" // Assuming this is the correct include for OvLight
 #include "motor.h"
 
-enum class LightType {
-    Point,
-    Directional,
-    Spotlight
-};
-
-class LIB_API Light : public Node{
+class LIB_API Light : public Node {
 public:
-    Light(LightType type);
+    // Constructor
+    Light(const std::string& name, const glm::mat4& matrix, unsigned int children, const std::string& targetName,
+        string subType, const glm::vec3& color, const glm::vec3& direction,
+        float radius, float cutoff, float spotExponent, unsigned char castShadows, unsigned char isVolumetric);
 
-    void setAmbient(const glm::vec4& amb);
-    void setDiffuse(const glm::vec4& diff);
-    void setSpecular(const glm::vec4& spec);
-    void setIntensity(float inten);
-    void setDirection(const glm::vec3& dir);
-    void setCutoff(float co);
-    void setAttenuation(float constant, float linear, float quadratic);
+    void printData() const override;
 
-    void render();
+    // Getters
+    string getSubType() const;
+    glm::vec3 getColor() const;
+    glm::vec3 getDirection() const;
+    float getRadius() const;
+    float getCutoff() const;
+    float getSpotExponent() const;
+    unsigned char getCastShadows() const;
+    unsigned char getIsVolumetric() const;
 
 private:
-    glm::vec4 ambient;
-    glm::vec4 diffuse;
-    glm::vec4 specular;
-    float intensity;
-    glm::vec3 direction;
-    float cutoff;
-    float constantAttenuation;
-    float linearAttenuation;
-    float quadraticAttenuation;
-    LightType lightType;
+    string subType;
+    glm::vec3 color, direction;
+    float radius, cutoff, spotExponent;
+    unsigned char castShadows, isVolumetric;
 };
 
 #endif // LIGHT_H

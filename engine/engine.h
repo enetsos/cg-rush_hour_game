@@ -8,6 +8,7 @@
 #include "light.h"
 #include "material.h"
 #include "camera.h"
+#include "ovoReader.h"
 
 class LIB_API Engine {
 public:

@@ -1,57 +1,59 @@
 #include "light.h"
-#include "GL/freeglut.h"
 
-Light::Light(LightType type) : lightType(type) {
-    // Initialize with default values
-    setPosition(glm::vec3(0.0f, -3.0f, -30.0f));
-    ambient = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
-    diffuse = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
-    specular = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-    intensity = 1.0f;
-    direction = glm::vec3(0.0f, 0.0f, 0.0f);
-    cutoff = 180.0f; // Default for a point light
-    constantAttenuation = 1.0f;
-    linearAttenuation = 0.0f;
-    quadraticAttenuation = 0.0f;
+// Constructor
+Light::Light(const std::string& name, const glm::mat4& matrix, unsigned int children, const std::string& targetName,
+    string subType, const glm::vec3& color, const glm::vec3& direction,
+    float radius, float cutoff, float spotExponent, unsigned char castShadows, unsigned char isVolumetric)
+    : Node(name, matrix, children, targetName), subType(subType), color(color), direction(direction),
+    radius(radius), cutoff(cutoff), spotExponent(spotExponent), castShadows(castShadows), isVolumetric(isVolumetric)
+{
+    // Constructor body (if needed)
 }
 
-void Light::render() {
-    GLenum lightID = GL_LIGHT0; // This should be dynamic for multiple lights
+void Light::printData() const {
+    Node::printData(); // Call base class implementation
 
-    glEnable(lightID);
-
-    // Set light properties
-    glLightfv(lightID, GL_AMBIENT, glm::value_ptr(ambient));
-    glLightfv(lightID, GL_DIFFUSE, glm::value_ptr(diffuse));
-    glLightfv(lightID, GL_SPECULAR, glm::value_ptr(specular));
-
-    if (lightType == LightType::Directional) {
-        glm::vec4 directionHomogeneous(direction, 0.0f); // Directional lights use w = 0
-        glLightfv(lightID, GL_POSITION, glm::value_ptr(directionHomogeneous));
-    }
-    else {
-        glm::vec4 positionHomogeneous(getPosition(), 1.0f); // Point/Spotlights use w = 1
-        glLightfv(lightID, GL_POSITION, glm::value_ptr(positionHomogeneous));
-    }
-
-    // Draw a small emissive sphere at the light's position
-    glPushMatrix(); // Save current matrix state
-    glTranslatef(getPosition().x, getPosition().y, getPosition().z); // Move to light position
-    glColor3f(1.0f, 1.0f, 0.0f); // Set sphere color (e.g., yellow)
-    glutSolidSphere(0.2f, 16, 16); // Draw a small sphere
-    glPopMatrix(); // Restore the matrix state
+    // Additional details specific to Light
+    cout << "   Light Subtype : " << subType << endl;
+    cout << "   Color : " << glm::to_string(color) << endl;
+    cout << "   Direction : " << glm::to_string(direction) << endl;
+    cout << "   Radius : " << radius << endl;
+    cout << "   Cutoff : " << cutoff << endl;
+    cout << "   Spot Exponent : " << spotExponent << endl;
+    cout << "   Cast Shadows : " << static_cast<int>(castShadows) << endl;
+    cout << "   Volumetric : " << static_cast<int>(isVolumetric) << endl;
+}
 
 
-    // Additional setup for spotlights if necessary
-    if (lightType == LightType::Spotlight) {
-        glLightfv(lightID, GL_SPOT_DIRECTION, glm::value_ptr(direction));
-        glLightf(lightID, GL_SPOT_CUTOFF, cutoff);
-    }
+// Getters
+string Light::getSubType() const {
+    return subType;
+}
 
-    // Attenuation factors for point lights and spotlights
-    if (lightType == LightType::Point || lightType == LightType::Spotlight) {
-        glLightf(lightID, GL_CONSTANT_ATTENUATION, constantAttenuation);
-        glLightf(lightID, GL_LINEAR_ATTENUATION, linearAttenuation);
-        glLightf(lightID, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
-    }
+glm::vec3 Light::getColor() const {
+    return color;
+}
+
+glm::vec3 Light::getDirection() const {
+    return direction;
+}
+
+float Light::getRadius() const {
+    return radius;
+}
+
+float Light::getCutoff() const {
+    return cutoff;
+}
+
+float Light::getSpotExponent() const {
+    return spotExponent;
+}
+
+unsigned char Light::getCastShadows() const {
+    return castShadows;
+}
+
+unsigned char Light::getIsVolumetric() const {
+    return isVolumetric;
 }

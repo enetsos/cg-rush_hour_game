@@ -21,6 +21,8 @@ class LIB_API OvoReader {
 public:
     OvoReader();
     bool loadFromFile(const string& filename);
+    void printData() const;
+
 
     // Getters for the loaded data
     const vector<Node>& getNodes() const;

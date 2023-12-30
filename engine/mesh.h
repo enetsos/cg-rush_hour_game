@@ -2,37 +2,38 @@
 #ifndef MESH_H
 #define MESH_H
 
-#pragma once
 #include "motor.h"
 #include "node.h"
 
-
-
-// Vertex structure
-struct Vertex {
-    glm::vec3 position;
-    glm::vec3 normal;
-    glm::vec2 texCoords;
-};
-
 class LIB_API Mesh : public Node {
 public:
-    // Constructors and Destructor
-    Mesh();
-    virtual ~Mesh();
+    // Constructor
+    Mesh() {};
 
-    // Mesh setup methods
-    void setVertices(const std::vector<Vertex>& vertices);
-    void setIndices(const std::vector<unsigned int>& indices);
+    Mesh(const std::string& name, const glm::mat4& matrix, unsigned int children,
+        const std::string& targetName, bool isSkinned, const std::string& subtypeName,
+        const std::string& materialName, float radius, const glm::vec3& bBoxMin,
+        const glm::vec3& bBoxMax, bool hasPhysics);
 
-    // Rendering method
-    void render();
+    void printData() const override;
+
+    // Getters
+    bool isSkinned() const;  // Mark this as const as it does not modify the object
+    std::string getSubtypeName() const;
+    std::string getMaterialName() const;
+    float getRadius() const;
+    glm::vec3 getBoundingBoxMin() const;
+    glm::vec3 getBoundingBoxMax() const;
+    bool hasPhysics() const;  // Mark this as const as well
 
 private:
-    std::vector<Vertex> vertices;
-    std::vector<unsigned int> indices;
-    // OpenGL identifiers for vertex array and buffer objects
-    unsigned int VAO, VBO, EBO;
+    bool isSkinned_;
+    std::string subtypeName_;
+    std::string materialName_;
+    float radius_;
+    glm::vec3 bBoxMin_, bBoxMax_;
+    bool hasPhysics_;
+    // Add other physics properties if needed
 };
 
 #endif // MESH_H

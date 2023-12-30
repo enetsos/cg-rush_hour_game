@@ -1,5 +1,7 @@
 #include "ovoReader.h"
 
+OvoReader::OvoReader() {}
+
 // Helper function to read a string from the data buffer
 std::string readString(const char*& data, size_t& position) {
     std::string result(data + position); // Constructs string up to the null character
@@ -34,6 +36,16 @@ bool OvoReader::loadFromFile(const std::string& filename) {
         case OvObject::Type::MATERIAL:
             processMaterialChunk(data.data(), position);
             break;
+            case OvObject::Type::MESH:
+                processMeshChunk(data.data(), position);
+                break;
+              case OvObject::Type::SKINNED:
+				  processMeshChunk(data.data(), position);
+					break;
+                    case OvObject::Type::LIGHT:
+				processLightChunk(data.data(), position);
+				break;
+
             // ... handle other cases
         default:
             std::cerr << "Unknown chunk type: " << chunkId << std::endl;
@@ -45,6 +57,29 @@ bool OvoReader::loadFromFile(const std::string& filename) {
     return true;
 }
 
+void OvoReader::printData() const{
+    std::cout << "Nodes:\n";
+    for (const auto& node : nodes) {
+        node.printData();
+    }
+
+    std::cout << "\nMeshes:\n";
+    for (const auto& mesh : meshes) {
+        mesh.printData();
+    }
+
+    std::cout << "\nMaterials:\n";
+    for (const auto& material : materials) {
+        material.printData();
+    }
+
+    std::cout << "\nLights:\n";
+    for (const auto& light : lights) {
+        light.printData();
+    }
+
+}
+
 void OvoReader::processObjectChunk(const char* data, size_t& position) {
     // Implementation for processing the OBJECT chunk
     cout << "version]" << endl;
@@ -54,79 +89,86 @@ void OvoReader::processObjectChunk(const char* data, size_t& position) {
     memcpy(&versionId, data + position, sizeof(unsigned int));
     cout << "   Version . . . :  " << versionId << endl;
     position += sizeof(unsigned int);
+
+
 }
 
 void OvoReader::processNodeChunk(const char* data, size_t& position) {
-    cout << "node]" << endl;
 
     std::string nodeName = readString(data, position);
-    cout << "   Name  . . . . :  " << nodeName << endl;
-
+    
     glm::mat4 matrix;
     memcpy(&matrix, data + position, sizeof(glm::mat4));
     position += sizeof(glm::mat4);
 
     unsigned int children;
     memcpy(&children, data + position, sizeof(unsigned int));
-    cout << "   Nr. children  :  " << children << endl;
+   
     position += sizeof(unsigned int);
 
     std::string targetName = readString(data, position);
-    cout << "   Target node . :  " << targetName << endl;
     
+    Node node(nodeName, matrix, children, targetName);
+     nodes.push_back(node);
+
 }
 
 void OvoReader::processMaterialChunk(const char* data, size_t& position) {
-    cout << "material]" << endl;
 
     // Material name:
     std::string materialName = readString(data, position);
-    cout << "   Name  . . . . :  " << materialName << endl;
 
     // Material term colors, starting with emissive:
     glm::vec3 emission, albedo;
     memcpy(&emission, data + position, sizeof(glm::vec3));
-    cout << "   Emission  . . :  " << emission.r << ", " << emission.g << ", " << emission.b << endl;
     position += sizeof(glm::vec3);
 
     // Albedo:
     memcpy(&albedo, data + position, sizeof(glm::vec3));
-    cout << "   Albedo  . . . :  " << albedo.r << ", " << albedo.g << ", " << albedo.b << endl;
     position += sizeof(glm::vec3);
 
     // Roughness factor:
     float roughness;
     memcpy(&roughness, data + position, sizeof(float));
-    cout << "   Roughness . . :  " << roughness << endl;
     position += sizeof(float);
 
     // Metalness factor:
     float metalness;
     memcpy(&metalness, data + position, sizeof(float));
-    cout << "   Metalness . . :  " << metalness << endl;
     position += sizeof(float);
 
     // Transparency factor:
     float alpha;
     memcpy(&alpha, data + position, sizeof(float));
-    cout << "   Transparency  :  " << alpha << endl;
     position += sizeof(float);
 
     // Texture filenames:
     std::string textureName = readString(data, position);
-    cout << "   Albedo tex. . :  " << textureName << endl;
 
     std::string normalMapName = readString(data, position);
-    cout << "   Normalmap tex.:  " << normalMapName << endl;
 
     std::string heightMapName = readString(data, position);
-    cout << "   Heightmap tex.:  " << heightMapName << endl;
 
     std::string roughnessMapName = readString(data, position);
-    cout << "   Roughness tex.:  " << roughnessMapName << endl;
 
     std::string metalnessMapName = readString(data, position);
-    cout << "   Metalness tex.:  " << metalnessMapName << endl;
+    
+    Material material(materialName,
+        emission,
+        albedo,
+        roughness,
+        metalness,
+        alpha,
+        textureName,
+        normalMapName,
+        heightMapName,
+        roughnessMapName,
+        metalnessMapName
+    );
+
+    
+    materials.push_back(material);
+
 }
 void OvoReader::processMeshChunk(const char* data, size_t& position) {
     bool isSkinned = false;
@@ -167,17 +209,14 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
     case OvMesh::Subtype::TESSELLATED: subtypeName = "tessellated"; break;
     default: subtypeName = "UNDEFINED"; break;
     }
-    cout << "   Subtype . . . :  " << (int)subtype << " (" << subtypeName << ")" << endl;
     position += sizeof(unsigned char);
 
     // Material name, or [none] if not used:
     std::string materialName = readString(data, position);
-    cout << "   Material  . . :  " << materialName << endl;
 
     // Mesh bounding sphere radius and box corners:
     float radius;
     memcpy(&radius, data + position, sizeof(float));
-    cout << "   Radius  . . . :  " << radius << endl;
     position += sizeof(float);
 
     glm::vec3 bBoxMin, bBoxMax;
@@ -185,13 +224,10 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
     position += sizeof(glm::vec3);
     memcpy(&bBoxMax, data + position, sizeof(glm::vec3));
     position += sizeof(glm::vec3);
-    cout << "   BBox minimum  :  " << bBoxMin.x << ", " << bBoxMin.y << ", " << bBoxMin.z << endl;
-    cout << "   BBox maximum  :  " << bBoxMax.x << ", " << bBoxMax.y << ", " << bBoxMax.z << endl;
 
         // Optional physics properties:
         unsigned char hasPhysics;
         memcpy(&hasPhysics, data + position, sizeof(unsigned char));
-        cout << "   Physics . . . :  " << (int)hasPhysics << endl;
         position += sizeof(unsigned char);
         if (hasPhysics)
         {
@@ -393,15 +429,14 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
                 }
             }
         }
+
     
 }
 
 void OvoReader::processLightChunk(const char* data, size_t& position) {
-        cout << "light]" << endl;
 
         // Light name:
         std::string lightName = readString(data, position);
-        cout << "   Name  . . . . :  " << lightName << endl;
 
         // Light matrix:
         glm::mat4 matrix;
@@ -411,12 +446,10 @@ void OvoReader::processLightChunk(const char* data, size_t& position) {
         // Nr. of children nodes:
         unsigned int children;
         memcpy(&children, data + position, sizeof(unsigned int));
-        cout << "   Nr. children  :  " << children << endl;
         position += sizeof(unsigned int);
 
         // Optional target node name, or [none] if not used:
         std::string targetName = readString(data, position);
-        cout << "   Target node . :  " << targetName << endl;
 
         // Light subtype (see OvLight SUBTYPE enum):
         unsigned char subtype;
@@ -428,7 +461,6 @@ void OvoReader::processLightChunk(const char* data, size_t& position) {
         case OvLight::Subtype::SPOT: subtypeName = "spot"; break;
         default: subtypeName = "UNDEFINED"; break;
         }
-        cout << "   Subtype . . . :  " << (int)subtype << " (" << subtypeName << ")" << endl;
         position += sizeof(unsigned char);
 
         // Light color, radius, direction, cutoff, and other properties:
@@ -451,15 +483,15 @@ void OvoReader::processLightChunk(const char* data, size_t& position) {
         memcpy(&isVolumetric, data + position, sizeof(unsigned char));
         position += sizeof(unsigned char);
 
-        cout << "   Color . . . . :  " << color.r << ", " << color.g << ", " << color.b << endl;
-        cout << "   Radius  . . . :  " << radius << endl;
-        cout << "   Direction . . :  " << direction.r << ", " << direction.g << ", " << direction.b << endl;
-        cout << "   Cutoff  . . . :  " << cutoff << endl;
-        cout << "   Spot exponent :  " << spotExponent << endl;
-        cout << "   Cast shadows  :  " << static_cast<int>(castShadows) << endl;
-        cout << "   Volumetric  . :  " << static_cast<int>(isVolumetric) << endl;
-    
+       
+
+        Light light(lightName, matrix, children, targetName,
+            			subtypeName, color, direction,
+            			radius, cutoff, spotExponent, castShadows, isVolumetric);
+
+        lights.push_back(light);
 }
+
 
 
 
