@@ -6,10 +6,15 @@
 #include "material.h"
 #include "node.h"
 #include "mesh.h"
+#include "skinnedMesh.h"
 #include "light.h"
 #include "OvObject.h"
 #include "OvMesh.h"
 #include "OvLight.h"
+#include "lod.h"
+#include "physProp.h"
+#include "hull.h"
+#include "bone.h"
 
 
 #include <sstream>

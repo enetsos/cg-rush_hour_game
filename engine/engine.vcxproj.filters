@@ -42,6 +42,9 @@
     <ClCompile Include="OvObject.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="skinnedMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="motor.h">
@@ -75,6 +78,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OvLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="physProp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hull.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skinnedMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

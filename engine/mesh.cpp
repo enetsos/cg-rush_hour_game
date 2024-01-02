@@ -1,10 +1,19 @@
 #include "mesh.h"
 
-// Constructor implementation
-Mesh::Mesh(const std::string& name, const glm::mat4& matrix, unsigned int children,
-    const std::string& targetName, bool isSkinned, const std::string& subtypeName,
-    const std::string& materialName, float radius, const glm::vec3& bBoxMin,
-    const glm::vec3& bBoxMax, bool hasPhysics)
+Mesh::Mesh(const std::string& name,
+    const glm::mat4& matrix,
+    unsigned int children,
+    const std::string& targetName,
+    bool isSkinned,
+    const std::string& subtypeName,
+    const std::string& materialName,
+    float radius,
+    const glm::vec3& bBoxMin,
+    const glm::vec3& bBoxMax,
+    bool hasPhysics,
+    const PhysProps& physProps,
+    const std::vector<Hull>& hulls,
+    const std::vector<LOD>& lods)
     : Node(name, matrix, children, targetName),
     isSkinned_(isSkinned),
     subtypeName_(subtypeName),
@@ -12,7 +21,10 @@ Mesh::Mesh(const std::string& name, const glm::mat4& matrix, unsigned int childr
     radius_(radius),
     bBoxMin_(bBoxMin),
     bBoxMax_(bBoxMax),
-    hasPhysics_(hasPhysics) {}
+    hasPhysics_(hasPhysics),
+    physProps_(physProps),
+    hulls_(hulls),
+    lods_(lods) {}
 
 void Mesh::printData() const{
     Node::printData();
@@ -26,6 +38,14 @@ void Mesh::printData() const{
     cout << "   Physics . . . :  " << (int)hasPhysics_ << endl;
 
 }
+void Mesh::initializeBuffers() {
+    
+}
+
+void Mesh::render() const {
+}
+
+
 
 // Getters
 bool Mesh::isSkinned() const { return isSkinned_; }

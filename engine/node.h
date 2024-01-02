@@ -19,6 +19,7 @@ public:
     glm::vec3 getPosition() const;
 
     virtual void printData() const;
+     void render() const;   
 
     string getName() const;
     string getTargetName() const;

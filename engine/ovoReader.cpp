@@ -1,5 +1,6 @@
 #include "ovoReader.h"
 
+
 OvoReader::OvoReader() {}
 
 // Helper function to read a string from the data buffer
@@ -171,6 +172,9 @@ void OvoReader::processMaterialChunk(const char* data, size_t& position) {
 
 }
 void OvoReader::processMeshChunk(const char* data, size_t& position) {
+    PhysProps mp;
+    //vector of hulls
+    vector<Hull> hulls;
     bool isSkinned = false;
     if ((OvObject::Type)chunkId == OvObject::Type::SKINNED) {
         isSkinned = true;
@@ -231,36 +235,7 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
         position += sizeof(unsigned char);
         if (hasPhysics)
         {
-            /**
-             * Mesh physics properties.
-             */
-            struct PhysProps
-            {
-                // Pay attention to 16 byte alignement (use padding):      
-                unsigned char type;
-                unsigned char contCollisionDetection;
-                unsigned char collideWithRBodies;
-                unsigned char hullType;
-
-                // Vector data:
-                glm::vec3 massCenter;
-
-                // Mesh properties:
-                float mass;
-                float staticFriction;
-                float dynamicFriction;
-                float bounciness;
-                float linearDamping;
-                float angularDamping;
-                unsigned int nrOfHulls;
-                unsigned int _pad;
-
-                // Pointers:
-                void* physObj;
-                void* hull;
-            };
-
-            PhysProps mp;
+            
             memcpy(&mp, data + position, sizeof(PhysProps));
             position += sizeof(PhysProps);
             cout << "      Type . . . :  " << (int)mp.type << endl;
@@ -276,11 +251,15 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
             cout << "      Angular  . :  " << mp.angularDamping << endl;
             cout << "      Nr. hulls  :  " << mp.nrOfHulls << endl;
 
+            
+
             // Custom hull(s) used?
             if (mp.nrOfHulls)
             {
+                
                 for (unsigned int c = 0; c < mp.nrOfHulls; c++)
                 {
+                    Hull hull;
                     
 
                     // Hull number of vertices:
@@ -293,25 +272,23 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
                     memcpy(&nrOfFaces, data + position, sizeof(unsigned int));
                     position += sizeof(unsigned int);
 
-                    // Hull centroid:
-                    glm::vec3 centroid;
-                    memcpy(&centroid, data + position, sizeof(glm::vec3));
+                    
+                    memcpy(&hull.centroid, data + position, sizeof(glm::vec3));
                     position += sizeof(glm::vec3);
 
                     // Iterate through hull vertices:
                     for (unsigned int c = 0; c < nrOfVertices; c++)
                     {
-                        // Vertex coords:    
-                        glm::vec3 vertex;
-                        memcpy(&vertex, data + position, sizeof(glm::vec3));
+                        
+                        memcpy(&hull.vertices, data + position, sizeof(glm::vec3));
                         position += sizeof(glm::vec3);
                     }
 
                     // Iterate through hull faces:
                     for (unsigned int c = 0; c < nrOfFaces; c++)
                     {
-                        unsigned int face[3];
-                        memcpy(face, data + position, sizeof(unsigned int) * 3);
+                        
+                        memcpy(hull.faces, data + position, sizeof(unsigned int) * 3);
                         position += sizeof(unsigned int) * 3;
                     }
                 }
@@ -324,65 +301,63 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
         cout << "   Nr. of LODs   :  " << LODs << endl;
         position += sizeof(unsigned int);
 
+        //vector of LODs
+        vector<LOD> lods;
+
         // For each LOD...:
         vector<unsigned int> verticesPerLOD(LODs); // Let's store this information for the skinned part, in case
         for (unsigned int l = 0; l < LODs; l++)
         {
+            LOD lod;
             cout << "      LOD . . :  " << l + 1 << "/" << LODs << endl;
 
-            // Nr. of vertices:
-            unsigned int vertices, faces;
-            memcpy(&vertices, data + position, sizeof(unsigned int));
-            cout << "   Nr. vertices  :  " << vertices << endl;
+            
+            memcpy(&lod.numVertices, data + position, sizeof(unsigned int));
+            cout << "   Nr. vertices  :  " << lod.numVertices << endl;
             position += sizeof(unsigned int);
-            verticesPerLOD[l] = vertices;
+            verticesPerLOD[l] = lod.numVertices;
 
             // ...and faces:
-            memcpy(&faces, data + position, sizeof(unsigned int));
-            cout << "   Nr. faces . . :  " << faces << endl;
+            memcpy(&lod.numFaces, data + position, sizeof(unsigned int));
+            cout << "   Nr. faces . . :  " << lod.numFaces << endl;
             position += sizeof(unsigned int);
 
             // Interleaved and compressed vertex/normal/UV/tangent data:                    
-            for (unsigned int c = 0; c < vertices; c++)
+            for (unsigned int c = 0; c < lod.numVertices; c++)
             {
                 
-                // Vertex coords:    
-                glm::vec3 vertex;
-                memcpy(&vertex, data + position, sizeof(glm::vec3));
+               
+                memcpy(&lod.vertices, data + position, sizeof(glm::vec3));
                position += sizeof(glm::vec3);
 
-                // Vertex normal:
-                unsigned int normalData;
-                memcpy(&normalData, data + position, sizeof(unsigned int));
                 
+                memcpy(&lod.normals, data + position, sizeof(unsigned int));
                 position += sizeof(unsigned int);
 
-                // Texture coordinates:
-                unsigned int textureData;
-                memcpy(&textureData, data + position, sizeof(unsigned int));
-               
-                position += sizeof(unsigned int);
-
-                // Tangent vector:
-                unsigned int tangentData;
-                memcpy(&tangentData, data + position, sizeof(unsigned int));
                 
+                memcpy(&lod.textureCoords, data + position, sizeof(unsigned int));
+               position += sizeof(unsigned int);
+
+                
+                memcpy(&lod.tangents, data + position, sizeof(unsigned int));
                 position += sizeof(unsigned int);
             }
 
             // Faces:
-            for (unsigned int c = 0; c < faces; c++)
+            for (unsigned int c = 0; c < lod.numFaces; c++)
             {
-                // Face indexes:
-                unsigned int face[3];
-                memcpy(face, data + position, sizeof(unsigned int) * 3);
+                
+                memcpy(lod.faces, data + position, sizeof(unsigned int) * 3);
                 position += sizeof(unsigned int) * 3;
             }
+            lods.push_back(lod);
         }
 
+        vector<Bone> bones;
         // Extra information for skinned meshes:
         if (isSkinned)
         {
+            Bone bone;
             // Initial mesh pose matrix:               
             glm::mat4 poseMatrix;
             memcpy(&poseMatrix, data + position, sizeof(glm::mat4));
@@ -398,38 +373,45 @@ void OvoReader::processMeshChunk(const char* data, size_t& position) {
             for (unsigned int c = 0; c < nrOfBones; c++)
             {
                 // Bone name:
-                std::string boneName = readString(data, position);
-                cout << "      Bone name  :  " << boneName << " (" << c << ")" << endl;
+                bone.boneName = readString(data, position);
 
-                // Initial bone pose matrix (already inverted):
-                glm::mat4 boneMatrix;
-                memcpy(&boneMatrix, data + position, sizeof(glm::mat4));
+               // Bone matrix:
+                memcpy(&bone.boneMatrix, data + position, sizeof(glm::mat4));
                 position += sizeof(glm::mat4);
             }
 
             // For each LOD...:
             for (unsigned int l = 0; l < LODs; l++)
             {
-                cout << "      LOD . . :  " << l + 1 << "/" << LODs << endl;
 
                 // Per vertex bone weights and indexes:               
                 for (unsigned int c = 0; c < verticesPerLOD[l]; c++)
                 {
                     
-                    // Bone indexes:
-                    unsigned int boneIndex[4];
-                    memcpy(boneIndex, data + position, sizeof(unsigned int) * 4);
+                    // Bone indexes:                    
+                    memcpy(bone.boneIndex, data + position, sizeof(unsigned int) * 4);
                     position += sizeof(unsigned int) * 4;
 
-                    // Bone weights:
-                    unsigned short boneWeightData[4];
-                    memcpy(boneWeightData, data + position, sizeof(unsigned short) * 4);
+                    // Bone weights:                    
+                    memcpy(bone.boneWeightData, data + position, sizeof(unsigned short) * 4);
                    
                     position += sizeof(unsigned short) * 4;
                 }
             }
-        }
 
+            bones.push_back(bone);
+
+            SkinnedMesh skinnedMesh(meshName, matrix, children, targetName,
+                				subtypeName, materialName, radius, bBoxMin, bBoxMax, hasPhysics, mp, hulls, lods, poseMatrix, bones);
+        
+            meshes.push_back(skinnedMesh);
+        }
+        else
+        {
+            Mesh mesh(meshName, matrix, children, targetName,
+                isSkinned, subtypeName, materialName, radius, bBoxMin, bBoxMax, hasPhysics, mp, hulls, lods);
+            meshes.push_back(mesh);
+        }
     
 }
 
