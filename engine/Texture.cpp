@@ -1,6 +1,6 @@
 #include "Texture.h"
-#include <FreeImage.h>
 #include <GL/freeglut.h>
+#include <FreeImage.h>
 
 std::string Texture::path = "";
 LIB_API Texture::Texture(int id, const std::string name) : Object{id, name} {
