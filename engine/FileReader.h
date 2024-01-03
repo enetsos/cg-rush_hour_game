@@ -1,28 +1,26 @@
-#include "Node.h"
-#include "Material.h"
 #include "Vertex.h"
-#include <string>
+#include "material.h"
+#include "node.h"
 #include <map>
-
-
+#include <string>
 
 #ifndef FILEREADER
 #define FILEREADER
 
-class LIB_API FileReader  {
+class LIB_API FileReader {
 public:
-	FileReader();
-	~FileReader();
+  FileReader();
+  ~FileReader();
 
 public:
-	Node* readFile(const char* path);
+  Node *readFile(const char *path);
 
 private:
-	Node* recursiveLoad(FILE* dat);
+  Node *recursiveLoad(FILE *dat);
 
 private:
-	std::map<std::string, Material*> materials;
-	std::vector<Vertex*> tempVertices;
+  std::map<std::string, Material *> materials;
+  std::vector<Vertex *> tempVertices;
 };
 
-#endif //FILEREADER
+#endif // FILEREADER

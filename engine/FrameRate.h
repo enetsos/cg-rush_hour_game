@@ -8,18 +8,18 @@
 
 class LIB_API FrameRate {
 public:
-	FrameRate();
-	~FrameRate();
+  FrameRate();
+  ~FrameRate();
 
 public:
-	int getFps();
-	void calculateFrameRate();
+  int getFps();
+  void calculateFrameRate();
 
 private:
-	int fps = 0;
-	int fpsTmp = 0;
-	time_t lastTime = 0.0f;
-	time_t currentTime = 0.0f;
+  int fps = 0;
+  int fpsTmp = 0;
+  time_t lastTime = 0.0f;
+  time_t currentTime = 0.0f;
 };
 
-#endif //FRAMERATE
+#endif // FRAMERATE

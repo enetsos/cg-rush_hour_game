@@ -6,15 +6,17 @@
 class LIB_API SpotLight : public PointLight {
 
 public:
-	SpotLight(const int id, const std::string name, const int lightNumber, const glm::vec4 ambient, 
-		const glm::vec4 diffuse, const glm::vec4 specular, const float cutOff, const glm::vec3 direction);
-	~SpotLight() {};
+  SpotLight(const int id, const std::string name, const int lightNumber,
+            const glm::vec4 ambient, const glm::vec4 diffuse,
+            const glm::vec4 specular, const float cutOff,
+            const glm::vec3 direction);
+  ~SpotLight(){};
 
 public:
-	void render(glm::mat4 cameraInv) override;
+  void render(glm::mat4 cameraInv) override;
 
 private:
-	glm::vec3 direction;
+  glm::vec3 direction;
 };
 
-#endif //SPOT_LIGHT
+#endif // SPOT_LIGHT

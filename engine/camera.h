@@ -1,20 +1,20 @@
-#include "Node.h"
 #include "Projection.h"
+#include "node.h"
 
 #ifndef CAMERA
 #define CAMERA
 
 class LIB_API Camera : public Node {
 public:
-	Camera(int id, const std::string name, Projection* projection);
-	~Camera();
+  Camera(int id, const std::string name, Projection *projection);
+  ~Camera();
 
 public:
-	Projection* getProjection();
-	glm::mat4 getInverse();
+  Projection *getProjection();
+  glm::mat4 getInverse();
 
 private:
-	Projection* projection;
+  Projection *projection;
 };
 
-#endif //CAMERA
+#endif // CAMERA

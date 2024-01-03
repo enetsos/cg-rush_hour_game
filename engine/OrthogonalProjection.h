@@ -5,20 +5,21 @@
 
 class LIB_API OrthogonalProjection : public Projection {
 public:
-	OrthogonalProjection(int width, int heigth);
-	OrthogonalProjection(int width, int heigth, float left, float right, float bottom, float top, float zNear, float zFar);
-	~OrthogonalProjection();
+  OrthogonalProjection(int width, int heigth);
+  OrthogonalProjection(int width, int heigth, float left, float right,
+                       float bottom, float top, float zNear, float zFar);
+  ~OrthogonalProjection();
 
 public:
-	void update() override;
+  void update() override;
 
 private:
-	float left;
-	float right;
-	float bottom;
-	float top;
-	float zNear;
-	float zFar;
+  float left;
+  float right;
+  float bottom;
+  float top;
+  float zNear;
+  float zFar;
 };
 
-#endif //ORTHOGONAL_PROJECTION
+#endif // ORTHOGONAL_PROJECTION

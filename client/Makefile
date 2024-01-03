@@ -14,7 +14,8 @@ CXX = g++
 CXX_FLAGS = -std=c++11 -O2
 CXX_FLAGS += -I$(DEPENDENCIES_DIR)/glm/include/glm
 CXX_FLAGS += -I$(ENGINE_DIR)
-LDFLAGS = -L$(ENGINE_DIR) -l$(ENGINE_LIB_NAME)
+CXX_FLAGS += -I$(DEPENDENCIES_DIR)/freeimage/include
+LDFLAGS = -L$(ENGINE_DIR) -l$(ENGINE_LIB_NAME) 
 TAR_GZ = tar zcvf
 
 package: $(TARGET_ARCHIVE)
