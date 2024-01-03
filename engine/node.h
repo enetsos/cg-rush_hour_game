@@ -1,43 +1,46 @@
-#pragma once
-#ifndef NODE_H
-#define NODE_H
+#include "Object.h"
+#include <vector>
+#include <string>
 
-#include "motor.h"
-#include "object.h"
+#ifndef NODE
+#define NODE
 
 class LIB_API Node : public Object {
-public:
 
-    Node ();
-    // Constructors and Destructor
-    Node(const std::string& name, const glm::mat4& matrix, unsigned int children, const std::string& targetName)
-        : name(name), matrix(matrix), numberOfChildren(children), targetName(targetName){}
-    virtual ~Node();
+	public:
+		Node(int id, const std::string name);
+		Node(int id, const std::string name, Node* parent);
+		~Node();
 
-    // Spatial transformation methods
-    void setPosition(const glm::vec3& pos);
-    glm::vec3 getPosition() const;
+	public:
+		void render(glm::mat4 cameraInv) override;
 
-    virtual void printData() const;
-     void render() const;   
+		Node* findById(const int id);
+		Node* findByName(const std::string name);
 
-    string getName() const;
-    string getTargetName() const;
-    glm::mat4 getMatrix() const;
-    unsigned int getNumberOfChildren() const;
-    
+		void removeById(const int id);
+		void removeByName(const std::string name);
+		void removeChildren();
+		
+		Node* getNthChild(int n) const;
+		void addChild(Node* child);
+		void removeNthChild(int n);
+		int getNumberOfChildren() const;
 
-    // Hierarchy methods
-    void addChild(Node* child);
-    void removeChild(Node* child);
+		void setParent(Node* parent);
+		Node* getParent() const;
 
+		glm::mat4 getTransform() const;
+		virtual void setTransform(glm::mat4 transform);
+		glm::mat4 getFinalMatrix() const;
 
-private:
-    string name;
-    string targetName;
-    unsigned int numberOfChildren;
-    glm::mat4 matrix;
-    glm::vec3 position;
-    std::vector<Node*> children; // List of child nodes
+		glm::vec3 getWorldPosition() const;
+		virtual void setWorldPosition(glm::vec3 position);
+
+	private:
+		std::vector<Node*> children;
+		Node* parent;
+		glm::mat4 transform = glm::mat4(1.0f);
 };
-#endif // NODE_H
+
+#endif //NODE

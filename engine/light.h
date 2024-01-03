@@ -1,35 +1,42 @@
-#pragma once
-#ifndef LIGHT_H
-#define LIGHT_H
+#include "Node.h"
+#include <algorithm>
 
-#include "node.h"
-#include "OvLight.h" // Assuming this is the correct include for OvLight
-#include "motor.h"
+#ifndef LIGHT
+#define LIGHT
 
 class LIB_API Light : public Node {
+
 public:
-    // Constructor
-    Light(const std::string& name, const glm::mat4& matrix, unsigned int children, const std::string& targetName,
-        string subType, const glm::vec3& color, const glm::vec3& direction,
-        float radius, float cutoff, float spotExponent, unsigned char castShadows, unsigned char isVolumetric);
+	Light(const int id, const std::string name, const int lightNumber, const glm::vec4 ambient, const glm::vec4 diffuse, const glm::vec4 specular);
+	~Light();
 
-    void printData() const override;
+public:
+	int getLightNumber();
+	void setPosition();
+	void setPosition(glm::vec4 pos);
+	glm::vec4 getPosition();
+	static int getNextLightNumber();
+	virtual void render(glm::mat4 cameraInv) override;
+	virtual void setTransform(glm::mat4 transform) override;
 
-    // Getters
-    string getSubType() const;
-    glm::vec3 getColor() const;
-    glm::vec3 getDirection() const;
-    float getRadius() const;
-    float getCutoff() const;
-    float getSpotExponent() const;
-    unsigned char getCastShadows() const;
-    unsigned char getIsVolumetric() const;
+	float getConstantAttenuation();
+	float getLinearAttenuation();
+	float getQuadraticAttenuation();
+	void setConstantAttenuation(float constantAttenuation);
+	void setLinearAttenuation(float linearAttenuation);
+	void setQuadraticAttenuation(float quadraticAttenuation);
 
 private:
-    string subType;
-    glm::vec3 color, direction;
-    float radius, cutoff, spotExponent;
-    unsigned char castShadows, isVolumetric;
+	static int nextNumber;
+	int lightNumber;
+	glm::vec4 ambient;
+	glm::vec4 diffuse;
+	glm::vec4 specular;
+	glm::vec4 position{0.0f, 0.0f, 0.0f, 1.0f};
+
+	float constantAttenuation = 1.0f;
+	float linearAttenuation = 0.0f;
+	float quadraticAttenuation = 0.0f;
 };
 
-#endif // LIGHT_H
+#endif //LIGHT

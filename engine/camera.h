@@ -1,27 +1,20 @@
-#pragma once
-#ifndef CAMERA_H
-#define CAMERA_H
+#include "Node.h"
+#include "Projection.h"
 
-#include "motor.h"
-#include "node.h"
+#ifndef CAMERA
+#define CAMERA
 
-
-class LIB_API Camera : public Node{
+class LIB_API Camera : public Node {
 public:
-    Camera();
+	Camera(int id, const std::string name, Projection* projection);
+	~Camera();
 
-    void setLookAt(const glm::vec3& lookAt);
-    void setUpVector(const glm::vec3& upVector);
-    void setProjection(float fov, float aspectRatio, float nearPlane, float farPlane);
-
-    glm::mat4 getViewMatrix() const;
-    glm::mat4 getProjectionMatrix() const;
+public:
+	Projection* getProjection();
+	glm::mat4 getInverse();
 
 private:
-    glm::vec3 position;
-    glm::vec3 lookAt;
-    glm::vec3 upVector;
-    glm::mat4 projectionMatrix;
+	Projection* projection;
 };
 
-#endif // CAMERA_H
+#endif //CAMERA

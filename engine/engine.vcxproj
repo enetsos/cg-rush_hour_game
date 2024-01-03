@@ -104,15 +104,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FREEGLUT_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FREEGLUT_STATIC;FREEIMAGE_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\dependencies\freeglut\include; ..\dependencies\glm\include\glm; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\dependencies\freeglut\include;..\dependencies\glm\include\glm;..\dependencies\freeimage\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>..\dependencies\freeglut\lib\$(Platform)\$(Configuration);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\dependencies\freeglut\lib\$(Platform)\$(Configuration);..\dependencies\freeimage\lib\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);FreeImageLib.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,37 +134,56 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="camera.cpp" />
-    <ClCompile Include="engine.cpp" />
-    <ClCompile Include="light.cpp" />
-    <ClCompile Include="material.cpp" />
-    <ClCompile Include="mesh.cpp" />
-    <ClCompile Include="node.cpp" />
-    <ClCompile Include="object.cpp" />
-    <ClCompile Include="OvObject.h" />
-    <ClCompile Include="ovoReader.cpp" />
-    <ClCompile Include="skinnedMesh.cpp" />
+    <None Include="..\..\cg_ovosdk\examples\scene.ovo" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bone.h" />
-    <ClInclude Include="camera.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="engine.h" />
-    <ClInclude Include="hull.h" />
-    <ClInclude Include="light.h" />
-    <ClInclude Include="lod.h" />
-    <ClInclude Include="material.h" />
-    <ClInclude Include="mesh.h" />
-    <ClInclude Include="motor.h" />
-    <ClInclude Include="node.h" />
-    <ClInclude Include="object.h" />
+    <ClInclude Include="FakeShadow.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FrameRate.h" />
+    <ClInclude Include="KeyCodes.h" />
+    <ClInclude Include="LibDef.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="OrthogonalProjection.h" />
     <ClInclude Include="OvLight.h" />
     <ClInclude Include="OvMesh.h" />
-    <ClInclude Include="ovoReader.h" />
-    <ClInclude Include="physProp.h" />
-    <ClInclude Include="skinnedMesh.h" />
+    <ClInclude Include="OvObject.h" />
+    <ClInclude Include="PerspectiveProjection.h" />
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="Projection.h" />
+    <ClInclude Include="SpotLight.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="UIProjection.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\cg_ovosdk\examples\scene.ovo" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="FakeShadow.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FrameRate.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="List.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="OrthogonalProjection.cpp" />
+    <ClCompile Include="PerspectiveProjection.cpp" />
+    <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="Projection.cpp" />
+    <ClCompile Include="SpotLight.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="UIProjection.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

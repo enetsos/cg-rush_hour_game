@@ -1,42 +1,70 @@
-#pragma once
-#ifndef ENGINE_H
-#define ENGINE_H
+#include "LibDef.h"
+#include "KeyCodes.h"
+#include "FrameRate.h"
+#include "Node.h"
+#include "Projection.h"
+#include "PerspectiveProjection.h"
+#include "OrthogonalProjection.h"
+#include "UIProjection.h"
+#include "Camera.h"
+#include "Light.h"
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
+#include "Texture.h"
+#include "Material.h"
+#include "Vertex.h"
+#include "Mesh.h"
+#include "FakeShadow.h"
+#include "FileReader.h"
+#include "List.h"
 
-#include "motor.h"
-#include "mesh.h"
-#include "node.h"
-#include "light.h"
-#include "material.h"
-#include "camera.h"
-#include "ovoReader.h"
+/////////////
+// CLASSES //
+/////////////
 
-class LIB_API Engine {
-public:
-    // Singleton access
-    static Engine& getInstance();
+/**
+ * @brief Simple static class example.
+ */
+class LIB_API Engine
+{
+	public:
+		Engine() {}
+		~Engine() {}
 
-    // Initialize and run the engine
-    void initialize(int argc, char* argv[]);
-    void run();
+	public:
+		// Init/free:
+		void init(const char* windowName, void(*keyboardCallbackApplication)(int), void(*displayCallBackApplication)());
+		void free();
 
-private:
-    static Engine* instance; // Add this line
-    int windowId;            // Add this line for window ID
-    glm::mat4 perspective;  // Add this line for the perspective matrix
-    glm::mat4 ortho;        // Add this line for the orthographic matrix
+		Node* loadScene(std::string fileName);
 
-    Engine(); // Private constructor for Singleton
-    static void displayCallback(); // Display callback for rendering
-    static void reshapeCallback(int width, int height); // Window reshape callback
-    static void keyboardCallback(unsigned char key, int x, int y); // Keyboard callback
-    static void specialCallback(int key, int x, int y); // Special keyboard callback
-    static void timerCallback(int value); // Timer callback for animation
-    static void setupInitialState();
-    static void drawGrid(float size, int tesselation);
-    // Other necessary callbacks and private methods
+		void clean(glm::vec4 color);
+		void begin();
+		static void swap();
+		static void forceRefresh();
 
-    // Engine state
-    Mesh cubeMesh; // Mesh for rendering a cube
+		static List getList();
+		static UIProjection* getUI();
+		static int getFps();
+		static void setTexturePath(std::string width);
+		void setCamera(Camera* camera);
+
+	private:
+		static void keyboardCallbackDelegator(unsigned char key, int x, int y);
+		static void specialCallbackDelegator(int code, int x, int y);
+		static void(*keyboardCallbackApplication)(int);
+
+	private:
+		static void reshapeCallback(int width, int heigth);
+		static void displayCallbackDelegator();
+		static void(*displayCallBackApplication)();
+
+	private:
+		static int windowId;
+		static Camera* camera;
+		static UIProjection* ui;
+		static Node* root;
+		static List list;
+		static FrameRate* fps;
 };
-
-#endif // ENGINE_H

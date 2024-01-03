@@ -1,57 +1,54 @@
-#include "mesh.h"
+#include "Mesh.h"
+#include <GL/freeglut.h>
 
-Mesh::Mesh(const std::string& name,
-    const glm::mat4& matrix,
-    unsigned int children,
-    const std::string& targetName,
-    bool isSkinned,
-    const std::string& subtypeName,
-    const std::string& materialName,
-    float radius,
-    const glm::vec3& bBoxMin,
-    const glm::vec3& bBoxMax,
-    bool hasPhysics,
-    const PhysProps& physProps,
-    const std::vector<Hull>& hulls,
-    const std::vector<LOD>& lods)
-    : Node(name, matrix, children, targetName),
-    isSkinned_(isSkinned),
-    subtypeName_(subtypeName),
-    materialName_(materialName),
-    radius_(radius),
-    bBoxMin_(bBoxMin),
-    bBoxMax_(bBoxMax),
-    hasPhysics_(hasPhysics),
-    physProps_(physProps),
-    hulls_(hulls),
-    lods_(lods) {}
+LIB_API Mesh::Mesh(const int id, const std::string name, std::shared_ptr<Material> material) :
+	Node{id, name}, material(material) {}
 
-void Mesh::printData() const{
-    Node::printData();
-    
-    cout << "   Is skinned . .:  " << (int)isSkinned_ << endl;
-    cout << "   Subtype . . . :  " << subtypeName_ << endl;
-    cout << "   Material  . . :  " << materialName_ << endl;
-    cout << "   Radius  . . . :  " << radius_ << endl;
-    cout << "   BBox minimum  :  " << bBoxMin_.x << ", " << bBoxMin_.y << ", " << bBoxMin_.z << endl;
-    cout << "   BBox maximum  :  " << bBoxMax_.x << ", " << bBoxMax_.y << ", " << bBoxMax_.z << endl;
-    cout << "   Physics . . . :  " << (int)hasPhysics_ << endl;
-
-}
-void Mesh::initializeBuffers() {
-    
+Mesh::~Mesh() {
+    vertices.clear();
 }
 
-void Mesh::render() const {
+bool Mesh::getCastShadow() const {
+    return castShadow;
 }
 
+void Mesh::setCastShadow(bool castShadow) {
+    this->castShadow = castShadow;
+}
 
+void Mesh::addVertex(Vertex* v,int lod) {
+    if (vertices.size() <= lod) {
+        std::vector<Vertex*> tempVec;
+        tempVec.push_back(v);
+        vertices.push_back(tempVec);
+    } else 
+	    vertices.at(lod).push_back(v);
+}
 
-// Getters
-bool Mesh::isSkinned() const { return isSkinned_; }
-std::string Mesh::getSubtypeName() const { return subtypeName_; }
-std::string Mesh::getMaterialName() const { return materialName_; }
-float Mesh::getRadius() const { return radius_; }
-glm::vec3 Mesh::getBoundingBoxMin() const { return bBoxMin_; }
-glm::vec3 Mesh::getBoundingBoxMax() const { return bBoxMax_; }
-bool Mesh::hasPhysics() const { return hasPhysics_; }
+std::vector<Vertex*> Mesh::getVertices(int lod) {
+    return vertices.at(lod);
+}
+
+void LIB_API Mesh::render(glm::mat4 cameraInv) {
+
+    //Material
+    Material* m = material.get();
+    m->render(cameraInv);
+
+    // Set model matrix as current OpenGL matrix:
+    glLoadMatrixf(glm::value_ptr(cameraInv * getFinalMatrix()));
+
+    //Vertex rendering Counter Clock-Wise
+    glFrontFace(GL_CCW);
+
+    // Triangles rendering
+    glBegin(GL_TRIANGLES);
+    for (Vertex* v : vertices.at(lod)) {
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glNormal3fv(glm::value_ptr(v->getNormal()));
+        glTexCoord2fv(glm::value_ptr(v->getTextureCoordinates()));
+        glVertex3fv(glm::value_ptr(v->getPosition()));     
+    }
+
+    glEnd();
+}

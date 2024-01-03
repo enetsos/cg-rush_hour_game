@@ -1,47 +1,33 @@
-#pragma once
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#include "Object.h"
+#include "Texture.h"
 
-#include "node.h"
-#include "motor.h"
-#include <string>
+#ifndef MATERIAL
+#define MATERIAL
 
-class LIB_API Material{
+class LIB_API Material : public Object {
+
 public:
-    // Constructor with parameters
-    Material(const std::string& name, const glm::vec3& emission, const glm::vec3& albedo, float roughness, float metalness, float alpha,
-        const std::string& textureName, const std::string& normalMapName, const std::string& heightMapName,
-        const std::string& roughnessMapName, const std::string& metalnessMapName);
+	Material(int id, const std::string name, glm::vec4 emission, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess);
+	Material(int id, const std::string name, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess);
+	~Material();
 
-    void printData() const;
+public:
+	void render(glm::mat4 cameraInv) override;
+	glm::vec4 getEmission();
+	glm::vec4 getAmbient();
+	glm::vec4 getDiffuse();
+	glm::vec4 getSpecular();
+	float getShininess();
+	void setTexture(Texture* t);
+	Texture* getTexture();
 
-    // Getters
-    string getName() const;
-    glm::vec3 getEmission() const;
-    glm::vec3 getAlbedo() const;
-    float getRoughness() const;
-    float getMetalness() const;
-    float getAlpha() const;
-    std::string getTextureName() const;
-    std::string getNormalMapName() const;
-    std::string getHeightMapName() const;
-    std::string getRoughnessMapName() const;
-    std::string getMetalnessMapName() const;
-
-    
 private:
-
-    string name;
-    glm::vec3 emission;
-    glm::vec3 albedo;
-    float roughness;
-    float metalness;
-    float alpha;
-    std::string textureName;
-    std::string normalMapName;
-    std::string heightMapName;
-    std::string roughnessMapName;
-    std::string metalnessMapName;
+	glm::vec4 emission;
+	glm::vec4 ambient;
+	glm::vec4 diffuse;
+	glm::vec4 specular;
+	float shininess;
+	Texture* texture;
 };
 
-#endif // MATERIAL_H
+#endif //MATERIAL

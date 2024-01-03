@@ -1,66 +1,29 @@
-#pragma once
-#ifndef MESH_H
-#define MESH_H
+#include "Node.h"
+#include "Vertex.h"
+#include "Material.h"
 
-#include "motor.h"
-#include "node.h"
-#include "physProp.h"
-#include "hull.h"
-#include "lod.h"
-
-
-
+#ifndef MESH
+#define MESH
 
 class LIB_API Mesh : public Node {
+
 public:
-    // Constructor
-    Mesh() = default;
+	Mesh(const int id, const std::string name, std::shared_ptr<Material> material);
+	~Mesh();
 
-    Mesh(const std::string& name,
-        const glm::mat4& matrix,
-        unsigned int children,
-        const std::string& targetName,
-        bool isSkinned,
-        const std::string& subtypeName,
-        const std::string& materialName,
-        float radius,
-        const glm::vec3& bBoxMin,
-        const glm::vec3& bBoxMax,
-        bool hasPhysics,
-        const PhysProps& physProps,
-        const std::vector<Hull>& hulls,
-        const std::vector<LOD>& lods);
+public:
+	void addVertex(Vertex* v, int lod);
+	virtual void render(glm::mat4 cameraInv) override;
+	virtual bool getCastShadow() const;
+	virtual void setCastShadow(bool castShadow);
+	std::vector<Vertex*> getVertices(int lod);
 
-
-    void printData() const override;
-
-    // Getters
-    bool isSkinned() const;  // Mark this as const as it does not modify the object
-    std::string getSubtypeName() const;
-    std::string getMaterialName() const;
-    float getRadius() const;
-    glm::vec3 getBoundingBoxMin() const;
-    glm::vec3 getBoundingBoxMax() const;
-    bool hasPhysics() const;  // Mark this as const as well
-    PhysProps getPhysProps() const { return physProps_; }
-    vector<Hull> getHulls() const { return hulls_; }
-    vector<LOD> getLODs() const { return lods_; }
-
-    void initializeBuffers();  // To initialize OpenGL buffers
-    void render() const;       // To render the mesh
-
+protected:
+	int lod = 0;
+	std::vector<std::vector<Vertex*>> vertices;
+	std::shared_ptr<Material> material;
 
 private:
-    bool isSkinned_;
-    std::string subtypeName_;
-    std::string materialName_;
-    float radius_;
-    glm::vec3 bBoxMin_, bBoxMax_;
-    bool hasPhysics_;
-    PhysProps physProps_;
-    vector<Hull> hulls_;
-    vector<LOD> lods_;
-    
+	bool castShadow = true;
 };
-
-#endif // MESH_H
+#endif //MESH

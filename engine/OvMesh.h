@@ -1,4 +1,7 @@
 #pragma once
+
+
+// Stripped-down redefinition of OvMesh (just for the subtypes):
 class OvMesh
 {
 public:

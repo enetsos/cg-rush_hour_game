@@ -1,75 +1,43 @@
-// Material.cpp
+#include "Material.h"
+#include <GL/freeglut.h>
 
-#include "material.h"
-#include "GL/freeglut.h"
+LIB_API Material::Material(int id, const std::string name, glm::vec4 emission, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess) :
+	Object{ id, name }, emission(emission), ambient(ambient), diffuse(diffuse), specular(specular), shininess(shininess), texture(nullptr) {}
 
-// Constructor implementation
-Material::Material(const std::string& name, const glm::vec3& emission, const glm::vec3& albedo,
-    float roughness,float metalness, float alpha, const std::string& textureName,
-    const std::string& normalMapName, const std::string& heightMapName,
-    const std::string& roughnessMapName, const std::string& metalnessMapName)
-    :
-    name(name),emission(emission), albedo(albedo), roughness(roughness), metalness(metalness), alpha(alpha),
-    textureName(textureName), normalMapName(normalMapName), heightMapName(heightMapName),
-    roughnessMapName(roughnessMapName), metalnessMapName(metalnessMapName) {}
+LIB_API Material::Material(int id, const std::string name, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess) :
+	Material(id, name, glm::vec4(0.0f), ambient, diffuse, specular, shininess) {}
 
-void Material::printData() const{
-    cout << "material]" << endl;
+Material::~Material() {}
 
-std::cout << "Name: " << name << std::endl;
-	std::cout << "Emission: " << emission.r << " " << emission.g << " " << emission.b << std::endl;
-	std::cout << "Albedo: " << albedo.r << " " << albedo.g << " " << albedo.b << std::endl;
-	std::cout << "Roughness: " << roughness << std::endl;
-	std::cout << "Metalness: " << metalness << std::endl;
-	std::cout << "Alpha: " << alpha << std::endl;
-	std::cout << "Texture: " << textureName << std::endl;
-	std::cout << "Normal Map: " << normalMapName << std::endl;
-	std::cout << "Height Map: " << heightMapName << std::endl;
-	std::cout << "Roughness Map: " << roughnessMapName << std::endl;
-	std::cout << "Metalness Map: " << metalnessMapName << std::endl;
+void LIB_API Material::render(glm::mat4 cameraInv) {
+	if(texture != NULL)
+		texture->render(cameraInv);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, glm::value_ptr(getEmission()));
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, glm::value_ptr(getAmbient()));
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, glm::value_ptr(getDiffuse()));
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, glm::value_ptr(getSpecular()));
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, getShininess());
 }
 
-string Material::getName() const {
-	return name;
+glm::vec4 LIB_API Material::getEmission() {
+	return emission;
+}
+glm::vec4 LIB_API Material::getAmbient() {
+	return ambient;
+}
+glm::vec4 LIB_API Material::getDiffuse() {
+	return diffuse;
+}
+glm::vec4 LIB_API Material::getSpecular() {
+	return specular;
+}
+float LIB_API Material::getShininess() {
+	return shininess;
 }
 
-glm::vec3 Material::getEmission() const {
-    return emission;
+void LIB_API Material::setTexture(Texture* t) {
+	texture = t;
 }
-
-glm::vec3 Material::getAlbedo() const {
-    return albedo;
+Texture LIB_API* Material::getTexture() {
+	return texture;
 }
-
-float Material::getRoughness() const {
-    return roughness;
-}
-
-float Material::getMetalness() const {
-	return metalness;
-}
-
-float Material::getAlpha() const {
-    return alpha;
-}
-
-std::string Material::getTextureName() const {
-    return textureName;
-}
-
-std::string Material::getNormalMapName() const {
-    return normalMapName;
-}
-
-std::string Material::getHeightMapName() const {
-    return heightMapName;
-}
-
-std::string Material::getRoughnessMapName() const {
-    return roughnessMapName;
-}
-
-std::string Material::getMetalnessMapName() const {
-    return metalnessMapName;
-}
-

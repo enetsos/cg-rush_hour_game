@@ -1,19 +1,33 @@
-#ifndef OBJECT_H
-#define OBJECT_H
-#include "motor.h"
+#include "LibDef.h"
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
+
+#include <iostream>
+#include <string>
+#include <memory>
+
+#ifndef OBJECT
+#define OBJECT
 
 class LIB_API Object {
-public:
-    // Constructors
-    Object();
-    virtual ~Object();
 
-    // Unique identifier
-    unsigned int getId() const;
+	public:
+		Object() : id(Object::getNextId()){}
+		Object(int id, const std::string name);
+		~Object();
 
-private:
-    static unsigned int globalIdCounter;
-    unsigned int id;
+	public:
+		int getId() const;
+		std::string getName() const;
+		void setName(const std::string name);
+		static int getNextId();
+		virtual void render(glm::mat4 cameraInv);
+
+	private:
+		static int nextId;
+		const int id;
+		std::string name;
 };
 
-#endif // OBJECT_H
+#endif //OBJECT

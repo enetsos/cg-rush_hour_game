@@ -1,59 +1,75 @@
-#include "light.h"
+#include "Light.h"
+#include <GL/freeglut.h>
 
-// Constructor
-Light::Light(const std::string& name, const glm::mat4& matrix, unsigned int children, const std::string& targetName,
-    string subType, const glm::vec3& color, const glm::vec3& direction,
-    float radius, float cutoff, float spotExponent, unsigned char castShadows, unsigned char isVolumetric)
-    : Node(name, matrix, children, targetName), subType(subType), color(color), direction(direction),
-    radius(radius), cutoff(cutoff), spotExponent(spotExponent), castShadows(castShadows), isVolumetric(isVolumetric)
-{
-    // Constructor body (if needed)
+LIB_API Light::Light(const int id, const std::string name, const int lightNumber, const glm::vec4 ambient, const glm::vec4 diffuse, const glm::vec4 specular) :
+	Node{ id, name }, lightNumber(lightNumber), ambient(ambient), diffuse(diffuse), specular(specular) {
+	glEnable(GL_LIGHTING);
+	glEnable(lightNumber);
+	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1.0f);
 }
 
-void Light::printData() const {
-    Node::printData(); // Call base class implementation
-
-    // Additional details specific to Light
-    cout << "   Light Subtype : " << subType << endl;
-    cout << "   Color : " << glm::to_string(color) << endl;
-    cout << "   Direction : " << glm::to_string(direction) << endl;
-    cout << "   Radius : " << radius << endl;
-    cout << "   Cutoff : " << cutoff << endl;
-    cout << "   Spot Exponent : " << spotExponent << endl;
-    cout << "   Cast Shadows : " << static_cast<int>(castShadows) << endl;
-    cout << "   Volumetric : " << static_cast<int>(isVolumetric) << endl;
+Light::~Light() {
+	Light::nextNumber--;
 }
 
-
-// Getters
-string Light::getSubType() const {
-    return subType;
+void Light::setPosition() {
+	glm::mat4 finalMatrix = getFinalMatrix();
+	glm::vec4 finalPosition = finalMatrix[3];
+	position = finalPosition;
 }
 
-glm::vec3 Light::getColor() const {
-    return color;
+void Light::setPosition(glm::vec4 pos) {
+	position = pos;
 }
 
-glm::vec3 Light::getDirection() const {
-    return direction;
+glm::vec4 LIB_API Light::getPosition() {
+	return position;
 }
 
-float Light::getRadius() const {
-    return radius;
+void LIB_API Light::setTransform(glm::mat4 transform) {
+	Node::setTransform(transform);
+
+	setPosition();
 }
 
-float Light::getCutoff() const {
-    return cutoff;
+int Light::nextNumber = 0;
+int LIB_API Light::getNextLightNumber() {
+	return GL_LIGHT0 + Light::nextNumber++;
 }
 
-float Light::getSpotExponent() const {
-    return spotExponent;
+int Light::getLightNumber() {
+	return lightNumber;
 }
 
-unsigned char Light::getCastShadows() const {
-    return castShadows;
+float LIB_API Light::getConstantAttenuation() {
+	return constantAttenuation;
+}
+float LIB_API Light::getLinearAttenuation() {
+	return linearAttenuation;
+}
+float LIB_API Light::getQuadraticAttenuation() {
+	return quadraticAttenuation;
+}
+void LIB_API Light::setConstantAttenuation(float constantAttenuation) {
+	this->constantAttenuation = constantAttenuation;
+}
+void LIB_API Light::setLinearAttenuation(float linearAttenuation) {
+	this->linearAttenuation = linearAttenuation;
+}
+void LIB_API Light::setQuadraticAttenuation(float quadraticAttenuation) {
+	this->quadraticAttenuation = quadraticAttenuation;
 }
 
-unsigned char Light::getIsVolumetric() const {
-    return isVolumetric;
+void LIB_API Light::render(glm::mat4 cameraInv) {
+	glLoadMatrixf(glm::value_ptr(cameraInv * getFinalMatrix()));
+
+	glLightfv(lightNumber, GL_AMBIENT, glm::value_ptr(ambient));
+	glLightfv(lightNumber, GL_DIFFUSE, glm::value_ptr(diffuse));
+	glLightfv(lightNumber, GL_SPECULAR, glm::value_ptr(specular));
+
+	glLightfv(lightNumber, GL_CONSTANT_ATTENUATION, &constantAttenuation);
+	glLightfv(lightNumber, GL_LINEAR_ATTENUATION, &linearAttenuation);
+	glLightfv(lightNumber, GL_QUADRATIC_ATTENUATION, &quadraticAttenuation);
+	
+	glLightfv(lightNumber, GL_POSITION, glm::value_ptr(glm::vec4(0.0f, 0.0f, 0.0f, position.w)));
 }

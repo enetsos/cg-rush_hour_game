@@ -1,4 +1,6 @@
 #pragma once
+
+// Stripped-down redefinition of OvLight (just for the subtypes):
 class OvLight
 {
 public:
