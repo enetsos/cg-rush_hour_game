@@ -1,12 +1,10 @@
-#include "engine.h"
-#include <FreeImage.h>
-#include <GL/freeglut.h>
+
+#ifdef _WINDOWS
+#include <Windows.h>
 //////////////
 // DLL MAIN //
 //////////////
 
-#ifdef _WINDOWS
-#include <Windows.h>
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
@@ -18,19 +16,23 @@
  * @return true on success, false on failure
  */
 int APIENTRY DllMain(HANDLE instDLL, DWORD reason, LPVOID _reserved) {
-  // Check use:
-  switch (reason) {
-    ///////////////////////////
-  case DLL_PROCESS_ATTACH: //
-    break;
-    ///////////////////////////
-  case DLL_PROCESS_DETACH: //
-    break;
-  }
-  // Done:
-  return true;
+    // Check use:
+    switch (reason) {
+        ///////////////////////////
+    case DLL_PROCESS_ATTACH: //
+        break;
+        ///////////////////////////
+    case DLL_PROCESS_DETACH: //
+        break;
+    }
+    // Done:
+    return true;
 }
 #endif
+#include "engine.h"
+#include <FreeImage.h>
+#include <GL/freeglut.h>
+
 
 ////////////////////////////////
 // BODY OF CLASS Engine       //

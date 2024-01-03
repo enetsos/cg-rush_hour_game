@@ -13,8 +13,8 @@ public:
 
 private:
 	float fov;
-	float near;
-	float far;
+	float near_;
+	float far_;
 };
 
 #endif //PERSPECTIVE_PROJECTION

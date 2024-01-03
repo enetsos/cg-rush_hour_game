@@ -1,7 +1,7 @@
 #include "PerspectiveProjection.h"
 
 LIB_API PerspectiveProjection::PerspectiveProjection(int width, int heigth, float fov, float near, float far) :
-	Projection{ width, heigth }, fov(fov), near(near), far(far) {
+	Projection{ width, heigth }, fov(fov), near_(near), far_(far) {
 
 	update();
 };
@@ -11,8 +11,8 @@ void PerspectiveProjection::update() {
 	glm::mat4 p = glm::perspective(
 		glm::radians(fov),
 		getWidth() / (float)getHeigth(),
-		near,
-		far
+		near_,
+		far_
 	);
 
 	this->setProjection(p);
