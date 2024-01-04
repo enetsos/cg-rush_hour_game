@@ -4,10 +4,10 @@
 
 // Library header:
 #include "engine.h"
+#include "Game.h"
 
 // C/C++:
 #include <glm.hpp>
-#include <gtx/string_cast.hpp>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -38,6 +38,9 @@ float stationaryRotationZ = 0.0f;
 Node *root;
 bool isActive = true;
 bool showUI = true;
+Game* game;
+
+float movementDistance = 40.0f;
 
 Camera *freeCamera = nullptr;
 Camera *stationaryCamera = nullptr;
@@ -107,16 +110,22 @@ void keyboardCallback(int key) {
 
     // Robot arm controls
   case '+':
+      game->setActiveCar((game->getActiveCar() + 8 + 1) % 8);
     break;
   case '-':
+      game->setActiveCar((game->getActiveCar() + 8 - 1) % 8);
     break;
   case KEY_UP:
+      game->moveCar(glm::vec2(-movementDistance, 0.0f));
     break;
   case KEY_DOWN:
+      game->moveCar(glm::vec2(movementDistance,0.0f ));
     break;
   case KEY_RIGHT:
+      game->moveCar(glm::vec2(0.0f, -movementDistance));
     break;
   case KEY_LEFT:
+      game->moveCar(glm::vec2(0.0f, movementDistance));
     break;
   case ' ':
     break;
@@ -205,7 +214,6 @@ int main(int argc, char *argv[]) {
   // Set where the fake shadows will be projected
   Mesh *floor = (Mesh *)root->findByName("Floor");
   Mesh *table = (Mesh *)root->findByName("Table");
-  Mesh *grid = (Mesh *)root->findByName("Grid");
 
   ((FakeShadow *)root->findByName("Table_shadow"))->setShadowParent(floor);
   ((FakeShadow *)root->findByName("Teapot_shadow"))->setShadowParent(table);
@@ -231,8 +239,24 @@ int main(int argc, char *argv[]) {
   ui->addLabel("[w/a/s/d] - move camera");
   ui->addLabel("[8/4/2/6] - rotate camera");
   ui->addLabel("[c]");
+  
 
- 
+  // Prepare the game
+  Node* grid = root->findByName("Grid");
+  Node* car001 = grid->findByName("Car001");
+  Node* car002 = grid->findByName("Car002");
+  Node* car003 = grid->findByName("Car003");
+  Node* car004 = grid->findByName("Car004");
+  Node* car005 = grid->findByName("Car005");
+  Node* car006 = grid->findByName("Car006");
+  Node* car007 = grid->findByName("Car007");
+  Node* car008 = grid->findByName("Car008");
+
+  std::vector<Node*> cars{car001, car002, car003, car004, car005, car006, car007, car008};
+
+  game = new Game(cars);
+  game->setMovementSpeed(0.5f);
+
 
   while (isActive) {
     engine.begin();
