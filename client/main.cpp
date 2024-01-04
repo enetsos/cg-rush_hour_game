@@ -20,20 +20,20 @@ Engine engine;
 UIProjection *ui;
 
 float cameraX = 0.0f;
-float cameraY = 20.0f;
-float cameraZ = 50.0f;
-float rotationX = 0.0f;
+float cameraY = 75.0f;
+float cameraZ = 60.0f;
+float rotationX = -20.0f;
 float rotationY = 0.0f;
 float rotationZ = 0.0f;
 float cameraSpeed = 2.0f;
 float rotationSpeed = 2.0f;
 
-float stationaryCameraX = -102.0f;
-float stationaryCameraY = 91.0f;
-float stationaryCameraZ = 136;
-float stationaryRotationX = -22.0f;
-float stationaryRotationY = -26.0f;
-float stationaryRotationZ = -8.0f;
+float stationaryCameraX = 10.0f;
+float stationaryCameraY = 190.0f;
+float stationaryCameraZ = 12.0f;
+float stationaryRotationX = -90.0f;
+float stationaryRotationY = 0.0f;
+float stationaryRotationZ = 0.0f;
 
 Node *root;
 bool isActive = true;
@@ -44,7 +44,7 @@ Camera *stationaryCamera = nullptr;
 Camera *activeCamera = nullptr;
 
 void keyboardCallback(int key) {
-
+   
   if (activeCamera == freeCamera) {
     switch (key) {
       // Free camera movement
@@ -146,6 +146,10 @@ void displayCallback() {
                     glm::vec3(0.0f, 0.0f, 1.0f));
     activeCamera->setTransform(translation_cam * rotationX_cam * rotationY_cam *
                                rotationZ_cam);
+
+    
+
+
   }
 
   // draw scene
@@ -201,17 +205,21 @@ int main(int argc, char *argv[]) {
   // Set where the fake shadows will be projected
   Mesh *floor = (Mesh *)root->findByName("Floor");
   Mesh *table = (Mesh *)root->findByName("Table");
+  Mesh *grid = (Mesh *)root->findByName("Grid");
+
   ((FakeShadow *)root->findByName("Table_shadow"))->setShadowParent(floor);
   ((FakeShadow *)root->findByName("Teapot_shadow"))->setShadowParent(table);
-  ((FakeShadow *)root->findByName("TV_shadow"))->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("arm1_shadow"))->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("arm2_shadow"))->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("arm3_shadow"))->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("clawSupport_shadow"))
-      ->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("clawL_shadow"))->setShadowParent(floor);
-  ((FakeShadow *)root->findByName("clawR_shadow"))->setShadowParent(floor);
   ((FakeShadow *)root->findByName("Sphere_shadow"))->setShadowParent(floor);
+
+  ((FakeShadow *)root->findByName("Car001_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car002_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car003_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car004_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car005_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car006_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car007_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("Car008_shadow"))->setShadowParent(table);
+
 
   // Set menu
   ui = engine.getUI();
@@ -224,17 +232,7 @@ int main(int argc, char *argv[]) {
   ui->addLabel("[8/4/2/6] - rotate camera");
   ui->addLabel("[c]");
 
-  // Prepare robotarm
-  Node *ball = root->findByName("Sphere");
-  Node *plane = floor->findByName("base");
-  Node *joint0 = plane->findByName("arm1");
-  Node *joint1 = joint0->findByName("arm2");
-  Node *joint2 = joint1->findByName("arm3");
-  Node *joint3 = joint2->findByName("clawSupport");
-  std::vector<Node *> joints{joint0, joint1, joint2, joint3};
-  std::vector<glm::vec3> limits{
-      glm::vec3(0.0f, 360.0f, 0.0f), glm::vec3(90.0f, 0.0f, 0.0f),
-      glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(90.0f, 0.0f, 0.0f)};
+ 
 
   while (isActive) {
     engine.begin();
