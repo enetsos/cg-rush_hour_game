@@ -40,7 +40,7 @@ bool isActive = true;
 bool showUI = true;
 Game* game;
 
-float movementDistance = 40.0f;
+float movementDistance = 82.0f;
 
 Camera *freeCamera = nullptr;
 Camera *stationaryCamera = nullptr;
@@ -116,17 +116,17 @@ void keyboardCallback(int key) {
       game->setActiveCar((game->getActiveCar() + 8 - 1) % 8);
     break;
   case KEY_UP:
-      game->moveCar(glm::vec2(-movementDistance, 0.0f));
-    break;
-  case KEY_DOWN:
-      game->moveCar(glm::vec2(movementDistance,0.0f ));
-    break;
-  case KEY_RIGHT:
-      game->moveCar(glm::vec2(0.0f, -movementDistance));
-    break;
-  case KEY_LEFT:
       game->moveCar(glm::vec2(0.0f, movementDistance));
-    break;
+      break;
+  case KEY_DOWN:
+      game->moveCar(glm::vec2(0.0f, -movementDistance));
+      break;
+  case KEY_RIGHT:
+      game->moveCar(glm::vec2(-movementDistance, 0.0f));
+      break;
+  case KEY_LEFT:
+      game->moveCar(glm::vec2(movementDistance, 0.0f));
+      break;
   case ' ':
     break;
   }

@@ -33,19 +33,22 @@ void Game::moveCar(glm::vec2 direction) {
     // Get the car's orientation in Euler angles
     glm::vec3 orientation = getOrientation(car);
 
-    // Convert the Euler angles back to a quaternion
-    glm::quat carOrientation = glm::quat(glm::radians(orientation));
+    // Assuming the orientation.y (yaw) determines whether the car is vertical or horizontal
+    // Adjust the threshold angle as needed
+    float thresholdAngle = 45.0f; // degrees
 
-    // Assuming the forward direction is along the Z-axis
-    // If it's along another axis, use glm::vec3(1, 0, 0) for the X-axis or glm::vec3(0, 1, 0) for the Y-axis
-    glm::vec3 forwardDirection = glm::vec3(0.0f, 0.0f, 1.0f);
+    glm::vec3 movementDirection;
 
-    // Rotate the forward direction by the car's orientation
-    glm::vec3 orientedForward = carOrientation * forwardDirection;
+    if (std::abs(orientation.y) < thresholdAngle || std::abs(orientation.y) > (180.0f - thresholdAngle)) {
+        
+        // The car is oriented vertically, move up/down
+        movementDirection = glm::vec3(0.0f, direction.y, 0.0f);
 
-    // Calculate movement direction (forward/backward)
-    // direction.x is used for forward/backward movement; direction.y is ignored in this context
-    glm::vec3 movementDirection = orientedForward * direction.x;
+    }
+    else {
+        // The car is oriented horizontally, move left/right
+        movementDirection = glm::vec3(0.0f, direction.x, 0.0f);
+    }
 
     // Apply the translation
     glm::mat4 translation = glm::translate(glm::mat4(1.0f), movementDirection * movementSpeed);
@@ -53,6 +56,8 @@ void Game::moveCar(glm::vec2 direction) {
     // Update the car's transform
     car->setTransform(car->getTransform() * translation);
 }
+
+
 
 glm::vec3 Game::getOrientation(const Node* node) {
     glm::mat4 transform = node->getTransform();
