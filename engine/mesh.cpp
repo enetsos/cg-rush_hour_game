@@ -22,6 +22,8 @@ void Mesh::addVertex(Vertex *v, int lod) {
 
 std::vector<Vertex *> Mesh::getVertices(int lod) { return vertices.at(lod); }
 
+std::shared_ptr<Material> Mesh::getMaterial() { return material; }
+
 void LIB_API Mesh::render(glm::mat4 cameraInv) {
 
   // Material

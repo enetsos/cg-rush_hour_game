@@ -161,6 +161,8 @@ void displayCallback() {
 
   }
 
+  game->update();
+
   // draw scene
   engine.getList().render(activeCamera->getInverse());
 

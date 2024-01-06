@@ -23,6 +23,7 @@ public:
   float getShininess();
   void setTexture(Texture *t);
   Texture *getTexture();
+  void setEmission(glm::vec4 emission);
 
 private:
   glm::vec4 emission;

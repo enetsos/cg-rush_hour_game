@@ -1,5 +1,6 @@
 #pragma once
 #include "node.h"
+#include "mesh.h"
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/quaternion.hpp>
@@ -7,6 +8,7 @@
 #include <gtx/string_cast.hpp>
 #include <math.h>
 #include <vector>
+#include <chrono>
 
 #ifndef GAME
 #define GAME
@@ -34,13 +36,11 @@ private:
   glm::vec3 getOrientation(const Node *node);
   bool moveCarOnGrid(glm::vec2 direction);
   void printGrid();
+  void biLux();
 
-  // grid information
-  const int h2 = 1;
-  const int h3 = 2;
-  const int v2 = 3;
-  const int v3 = 4;
-  const int e = 0;
+  std::chrono::high_resolution_clock::time_point lastUpdateTime;
+  float glowDuration = 3.0f;
+  bool isGlowingUp = true;
 
   float movementSpeed = 1.0f;
   int activeCar = 0;

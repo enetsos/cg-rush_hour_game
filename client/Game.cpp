@@ -206,7 +206,29 @@ glm::vec3 Game::getOrientation(const Node* node) {
     return eulerAngles;
 }
 
+void Game::biLux() {
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    float elapsed = std::chrono::duration<float>(currentTime - lastUpdateTime).count();
+
+    if (elapsed >= glowDuration) {
+        // Reset timer
+        lastUpdateTime = currentTime;
+        isGlowingUp = !isGlowingUp; // Change the direction of the glow effect
+    }
+
+    float glowIntensity = isGlowingUp ? (elapsed / glowDuration) : (1.0f - elapsed / glowDuration);
+
+    Node* activeCarNode = cars.at(activeCar);
+    Mesh* activeCarMesh = dynamic_cast<Mesh*>(activeCarNode);
+    if (activeCarMesh) {
+        std::shared_ptr<Material> material = activeCarMesh->getMaterial();
+        if (material) {
+            glm::vec4 baseEmission = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f); // Base color for glow
+            material->setEmission(baseEmission * glowIntensity);
+        }
+    }
+}
 
 void Game::update() {
-    // Any additional logic required for each update cycle
+    biLux();
 }

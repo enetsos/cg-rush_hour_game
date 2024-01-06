@@ -18,6 +18,7 @@ public:
   virtual bool getCastShadow() const;
   virtual void setCastShadow(bool castShadow);
   std::vector<Vertex *> getVertices(int lod);
+  std::shared_ptr<Material> getMaterial();
 
 protected:
   int lod = 0;
