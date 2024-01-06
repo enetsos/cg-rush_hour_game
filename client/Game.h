@@ -39,7 +39,7 @@ private:
   void biLux();
 
   std::chrono::high_resolution_clock::time_point lastUpdateTime;
-  float glowDuration = 3.0f;
+  float glowDuration = 1.0f;
   bool isGlowingUp = true;
 
   float movementSpeed = 1.0f;
