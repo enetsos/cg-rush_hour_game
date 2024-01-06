@@ -166,7 +166,7 @@ void displayCallback() {
 
   if (showUI) {
     ui->editLabel(0, "FPS: " + std::to_string(engine.getFps()));
-    ui->editLabel(2, "[+/-] - Switch active joint: ");
+    ui->editLabel(2, "[+/-] - Switch car: " + std::to_string(game->getActiveCar()));
     ui->editLabel(
         7, "[c] - change camera: " +
                std::string(activeCamera == freeCamera ? "free" : "stationary"));
@@ -254,7 +254,16 @@ int main(int argc, char *argv[]) {
 
   std::vector<Node*> cars{car001, car002, car003, car004, car005, car006, car007, car008};
 
-  game = new Game(cars);
+  std::vector<std::vector<int>> originalCarPosition = {
+      {3,  2,  2,  6,  6,  6},
+      {3, -1, -1, -1, -1, -1},
+      {0,  0, -1, -1, -1,  1},
+	  {5, -1, -1, -1, -1,  1},
+	  {5,  4,  4,  7,  7,  7},
+	  {5, -1, -1, -1, -1, -1}
+   };
+
+  game = new Game(cars, originalCarPosition);
   game->setMovementSpeed(0.5f);
 
 

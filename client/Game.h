@@ -13,7 +13,7 @@
 
 class Game {
 public:
-  Game(std::vector<Node *> cars);
+  Game(std::vector<Node *> cars, std::vector<std::vector<int>> originalCarPosition);
   ~Game();
 
 public:
@@ -28,8 +28,19 @@ private:
   std::vector<Node *> cars;
   std::vector<glm::vec3> carsPosition;
   std::vector<glm::mat4> carsOriginalTransform;
+  std::vector<std::vector<int>> grid;
+  std::vector<std::vector<int>> originalCarPosition;
 
   glm::vec3 getOrientation(const Node *node);
+  bool moveCarOnGrid(glm::vec2 direction);
+  void printGrid();
+
+  // grid information
+  const int h2 = 1;
+  const int h3 = 2;
+  const int v2 = 3;
+  const int v3 = 4;
+  const int e = 0;
 
   float movementSpeed = 1.0f;
   int activeCar = 0;
