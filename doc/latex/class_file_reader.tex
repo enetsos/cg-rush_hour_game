@@ -1,0 +1,76 @@
+\doxysection{File\+Reader Class Reference}
+\hypertarget{class_file_reader}{}\label{class_file_reader}\index{FileReader@{FileReader}}
+
+
+Handles the reading and loading of files into the 3D graphics environment.  
+
+
+
+
+{\ttfamily \#include $<$File\+Reader.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_file_reader_a615dcb2443cad1f2ca123c7c0c334480}{File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_file_reader}{File\+Reader} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee}{\texorpdfstring{$\sim$}{\string~}\+File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_file_reader}{File\+Reader} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_file_reader_adde18ab4446481db838fb7c2ddc5cb49}{read\+File}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Reads a file from the specified path and creates a scene graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles the reading and loading of files into the 3D graphics environment. 
+
+This class is responsible for reading files from the filesystem and interpreting them to create and configure nodes, materials, and other components necessary for rendering a scene in a 3D graphics environment. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_file_reader_a615dcb2443cad1f2ca123c7c0c334480}\label{class_file_reader_a615dcb2443cad1f2ca123c7c0c334480} 
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_file_reader}{File\+Reader} class. 
+
+Initializes a new instance of the \doxylink{class_file_reader}{File\+Reader} class. \Hypertarget{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee}\label{class_file_reader_a1382969e8f1468f3b04ad4b44ab39dee} 
+\index{FileReader@{FileReader}!````~FileReader@{\texorpdfstring{$\sim$}{\string~}FileReader}}
+\index{````~FileReader@{\texorpdfstring{$\sim$}{\string~}FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FileReader()}{\string~FileReader()}}
+{\footnotesize\ttfamily File\+Reader\+::\texorpdfstring{$\sim$}{\string~}\+File\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_file_reader}{File\+Reader} class. 
+
+Cleans up resources used by the \doxylink{class_file_reader}{File\+Reader} instance, like allocated memory for materials and vertices. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_file_reader_adde18ab4446481db838fb7c2ddc5cb49}\label{class_file_reader_adde18ab4446481db838fb7c2ddc5cb49} 
+\index{FileReader@{FileReader}!readFile@{readFile}}
+\index{readFile@{readFile}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} File\+Reader\+::read\+File (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+
+
+Reads a file from the specified path and creates a scene graph. 
+
+This method opens and interprets a file, constructing a hierarchical scene graph of nodes based on the contents of the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & A constant character pointer to the file path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root node of the loaded scene graph. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/File\+Reader.\+h\end{DoxyCompactItemize}

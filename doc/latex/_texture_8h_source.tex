@@ -1,0 +1,35 @@
+\doxysection{Texture.\+h}
+\hypertarget{_texture_8h_source}{}\label{_texture_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/Texture.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/Texture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GL\_TEXTURE\_MAX\_ANISOTROPY\_EXT\ 0x84FE}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ GL\_MAX\_TEXTURE\_MAX\_ANISOTROPY\_EXT\ 0x84FF}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ TEXTURE}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TEXTURE}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_texture}{Texture}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_object}{Object}}\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_texture_a7c386aa2c0de0cf40aada1935bc42d9a}{Texture}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\string~Texture}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_a2cf944f50edf3f301b095186e354cbf6}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_a07ed2907f7deb3dbfdd9cf2a5dacda75}{setTexId}}(std::string\ file);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_a43d090d9f05f60743d2d293bf672b7ee}{setPath}}(std::string\ path);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ texId\ =\ 0;\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAnisotropicSupported\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ anisotropicLevel\ =\ 1;\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ path;\ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEXTURE}}
+
+\end{DoxyCode}

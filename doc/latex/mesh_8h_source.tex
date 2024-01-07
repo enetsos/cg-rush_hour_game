@@ -1,0 +1,44 @@
+\doxysection{mesh.\+h}
+\hypertarget{mesh_8h_source}{}\label{mesh_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/mesh.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/mesh.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Vertex.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}material.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}node.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ MESH}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MESH}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_mesh}{Mesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_node}{Node}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_mesh_a5eacbdef19393280897f746af7dd20ce}{Mesh}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::shared\_ptr<Material>\ material);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{\string~Mesh}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ac85beb42e6c433f4d16fb3ed35b4edfa}{addVertex}}(\mbox{\hyperlink{class_vertex}{Vertex}}*\ v,\ \textcolor{keywordtype}{int}\ lod);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a0bc5d2ea431f5698c997acec7d220b98}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_mesh_ab2bd026eececa429d41b9fa89da59c38}{getCastShadow}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a91891eedfa0649925fafa82b998480e3}{setCastShadow}}(\textcolor{keywordtype}{bool}\ castShadow);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::vector<Vertex*>\ \mbox{\hyperlink{class_mesh_adc2cc01a0dee7f2d6bb35cee2a0d399f}{getVertices}}(\textcolor{keywordtype}{int}\ lod);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::shared\_ptr<Material>\ \mbox{\hyperlink{class_mesh_a01e3f868f0cf303db9304e6d45e46f9b}{getMaterial}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ lod\ =\ 0;\ }
+\DoxyCodeLine{00084\ \ \ \ \ std::vector<std::vector<Vertex*>>\ \mbox{\hyperlink{class_mesh_a2de681f0519c8c88a21666c9d30542e5}{vertices}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::shared\_ptr<Material>\ \mbox{\hyperlink{class_mesh_a57a6c3b1c34c7bf9b63df9c486b87bb5}{material}};\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ castShadow\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MESH}}
+
+\end{DoxyCode}

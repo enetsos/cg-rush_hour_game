@@ -1,0 +1,32 @@
+\doxysection{List.\+h}
+\hypertarget{_list_8h_source}{}\label{_list_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/List.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/List.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}node.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ LIST}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LIST}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_list}{List}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_object}{Object}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_list_a64d878a92d11f7c63c70cbe4e7dd4176}{List}}()\ \{\}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_list_a82eaec32ca0f08446a9beb1d61b7682a}{addEntry}}(\mbox{\hyperlink{class_node}{Node}}*\ node);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_list_a77796843f9119d48366b892816af7f98}{render}}(glm::mat4\ cameraMatrix)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_list_a3fad6292bd5126eeb437317383338cea}{clear}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ \mbox{\hyperlink{class_list_a764e0619b19875566fe811147f00b54b}{getObject}}(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_list_a86141be078d5fac15c1b7f402173a30f}{size}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ std::list<Node*>\ objectsList;\ }
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LIST}}
+
+\end{DoxyCode}

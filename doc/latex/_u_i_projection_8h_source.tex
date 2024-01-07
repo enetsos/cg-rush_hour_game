@@ -1,0 +1,39 @@
+\doxysection{UIProjection.\+h}
+\hypertarget{_u_i_projection_8h_source}{}\label{_u_i_projection_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/UIProjection.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/UIProjection.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}OrthogonalProjection.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ UI\_PROJECTION}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ UI\_PROJECTION}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_u_i_projection}{UIProjection}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_orthogonal_projection}{OrthogonalProjection}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_u_i_projection_a376399b3a322e04854a100b67f9ce580}{UIProjection}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ heigth);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_u_i_projection_a81d4ba269e2f5f4180fbaf308aa059f5}{UIProjection}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ heigth,\ \textcolor{keywordtype}{float}\ left,\ \textcolor{keywordtype}{float}\ right,\ \textcolor{keywordtype}{float}\ bottom,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ top,\ \textcolor{keywordtype}{float}\ zNear,\ \textcolor{keywordtype}{float}\ zFar);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_u_i_projection_ae7b312a2a330b6bfc13a9bf4b6722a42}{\string~UIProjection}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_projection_a84c4358815a404dc17652ed5ea93a52e}{setColor}}(glm::vec3\ color);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_projection_ad943042a2453ea681dedd687dc7f7581}{addLabel}}(std::string\ label);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_projection_af17c6a636d3b0757ff3ad575d1ef3e75}{editLabel}}(\textcolor{keywordtype}{int}\ index,\ std::string\ label);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_projection_a32e72ccabc27fc0edefc3a51a6d5c4a6}{clear}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_projection_a27357d4ef29a0797b08dcdec900ce544}{print}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ \ \ \ \ std::vector<std::string>\ labels;\ }
+\DoxyCodeLine{00090\ \ \ \ \ glm::vec3\ color\{\ 1.0f\ \};\ }
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UI\_PROJECTION}}
+
+\end{DoxyCode}

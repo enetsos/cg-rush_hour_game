@@ -1,0 +1,28 @@
+\doxysection{camera.\+h}
+\hypertarget{camera_8h_source}{}\label{camera_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/camera.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Projection.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}node.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ CAMERA}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ CAMERA}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_camera}{Camera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_node}{Node}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_camera_ade7ee9a97337777345c8f5e1c2ec16d9}{Camera}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,\ \mbox{\hyperlink{class_projection}{Projection}}*\ projection);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_camera_ad1897942d0ccf91052386388a497349f}{\string~Camera}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_projection}{Projection}}*\ \mbox{\hyperlink{class_camera_a621788b83f586411872170b0c9667b49}{getProjection}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_camera_ade4105157a8a81e10b7b6a654e9148cf}{getInverse}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_projection}{Projection}}*\ projection;\ }
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CAMERA}}
+
+\end{DoxyCode}

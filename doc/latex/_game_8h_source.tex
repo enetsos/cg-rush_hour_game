@@ -1,0 +1,79 @@
+\doxysection{Game.\+h}
+\hypertarget{_game_8h_source}{}\label{_game_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/client/Game.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/client/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}material.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}mesh.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}node.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <glm/gtc/quaternion.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <glm/gtx/matrix\_decompose.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <glm/gtx/string\_cast.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ GAME}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ GAME}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_game_aa843391f6ca8bb8da12aeaf7ab9d5fc3}{Game}}(std::vector<Node*>\ cars,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ originalCarPosition,\ \mbox{\hyperlink{class_node}{Node}}*\ teapot,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ brokenTeaPot);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a8569149158af209c01f5a9e33f71b250}{moveCar}}(glm::vec2\ direction);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ac035f7b3b4dcdfb290a6ad616e33b5d8}{setMovementSpeed}}(\textcolor{keywordtype}{float}\ movementSpeed);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_game_a410b7ee422658ecabaac63a9cbabe472}{getMovementSpeed}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_adec8e7532c9daa02261c6b1acc8738ec}{setActiveCar}}(\textcolor{keywordtype}{int}\ activeCar);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a803e233c4d3aa94527af3a35bb4020cb}{getActiveCar}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a79df6376b332d63c9eca0dcee30305c3}{update}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a39bb2fd26b5ea6b164f28f9f6723582e}{reset}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_adb424734b2454f9ed1e6d6bd44e6dfaf}{isRunning}}\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00101\ \ \ \ \ std::vector<Node*>\ cars;\ }
+\DoxyCodeLine{00102\ \ \ \ \ std::vector<glm::vec3>\ carsPosition;\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::vector<glm::mat4>\ carsOriginalTransform;\ }
+\DoxyCodeLine{00104\ \ \ \ \ std::vector<std::vector<int>>\ grid;\ }
+\DoxyCodeLine{00105\ \ \ \ \ std::vector<std::vector<int>>\ originalCarPosition;\ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ teaPot;\ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ brokenTeaPot;\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}*\ originalGame;\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ glm::vec3\ getOrientation(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_node}{Node}}*\ node);}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ moveCarOnGrid(glm::vec2\ direction);}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ printGrid();}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ biLux();}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ win();}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ swapTeaPot();}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ updateCarEmission(\textcolor{keywordtype}{int}\ carIndex,\ \textcolor{keyword}{const}\ glm::vec4\&\ emission);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ glm::vec4\ baseEmissionOff\ =\ glm::vec4(0.0f,\ 0.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{00120\ \ \ \ \ glm::vec4\ baseEmissionOn\ =\ glm::vec4(0.5f,\ 0.5f,\ 1.0f,\ 1.0f)\ *\ 2.0f;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{float}\ elapsedTime\ =\ 0.0f;}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{float}\ glowDuration\ =\ 1.0f;}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGlowingUp\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{float}\ movementSpeed\ =\ 1.0f;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ activeCar\ =\ 0;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ isWinning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME}}
+
+\end{DoxyCode}

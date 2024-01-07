@@ -16,9 +16,11 @@
 // MAIN //
 //////////
 
+// Engine and UIProjection instances
 Engine engine;
-UIProjection *ui;
+UIProjection* ui;
 
+// Camera parameters for free movement and rotation
 float cameraX = 70.0f;
 float cameraY = 100.0f;
 float cameraZ = 0.0f;
@@ -28,6 +30,7 @@ float rotationZ = -45.0f;
 float cameraSpeed = 2.0f;
 float rotationSpeed = 2.0f;
 
+// Camera parameters for stationary camera
 float stationaryCameraX = 10.0f;
 float stationaryCameraY = 190.0f;
 float stationaryCameraZ = 12.0f;
@@ -35,16 +38,28 @@ float stationaryRotationX = -90.0f;
 float stationaryRotationY = 0.0f;
 float stationaryRotationZ = 90.0f;
 
-Node *root;
+// Root node of the scene graph and control flags
+Node* root;
 bool isActive = true;
 bool showUI = true;
-Game *game;
+Game* game;
 
+// Movement parameters for game objects
 float movementDistance = 82.0f;
 
-Camera *freeCamera = nullptr;
-Camera *stationaryCamera = nullptr;
-Camera *activeCamera = nullptr;
+// Camera pointers for switching between different camera views
+Camera* freeCamera = nullptr;
+Camera* stationaryCamera = nullptr;
+Camera* activeCamera = nullptr;
+
+/**
+ * @brief Handles keyboard input for camera and game controls.
+ *
+ * This function is responsible for handling all keyboard inputs, including camera movement and rotation,
+ * switching cameras, and game controls like resetting the game and toggling UI elements.
+ *
+ * @param key The key code of the pressed key.
+ */
 
 void keyboardCallback(int key) {
 
@@ -136,6 +151,14 @@ void keyboardCallback(int key) {
   }
 }
 
+/**
+ * @brief Callback function for rendering each frame.
+ *
+ * This function is responsible for rendering each frame of the application.
+ * It includes clearing the screen, setting the camera projection, updating the game state,
+ * rendering the scene, and displaying UI elements.
+ */
+
 void displayCallback() {
   // Clear the screen:
   glm::vec3 color(37.0f, 53.0f, 87.0f);
@@ -200,10 +223,14 @@ void displayCallback() {
 }
 
 /**
- * Application entry point.
- * @param argc number of command-line arguments passed
- * @param argv array containing up to argc passed arguments
- * @return error code (0 on success, error code otherwise)
+ * @brief The main entry point of the application.
+ *
+ * This function sets up the application, including initializing the engine, loading the scene,
+ * setting up cameras, configuring the game, and entering the main loop of the application.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ * @return Returns 0 on successful execution.
  */
 int main(int argc, char *argv[]) {
   engine = Engine();

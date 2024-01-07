@@ -1,0 +1,193 @@
+\doxysection{Projection Class Reference}
+\hypertarget{class_projection}{}\label{class_projection}\index{Projection@{Projection}}
+
+
+Represents a projection matrix used in a 3D graphics environment.  
+
+
+
+
+{\ttfamily \#include $<$Projection.\+h$>$}
+
+Inheritance diagram for Projection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_projection}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_projection_ac2d0bbd5ce9a231fe32db3311a33eaad}{Projection}} (int width, int heigth)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_projection}{Projection} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_projection_ac0554f994078308f0169a4629a2d1b0a}{\texorpdfstring{$\sim$}{\string~}\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_projection}{Projection} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a0e3729f0662e25ae877f48d63fc46580}{set\+Open\+GLProjection}} ()
+\begin{DoxyCompactList}\small\item\em Sets the current Open\+GL projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a6b15169dad02d6df2bb5ccfa2a49254e}{set\+Projection}} (glm\+::mat4 projection)
+\begin{DoxyCompactList}\small\item\em Sets the projection matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_projection_ab218bdaf4549a227bff6bedd92049473}{get\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current projection matrix. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_projection_a6e8724244a0eef1c466f78e2950ae722}{update}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method for updating the projection matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_projection_a0cc757d30461250b940d969b523007ec}{get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Gets the width of the projection. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_projection_a09200a7451b32ef066069906c9882bdc}{get\+Heigth}} ()
+\begin{DoxyCompactList}\small\item\em Gets the height of the projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a0e80663b12902c5281281c745f9f8899}{set\+Width}} (int width)
+\begin{DoxyCompactList}\small\item\em Sets the width of the projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a2005005e61f30387e259ac475ce2ce79}{set\+Heigth}} (int heigth)
+\begin{DoxyCompactList}\small\item\em Sets the height of the projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a projection matrix used in a 3D graphics environment. 
+
+This class serves as a base for creating different types of projection matrices, such as orthogonal or perspective. It provides functionalities to set and get the projection matrix, update projection settings, and manage projection dimensions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_projection_ac2d0bbd5ce9a231fe32db3311a33eaad}\label{class_projection_ac2d0bbd5ce9a231fe32db3311a33eaad} 
+\index{Projection@{Projection}!Projection@{Projection}}
+\index{Projection@{Projection}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{Projection()}{Projection()}}
+{\footnotesize\ttfamily Projection\+::\+Projection (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{heigth }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_projection}{Projection} class. 
+
+Initializes a new \doxylink{class_projection}{Projection} instance with specified width and height.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & An integer representing the width of the projection. \\
+\hline
+{\em heigth} & An integer representing the height of the projection. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_projection_ac0554f994078308f0169a4629a2d1b0a}\label{class_projection_ac0554f994078308f0169a4629a2d1b0a} 
+\index{Projection@{Projection}!````~Projection@{\texorpdfstring{$\sim$}{\string~}Projection}}
+\index{````~Projection@{\texorpdfstring{$\sim$}{\string~}Projection}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Projection()}{\string~Projection()}}
+{\footnotesize\ttfamily Projection\+::\texorpdfstring{$\sim$}{\string~}\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{class_projection}{Projection} class. 
+
+Cleans up resources used by the \doxylink{class_projection}{Projection} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_projection_a09200a7451b32ef066069906c9882bdc}\label{class_projection_a09200a7451b32ef066069906c9882bdc} 
+\index{Projection@{Projection}!getHeigth@{getHeigth}}
+\index{getHeigth@{getHeigth}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{getHeigth()}{getHeigth()}}
+{\footnotesize\ttfamily int Projection\+::get\+Heigth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the height of the projection. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the height of the projection. 
+\end{DoxyReturn}
+\Hypertarget{class_projection_ab218bdaf4549a227bff6bedd92049473}\label{class_projection_ab218bdaf4549a227bff6bedd92049473} 
+\index{Projection@{Projection}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily glm\+::mat4 Projection\+::get\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current projection matrix. 
+
+\begin{DoxyReturn}{Returns}
+A glm\+::mat4 representing the current projection matrix. 
+\end{DoxyReturn}
+\Hypertarget{class_projection_a0cc757d30461250b940d969b523007ec}\label{class_projection_a0cc757d30461250b940d969b523007ec} 
+\index{Projection@{Projection}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Projection\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the width of the projection. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the width of the projection. 
+\end{DoxyReturn}
+\Hypertarget{class_projection_a2005005e61f30387e259ac475ce2ce79}\label{class_projection_a2005005e61f30387e259ac475ce2ce79} 
+\index{Projection@{Projection}!setHeigth@{setHeigth}}
+\index{setHeigth@{setHeigth}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{setHeigth()}{setHeigth()}}
+{\footnotesize\ttfamily void Projection\+::set\+Heigth (\begin{DoxyParamCaption}\item[{int}]{heigth }\end{DoxyParamCaption})}
+
+
+
+Sets the height of the projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heigth} & An integer representing the new height of the projection. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_projection_a0e3729f0662e25ae877f48d63fc46580}\label{class_projection_a0e3729f0662e25ae877f48d63fc46580} 
+\index{Projection@{Projection}!setOpenGLProjection@{setOpenGLProjection}}
+\index{setOpenGLProjection@{setOpenGLProjection}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{setOpenGLProjection()}{setOpenGLProjection()}}
+{\footnotesize\ttfamily void Projection\+::set\+Open\+GLProjection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the current Open\+GL projection. 
+
+This method updates the Open\+GL projection settings based on the current projection matrix. \Hypertarget{class_projection_a6b15169dad02d6df2bb5ccfa2a49254e}\label{class_projection_a6b15169dad02d6df2bb5ccfa2a49254e} 
+\index{Projection@{Projection}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily void Projection\+::set\+Projection (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{projection }\end{DoxyParamCaption})}
+
+
+
+Sets the projection matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projection} & A glm\+::mat4 representing the new projection matrix. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_projection_a0e80663b12902c5281281c745f9f8899}\label{class_projection_a0e80663b12902c5281281c745f9f8899} 
+\index{Projection@{Projection}!setWidth@{setWidth}}
+\index{setWidth@{setWidth}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{setWidth()}{setWidth()}}
+{\footnotesize\ttfamily void Projection\+::set\+Width (\begin{DoxyParamCaption}\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Sets the width of the projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & An integer representing the new width of the projection. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_projection_a6e8724244a0eef1c466f78e2950ae722}\label{class_projection_a6e8724244a0eef1c466f78e2950ae722} 
+\index{Projection@{Projection}!update@{update}}
+\index{update@{update}!Projection@{Projection}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Projection\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual method for updating the projection matrix. 
+
+This method can be overridden in derived classes to update the projection matrix based on specific projection types. 
+
+Reimplemented in \mbox{\hyperlink{class_orthogonal_projection_ae5c97325a66f457a14103c5e104b5f72}{Orthogonal\+Projection}}, and \mbox{\hyperlink{class_perspective_projection_a8ed90f18a7589b625531f6c7568170b3}{Perspective\+Projection}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/Projection.\+h\end{DoxyCompactItemize}

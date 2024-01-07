@@ -1,0 +1,33 @@
+\doxysection{Frame\+Rate.\+h}
+\hypertarget{_frame_rate_8h_source}{}\label{_frame_rate_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/FrameRate.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/FrameRate.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}LibDef.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <glm/gtc/type\_ptr.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ FRAMERATE}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ FRAMERATE}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_frame_rate}{FrameRate}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_frame_rate_a23e518bf9acd3f93c831c2c358aecc1a}{FrameRate}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_frame_rate_a3a4764ba3926455bee93dadd0f1f3f50}{\string~FrameRate}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_frame_rate_ae1bde4bffd69cdc84789254bf7caea49}{getFps}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_rate_a64c7c3d3ac12b05d9f5a2735453c4e92}{calculateFrameRate}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ fps\ =\ 0;\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ fpsTmp\ =\ 0;\ }
+\DoxyCodeLine{00055\ \ \ \ \ time\_t\ lastTime\ =\ 0.0f;\ }
+\DoxyCodeLine{00056\ \ \ \ \ time\_t\ currentTime\ =\ 0.0f;\ }
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FRAMERATE}}
+
+\end{DoxyCode}

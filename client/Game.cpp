@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 Game::Game(std::vector<Node*> cars, std::vector<std::vector<int>> originalCarPosition, Node* teaPot, Node* brokenTeaPot) : cars(cars), originalCarPosition(originalCarPosition), teaPot(teaPot), brokenTeaPot(brokenTeaPot){
     for (auto& car : cars)

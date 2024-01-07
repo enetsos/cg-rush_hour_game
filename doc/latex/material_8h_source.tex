@@ -1,0 +1,55 @@
+\doxysection{material.\+h}
+\hypertarget{material_8h_source}{}\label{material_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/material.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/material.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Texture.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ MATERIAL}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ MATERIAL}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_material}{Material}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_object}{Object}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_material_ab62debd5094104e73a41a907e0e32917}{Material}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,\ glm::vec4\ emission,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ glm::vec4\ ambient,\ glm::vec4\ diffuse,\ glm::vec4\ specular,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ shininess);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_material_a83dcb9b6f911f9b955f33f1658b711b9}{Material}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,\ glm::vec4\ ambient,\ glm::vec4\ diffuse,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ glm::vec4\ specular,\ \textcolor{keywordtype}{float}\ shininess);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_material_a2c19452d71f54075df8f5405b03129f4}{\string~Material}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a9e2449a67a26da790518b7c52ce78578}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ glm::vec4\ \mbox{\hyperlink{class_material_a98367e6c3ff4f5da195cf4489b5edae9}{getEmission}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \ \ \ \ glm::vec4\ \mbox{\hyperlink{class_material_a5dd60583476a8d3e3398022b7fe5cd36}{getAmbient}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ \ \ glm::vec4\ \mbox{\hyperlink{class_material_aacea5d2542fc837b58bfc37aaa677857}{getDiffuse}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ glm::vec4\ \mbox{\hyperlink{class_material_a59a0fb77d79ffa449bb4fe8304ee2a36}{getSpecular}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_material_af4a4b75421a39120c621d26403ed2050}{getShininess}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a90811850ee836f613e16220be38f9395}{setTexture}}(\mbox{\hyperlink{class_texture}{Texture}}*\ t);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ \mbox{\hyperlink{class_material_a80b0c5fe5c320d38b2ed77ae7a4107f0}{getTexture}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a8914c063f8e6e5eab55b47c4b8004edb}{setEmission}}(glm::vec4\ emission);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_material_a329d0ae8403956a71b1d45b3284f7dd7}{setShininess}}(\textcolor{keywordtype}{float}\ shininess);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00129\ \ \ \ \ glm::vec4\ emission;\ }
+\DoxyCodeLine{00130\ \ \ \ \ glm::vec4\ ambient;\ }
+\DoxyCodeLine{00131\ \ \ \ \ glm::vec4\ diffuse;\ }
+\DoxyCodeLine{00132\ \ \ \ \ glm::vec4\ specular;\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{float}\ shininess;\ }
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}*\ texture;\ }
+\DoxyCodeLine{00135\ \};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MATERIAL}}
+
+\end{DoxyCode}

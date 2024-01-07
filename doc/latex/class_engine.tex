@@ -1,0 +1,244 @@
+\doxysection{Engine Class Reference}
+\hypertarget{class_engine}{}\label{class_engine}\index{Engine@{Engine}}
+
+
+The main engine class responsible for initializing and managing the 3D graphics environment.  
+
+
+
+
+{\ttfamily \#include $<$engine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_engine}{Engine} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\texorpdfstring{$\sim$}{\string~}\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_engine}{Engine} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a5bccac6b54a00ab2adfb2f488a16bd6b}{init}} (const char \texorpdfstring{$\ast$}{*}window\+Name, void(\texorpdfstring{$\ast$}{*}keyboard\+Callback\+Application)(int), void(\texorpdfstring{$\ast$}{*}display\+Call\+Back\+Application)())
+\begin{DoxyCompactList}\small\item\em Initializes the graphics environment with specified parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_acd825572a9c282c50fe0b6e80b441ec5}{free}} ()
+\begin{DoxyCompactList}\small\item\em Frees up resources allocated by the engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_engine_a78901afe80fd2fb9be376c4f56df088f}{load\+Scene}} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Loads a scene from the specified file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a7603f9476bbb673a6c9d04d65141e7a9}{clean}} (glm\+::vec4 color)
+\begin{DoxyCompactList}\small\item\em Clears the screen with the specified color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a8c12ce84e610d70605eda746eafeb281}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Prepares the rendering environment for a new frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a1bb91b9a636e354a746068290363888c}{set\+Camera}} (\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}camera)
+\begin{DoxyCompactList}\small\item\em Sets the camera to be used by the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_engine_a3574fbd9e2ab599d48c5af3a6aae1858}{swap}} ()
+\begin{DoxyCompactList}\small\item\em Swaps the front and back buffers. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_a2f67dee0b0945a650033df73353f1129}{force\+Refresh}} ()
+\begin{DoxyCompactList}\small\item\em Forces a refresh of the display. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_list}{List}} \mbox{\hyperlink{class_engine_a7bf0ebe15dcee137ba4f6cafc293c791}{get\+List}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current list of elements in the engine. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_u_i_projection}{UIProjection}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_engine_a1b2fe2c1e0a4d6992ab770f6d8e78d9d}{get\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Gets the UI projection used by the engine. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_engine_aa9d02dd275bf15417407ce33d33db260}{get\+Fps}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current frames per second (FPS) rate. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_ac8c6addb070d5d8448d8363fbe4cad49}{set\+Texture\+Path}} (std\+::string width)
+\begin{DoxyCompactList}\small\item\em Sets the path for texture resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main engine class responsible for initializing and managing the 3D graphics environment. 
+
+This class encapsulates functionalities for initializing the rendering environment, handling input, managing scenes, and controlling the render loop. It acts as a central hub for the graphics application. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}\label{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2} 
+\index{Engine@{Engine}!Engine@{Engine}}
+\index{Engine@{Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Engine()}{Engine()}}
+{\footnotesize\ttfamily Engine\+::\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \doxylink{class_engine}{Engine} class. 
+
+Initializes a new instance of the \doxylink{class_engine}{Engine} class. \Hypertarget{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}\label{class_engine_a8ef7030a089ecb30bbfcb9e43094717a} 
+\index{Engine@{Engine}!````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}}
+\index{````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Engine()}{\string~Engine()}}
+{\footnotesize\ttfamily Engine\+::\texorpdfstring{$\sim$}{\string~}\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor for the \doxylink{class_engine}{Engine} class. 
+
+Cleans up resources used by the \doxylink{class_engine}{Engine} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_a8c12ce84e610d70605eda746eafeb281}\label{class_engine_a8c12ce84e610d70605eda746eafeb281} 
+\index{Engine@{Engine}!begin@{begin}}
+\index{begin@{begin}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Engine\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prepares the rendering environment for a new frame. 
+
+This method should be called at the beginning of each frame\textquotesingle{}s rendering. \Hypertarget{class_engine_a7603f9476bbb673a6c9d04d65141e7a9}\label{class_engine_a7603f9476bbb673a6c9d04d65141e7a9} 
+\index{Engine@{Engine}!clean@{clean}}
+\index{clean@{clean}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily void Engine\+::clean (\begin{DoxyParamCaption}\item[{glm\+::vec4}]{color }\end{DoxyParamCaption})}
+
+
+
+Clears the screen with the specified color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & A glm\+::vec4 color to clear the screen with. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a2f67dee0b0945a650033df73353f1129}\label{class_engine_a2f67dee0b0945a650033df73353f1129} 
+\index{Engine@{Engine}!forceRefresh@{forceRefresh}}
+\index{forceRefresh@{forceRefresh}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{forceRefresh()}{forceRefresh()}}
+{\footnotesize\ttfamily static void Engine\+::force\+Refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Forces a refresh of the display. 
+
+This method can be used to request a redraw of the window contents. \Hypertarget{class_engine_acd825572a9c282c50fe0b6e80b441ec5}\label{class_engine_acd825572a9c282c50fe0b6e80b441ec5} 
+\index{Engine@{Engine}!free@{free}}
+\index{free@{free}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily void Engine\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees up resources allocated by the engine. 
+
+This method should be called before exiting the application to ensure proper cleanup of resources. \Hypertarget{class_engine_aa9d02dd275bf15417407ce33d33db260}\label{class_engine_aa9d02dd275bf15417407ce33d33db260} 
+\index{Engine@{Engine}!getFps@{getFps}}
+\index{getFps@{getFps}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getFps()}{getFps()}}
+{\footnotesize\ttfamily static int Engine\+::get\+Fps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the current frames per second (FPS) rate. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the current FPS. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_a7bf0ebe15dcee137ba4f6cafc293c791}\label{class_engine_a7bf0ebe15dcee137ba4f6cafc293c791} 
+\index{Engine@{Engine}!getList@{getList}}
+\index{getList@{getList}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getList()}{getList()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_list}{List}} Engine\+::get\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the current list of elements in the engine. 
+
+\begin{DoxyReturn}{Returns}
+A \doxylink{class_list}{List} object representing the current elements. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_a1b2fe2c1e0a4d6992ab770f6d8e78d9d}\label{class_engine_a1b2fe2c1e0a4d6992ab770f6d8e78d9d} 
+\index{Engine@{Engine}!getUI@{getUI}}
+\index{getUI@{getUI}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{getUI()}{getUI()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_u_i_projection}{UIProjection}} \texorpdfstring{$\ast$}{*} Engine\+::get\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the UI projection used by the engine. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \doxylink{class_u_i_projection}{UIProjection} instance. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_a5bccac6b54a00ab2adfb2f488a16bd6b}\label{class_engine_a5bccac6b54a00ab2adfb2f488a16bd6b} 
+\index{Engine@{Engine}!init@{init}}
+\index{init@{init}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Engine\+::init (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{window\+Name,  }\item[{void(\texorpdfstring{$\ast$}{*})(int)}]{keyboard\+Callback\+Application,  }\item[{void(\texorpdfstring{$\ast$}{*})()}]{display\+Call\+Back\+Application }\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics environment with specified parameters. 
+
+Sets up the rendering window, input callbacks, and other necessary elements for the graphics environment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Name} & The name of the window to be created. \\
+\hline
+{\em keyboard\+Callback\+Application} & Pointer to the function handling keyboard inputs. \\
+\hline
+{\em display\+Call\+Back\+Application} & Pointer to the function for rendering callbacks. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a78901afe80fd2fb9be376c4f56df088f}\label{class_engine_a78901afe80fd2fb9be376c4f56df088f} 
+\index{Engine@{Engine}!loadScene@{loadScene}}
+\index{loadScene@{loadScene}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{loadScene()}{loadScene()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} Engine\+::load\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Loads a scene from the specified file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the file containing the scene data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root node of the loaded scene. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_a1bb91b9a636e354a746068290363888c}\label{class_engine_a1bb91b9a636e354a746068290363888c} 
+\index{Engine@{Engine}!setCamera@{setCamera}}
+\index{setCamera@{setCamera}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setCamera()}{setCamera()}}
+{\footnotesize\ttfamily void Engine\+::set\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}}]{camera }\end{DoxyParamCaption})}
+
+
+
+Sets the camera to be used by the engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & A pointer to the \doxylink{class_camera}{Camera} object to be used. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_ac8c6addb070d5d8448d8363fbe4cad49}\label{class_engine_ac8c6addb070d5d8448d8363fbe4cad49} 
+\index{Engine@{Engine}!setTexturePath@{setTexturePath}}
+\index{setTexturePath@{setTexturePath}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setTexturePath()}{setTexturePath()}}
+{\footnotesize\ttfamily static void Engine\+::set\+Texture\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{width }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the path for texture resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The path to the directory containing texture resources. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a3574fbd9e2ab599d48c5af3a6aae1858}\label{class_engine_a3574fbd9e2ab599d48c5af3a6aae1858} 
+\index{Engine@{Engine}!swap@{swap}}
+\index{swap@{swap}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily static void Engine\+::swap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Swaps the front and back buffers. 
+
+This static method is typically called after rendering a frame to display it on the screen. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/engine.\+h\end{DoxyCompactItemize}

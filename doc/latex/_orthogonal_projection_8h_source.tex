@@ -1,0 +1,33 @@
+\doxysection{Orthogonal\+Projection.\+h}
+\hypertarget{_orthogonal_projection_8h_source}{}\label{_orthogonal_projection_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/OrthogonalProjection.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/OrthogonalProjection.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Projection.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ ORTHOGONAL\_PROJECTION}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ORTHOGONAL\_PROJECTION}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_orthogonal_projection}{OrthogonalProjection}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_projection}{Projection}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_orthogonal_projection_ae0a440f8b4f8a8bf990ecac6f0b294b1}{OrthogonalProjection}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ heigth);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_orthogonal_projection_ae9f4eab13e909d0b4e83fc3e8feaab2b}{OrthogonalProjection}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ heigth,\ \textcolor{keywordtype}{float}\ left,\ \textcolor{keywordtype}{float}\ right,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bottom,\ \textcolor{keywordtype}{float}\ top,\ \textcolor{keywordtype}{float}\ zNear,\ \textcolor{keywordtype}{float}\ zFar);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_orthogonal_projection_a5b516317cece7c12b970d8bc60316ed7}{\string~OrthogonalProjection}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_orthogonal_projection_ae5c97325a66f457a14103c5e104b5f72}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ left;\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{float}\ right;\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ bottom;\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ top;\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ zNear;\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ zFar;\ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ORTHOGONAL\_PROJECTION}}
+
+\end{DoxyCode}

@@ -1,0 +1,178 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Represents the core game logic and state in a 3D game environment.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_aa843391f6ca8bb8da12aeaf7ab9d5fc3}{Game}} (std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$ cars, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ original\+Car\+Position, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}teapot, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}broken\+Tea\+Pot)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_game}{Game} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\texorpdfstring{$\sim$}{\string~}\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_game}{Game} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a8569149158af209c01f5a9e33f71b250}{move\+Car}} (glm\+::vec2 direction)
+\begin{DoxyCompactList}\small\item\em Moves the active car in the specified direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ac035f7b3b4dcdfb290a6ad616e33b5d8}{set\+Movement\+Speed}} (float movement\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the movement speed of the cars. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_a410b7ee422658ecabaac63a9cbabe472}{get\+Movement\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current movement speed of the cars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_adec8e7532c9daa02261c6b1acc8738ec}{set\+Active\+Car}} (int active\+Car)
+\begin{DoxyCompactList}\small\item\em Sets the active car that can be controlled. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_a803e233c4d3aa94527af3a35bb4020cb}{get\+Active\+Car}} ()
+\begin{DoxyCompactList}\small\item\em Gets the index of the active car. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a79df6376b332d63c9eca0dcee30305c3}{update}} ()
+\begin{DoxyCompactList}\small\item\em Updates the game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a39bb2fd26b5ea6b164f28f9f6723582e}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the game to its initial state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_adb424734b2454f9ed1e6d6bd44e6dfaf}\label{class_game_adb424734b2454f9ed1e6d6bd44e6dfaf} 
+bool {\bfseries is\+Running} = true
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the game is currently running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the core game logic and state in a 3D game environment. 
+
+This class encapsulates the main game mechanics, including car movement, game state management, and interaction with game objects like teapots. It handles the update logic, win condition checks, and manages the grid where the game objects are placed. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_aa843391f6ca8bb8da12aeaf7ab9d5fc3}\label{class_game_aa843391f6ca8bb8da12aeaf7ab9d5fc3} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$}]{cars,  }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{original\+Car\+Position,  }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{teapot,  }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{broken\+Tea\+Pot }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_game}{Game} class. 
+
+Initializes a new \doxylink{class_game}{Game} instance with specified game objects and their positions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cars} & A vector of \doxylink{class_node}{Node} pointers representing the cars in the game. \\
+\hline
+{\em original\+Car\+Position} & A vector of vectors representing the original positions of the cars. \\
+\hline
+{\em teapot} & A pointer to the \doxylink{class_node}{Node} representing the teapot. \\
+\hline
+{\em broken\+Tea\+Pot} & A pointer to the \doxylink{class_node}{Node} representing the broken teapot. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\label{class_game_ae3d112ca6e0e55150d2fdbc704474530} 
+\index{Game@{Game}!````~Game@{\texorpdfstring{$\sim$}{\string~}Game}}
+\index{````~Game@{\texorpdfstring{$\sim$}{\string~}Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Game()}{\string~Game()}}
+{\footnotesize\ttfamily Game\+::\texorpdfstring{$\sim$}{\string~}\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{class_game}{Game} class. 
+
+Cleans up resources used by the \doxylink{class_game}{Game} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_a803e233c4d3aa94527af3a35bb4020cb}\label{class_game_a803e233c4d3aa94527af3a35bb4020cb} 
+\index{Game@{Game}!getActiveCar@{getActiveCar}}
+\index{getActiveCar@{getActiveCar}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getActiveCar()}{getActiveCar()}}
+{\footnotesize\ttfamily int Game\+::get\+Active\+Car (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the index of the active car. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the index of the active car. 
+\end{DoxyReturn}
+\Hypertarget{class_game_a410b7ee422658ecabaac63a9cbabe472}\label{class_game_a410b7ee422658ecabaac63a9cbabe472} 
+\index{Game@{Game}!getMovementSpeed@{getMovementSpeed}}
+\index{getMovementSpeed@{getMovementSpeed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getMovementSpeed()}{getMovementSpeed()}}
+{\footnotesize\ttfamily float Game\+::get\+Movement\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current movement speed of the cars. 
+
+\begin{DoxyReturn}{Returns}
+A float representing the current movement speed. 
+\end{DoxyReturn}
+\Hypertarget{class_game_a8569149158af209c01f5a9e33f71b250}\label{class_game_a8569149158af209c01f5a9e33f71b250} 
+\index{Game@{Game}!moveCar@{moveCar}}
+\index{moveCar@{moveCar}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{moveCar()}{moveCar()}}
+{\footnotesize\ttfamily void Game\+::move\+Car (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{direction }\end{DoxyParamCaption})}
+
+
+
+Moves the active car in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & A glm\+::vec2 representing the direction of movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_a39bb2fd26b5ea6b164f28f9f6723582e}\label{class_game_a39bb2fd26b5ea6b164f28f9f6723582e} 
+\index{Game@{Game}!reset@{reset}}
+\index{reset@{reset}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Game\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the game to its initial state. 
+
+This method resets the game, including the positions of the cars and the game state. \Hypertarget{class_game_adec8e7532c9daa02261c6b1acc8738ec}\label{class_game_adec8e7532c9daa02261c6b1acc8738ec} 
+\index{Game@{Game}!setActiveCar@{setActiveCar}}
+\index{setActiveCar@{setActiveCar}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setActiveCar()}{setActiveCar()}}
+{\footnotesize\ttfamily void Game\+::set\+Active\+Car (\begin{DoxyParamCaption}\item[{int}]{active\+Car }\end{DoxyParamCaption})}
+
+
+
+Sets the active car that can be controlled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active\+Car} & An integer representing the index of the active car. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_ac035f7b3b4dcdfb290a6ad616e33b5d8}\label{class_game_ac035f7b3b4dcdfb290a6ad616e33b5d8} 
+\index{Game@{Game}!setMovementSpeed@{setMovementSpeed}}
+\index{setMovementSpeed@{setMovementSpeed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setMovementSpeed()}{setMovementSpeed()}}
+{\footnotesize\ttfamily void Game\+::set\+Movement\+Speed (\begin{DoxyParamCaption}\item[{float}]{movement\+Speed }\end{DoxyParamCaption})}
+
+
+
+Sets the movement speed of the cars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em movement\+Speed} & A float representing the new movement speed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_a79df6376b332d63c9eca0dcee30305c3}\label{class_game_a79df6376b332d63c9eca0dcee30305c3} 
+\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Game\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the game state. 
+
+This method should be called regularly to update the game state, including checking for win conditions. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/client/Game.\+h\end{DoxyCompactItemize}

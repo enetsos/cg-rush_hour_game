@@ -1,0 +1,28 @@
+\doxysection{Point\+Light.\+h}
+\hypertarget{_point_light_8h_source}{}\label{_point_light_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/PointLight.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/PointLight.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ POINT\_LIGHT}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ POINT\_LIGHT}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_point_light}{PointLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_light}{Light}}\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_point_light_a72063c0f5e898d61584c60efe7d70356}{PointLight}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ lightNumber,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ ambient,\ \textcolor{keyword}{const}\ glm::vec4\ diffuse,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ specular,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ cutOff\ =\ 180.0f);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_point_light_aa12d9005d5372dbbe655a82231634341}{\string~PointLight}}()\ \{\};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_point_light_a382dd11d45d8a6c81f89465cae329547}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ cutOff;\ }
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POINT\_LIGHT}}
+
+\end{DoxyCode}

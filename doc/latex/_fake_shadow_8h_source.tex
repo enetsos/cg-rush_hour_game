@@ -1,0 +1,41 @@
+\doxysection{Fake\+Shadow.\+h}
+\hypertarget{_fake_shadow_8h_source}{}\label{_fake_shadow_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/FakeShadow.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/FakeShadow.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}mesh.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ FAKESHADOW}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ FAKESHADOW}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_fake_shadow}{FakeShadow}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_mesh}{Mesh}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_fake_shadow_a63e30a0141ab902793fe803c861215b8}{FakeShadow}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::shared\_ptr<Material>\ material,\ \mbox{\hyperlink{class_mesh}{Mesh}}*\ model);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_fake_shadow_a03d7a92ad34f5d52ee3d8bb871d2bbd4}{\string~FakeShadow}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fake_shadow_a61ec252e567248052d074cba39557ef2}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fake_shadow_af1e215fcc65d3a0b0a41e359d6834fa1}{setOffset}}(glm::mat4\ offset);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_fake_shadow_a507023a12ccb6117262d38e1b1599da3}{getOffset}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_fake_shadow_a71776b1f4e9d11abc9d76a67ce4a4721}{getScaling}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fake_shadow_a57e0be61c61e69f9547964d04d14277b}{setShadowParent}}(\mbox{\hyperlink{class_mesh}{Mesh}}*\ node);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ glm::mat4\ getRotationMatrix();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ glm::mat4\ offset;\ }
+\DoxyCodeLine{00087\ \ \ \ \ glm::mat4\ scaling;\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_mesh}{Mesh}}*\ model;\ }
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FAKESHADOW}}
+
+\end{DoxyCode}

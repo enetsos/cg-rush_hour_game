@@ -1,0 +1,83 @@
+\doxysection{Frame\+Rate Class Reference}
+\hypertarget{class_frame_rate}{}\label{class_frame_rate}\index{FrameRate@{FrameRate}}
+
+
+Manages and calculates the frame rate for a graphics application.  
+
+
+
+
+{\ttfamily \#include $<$Frame\+Rate.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_frame_rate_a23e518bf9acd3f93c831c2c358aecc1a}{Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_frame_rate}{Frame\+Rate} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_frame_rate_a3a4764ba3926455bee93dadd0f1f3f50}{\texorpdfstring{$\sim$}{\string~}\+Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_frame_rate}{Frame\+Rate} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_frame_rate_ae1bde4bffd69cdc84789254bf7caea49}{get\+Fps}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current frames per second (FPS). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_frame_rate_a64c7c3d3ac12b05d9f5a2735453c4e92}{calculate\+Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the frame rate based on time elapsed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages and calculates the frame rate for a graphics application. 
+
+This class is designed to track and calculate the frames per second (fps) in a graphics application. It is useful for performance monitoring and ensuring that rendering is occurring at the desired rate. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_frame_rate_a23e518bf9acd3f93c831c2c358aecc1a}\label{class_frame_rate_a23e518bf9acd3f93c831c2c358aecc1a} 
+\index{FrameRate@{FrameRate}!FrameRate@{FrameRate}}
+\index{FrameRate@{FrameRate}!FrameRate@{FrameRate}}
+\doxysubsubsection{\texorpdfstring{FrameRate()}{FrameRate()}}
+{\footnotesize\ttfamily Frame\+Rate\+::\+Frame\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_frame_rate}{Frame\+Rate} class. 
+
+Initializes a new instance of the \doxylink{class_frame_rate}{Frame\+Rate} class with initial values. \Hypertarget{class_frame_rate_a3a4764ba3926455bee93dadd0f1f3f50}\label{class_frame_rate_a3a4764ba3926455bee93dadd0f1f3f50} 
+\index{FrameRate@{FrameRate}!````~FrameRate@{\texorpdfstring{$\sim$}{\string~}FrameRate}}
+\index{````~FrameRate@{\texorpdfstring{$\sim$}{\string~}FrameRate}!FrameRate@{FrameRate}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FrameRate()}{\string~FrameRate()}}
+{\footnotesize\ttfamily Frame\+Rate\+::\texorpdfstring{$\sim$}{\string~}\+Frame\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_frame_rate}{Frame\+Rate} class. 
+
+Performs cleanup tasks for the \doxylink{class_frame_rate}{Frame\+Rate} instance, if necessary. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_frame_rate_a64c7c3d3ac12b05d9f5a2735453c4e92}\label{class_frame_rate_a64c7c3d3ac12b05d9f5a2735453c4e92} 
+\index{FrameRate@{FrameRate}!calculateFrameRate@{calculateFrameRate}}
+\index{calculateFrameRate@{calculateFrameRate}!FrameRate@{FrameRate}}
+\doxysubsubsection{\texorpdfstring{calculateFrameRate()}{calculateFrameRate()}}
+{\footnotesize\ttfamily void Frame\+Rate\+::calculate\+Frame\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the frame rate based on time elapsed. 
+
+This method updates the FPS value by calculating it based on the time elapsed since the last frame. It should be called once per frame. \Hypertarget{class_frame_rate_ae1bde4bffd69cdc84789254bf7caea49}\label{class_frame_rate_ae1bde4bffd69cdc84789254bf7caea49} 
+\index{FrameRate@{FrameRate}!getFps@{getFps}}
+\index{getFps@{getFps}!FrameRate@{FrameRate}}
+\doxysubsubsection{\texorpdfstring{getFps()}{getFps()}}
+{\footnotesize\ttfamily int Frame\+Rate\+::get\+Fps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current frames per second (FPS). 
+
+This method returns the calculated FPS value, which indicates the performance of the graphics rendering.
+
+\begin{DoxyReturn}{Returns}
+An integer representing the current FPS. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/Frame\+Rate.\+h\end{DoxyCompactItemize}

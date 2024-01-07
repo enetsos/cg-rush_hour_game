@@ -1,0 +1,112 @@
+\doxysection{Perspective\+Projection Class Reference}
+\hypertarget{class_perspective_projection}{}\label{class_perspective_projection}\index{PerspectiveProjection@{PerspectiveProjection}}
+
+
+Represents a perspective projection in a 3D graphics environment.  
+
+
+
+
+{\ttfamily \#include $<$Perspective\+Projection.\+h$>$}
+
+Inheritance diagram for Perspective\+Projection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_perspective_projection}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_perspective_projection_a66cd7a856ad42d627739b81fc55bb3a7}{Perspective\+Projection}} (int width, int heigth, float fov=45.\+0f, float near=1.\+0f, float far=100.\+0f)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_perspective_projection}{Perspective\+Projection}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_perspective_projection_a741f612f48c69f50f34a719181f90f2a}{\texorpdfstring{$\sim$}{\string~}\+Perspective\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_perspective_projection}{Perspective\+Projection}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_perspective_projection_a8ed90f18a7589b625531f6c7568170b3}{update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the projection matrix based on current properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_projection}{Projection}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_projection_ac2d0bbd5ce9a231fe32db3311a33eaad}{Projection}} (int width, int heigth)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_projection}{Projection} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_projection_ac0554f994078308f0169a4629a2d1b0a}{\texorpdfstring{$\sim$}{\string~}\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_projection}{Projection} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a0e3729f0662e25ae877f48d63fc46580}{set\+Open\+GLProjection}} ()
+\begin{DoxyCompactList}\small\item\em Sets the current Open\+GL projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a6b15169dad02d6df2bb5ccfa2a49254e}{set\+Projection}} (glm\+::mat4 projection)
+\begin{DoxyCompactList}\small\item\em Sets the projection matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_projection_ab218bdaf4549a227bff6bedd92049473}{get\+Projection}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current projection matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_projection_a0cc757d30461250b940d969b523007ec}{get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Gets the width of the projection. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_projection_a09200a7451b32ef066069906c9882bdc}{get\+Heigth}} ()
+\begin{DoxyCompactList}\small\item\em Gets the height of the projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a0e80663b12902c5281281c745f9f8899}{set\+Width}} (int width)
+\begin{DoxyCompactList}\small\item\em Sets the width of the projection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_a2005005e61f30387e259ac475ce2ce79}{set\+Heigth}} (int heigth)
+\begin{DoxyCompactList}\small\item\em Sets the height of the projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a perspective projection in a 3D graphics environment. 
+
+Inherits from \doxylink{class_projection}{Projection} class. This class encapsulates the properties and functionalities of a perspective projection, which is a method of projecting three-\/dimensional objects into a two-\/dimensional plane, where the projection lines converge in a single point (the vanishing point), simulating the depth perception of the human eye. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_perspective_projection_a66cd7a856ad42d627739b81fc55bb3a7}\label{class_perspective_projection_a66cd7a856ad42d627739b81fc55bb3a7} 
+\index{PerspectiveProjection@{PerspectiveProjection}!PerspectiveProjection@{PerspectiveProjection}}
+\index{PerspectiveProjection@{PerspectiveProjection}!PerspectiveProjection@{PerspectiveProjection}}
+\doxysubsubsection{\texorpdfstring{PerspectiveProjection()}{PerspectiveProjection()}}
+{\footnotesize\ttfamily Perspective\+Projection\+::\+Perspective\+Projection (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{heigth,  }\item[{float}]{fov = {\ttfamily 45.0f},  }\item[{float}]{near = {\ttfamily 1.0f},  }\item[{float}]{far = {\ttfamily 100.0f} }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_perspective_projection}{Perspective\+Projection}. 
+
+Initializes a new instance of the \doxylink{class_perspective_projection}{Perspective\+Projection} class with specified properties.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & An integer representing the width of the projection. \\
+\hline
+{\em heigth} & An integer representing the height of the projection. \\
+\hline
+{\em fov} & A float representing the field of view angle in degrees. \\
+\hline
+{\em near} & A float representing the near clipping plane. \\
+\hline
+{\em far} & A float representing the far clipping plane. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_perspective_projection_a741f612f48c69f50f34a719181f90f2a}\label{class_perspective_projection_a741f612f48c69f50f34a719181f90f2a} 
+\index{PerspectiveProjection@{PerspectiveProjection}!````~PerspectiveProjection@{\texorpdfstring{$\sim$}{\string~}PerspectiveProjection}}
+\index{````~PerspectiveProjection@{\texorpdfstring{$\sim$}{\string~}PerspectiveProjection}!PerspectiveProjection@{PerspectiveProjection}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PerspectiveProjection()}{\string~PerspectiveProjection()}}
+{\footnotesize\ttfamily Perspective\+Projection\+::\texorpdfstring{$\sim$}{\string~}\+Perspective\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{class_perspective_projection}{Perspective\+Projection}. 
+
+Cleans up resources used by the \doxylink{class_perspective_projection}{Perspective\+Projection} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_perspective_projection_a8ed90f18a7589b625531f6c7568170b3}\label{class_perspective_projection_a8ed90f18a7589b625531f6c7568170b3} 
+\index{PerspectiveProjection@{PerspectiveProjection}!update@{update}}
+\index{update@{update}!PerspectiveProjection@{PerspectiveProjection}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Perspective\+Projection\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the projection matrix based on current properties. 
+
+Overrides the update method from the \doxylink{class_projection}{Projection} class. This method recalculates the projection matrix using the current perspective projection parameters. 
+
+Reimplemented from \mbox{\hyperlink{class_projection_a6e8724244a0eef1c466f78e2950ae722}{Projection}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/Perspective\+Projection.\+h\end{DoxyCompactItemize}

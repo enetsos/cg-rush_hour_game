@@ -1,0 +1,43 @@
+\doxysection{Projection.\+h}
+\hypertarget{_projection_8h_source}{}\label{_projection_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/Projection.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/Projection.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}LibDef.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <glm/gtc/type\_ptr.hpp>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJECTION}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJECTION}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_projection}{Projection}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_projection_ac2d0bbd5ce9a231fe32db3311a33eaad}{Projection}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ heigth);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_projection_ac0554f994078308f0169a4629a2d1b0a}{\string~Projection}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_projection_a0e3729f0662e25ae877f48d63fc46580}{setOpenGLProjection}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_projection_a6b15169dad02d6df2bb5ccfa2a49254e}{setProjection}}(glm::mat4\ projection);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_projection_ab218bdaf4549a227bff6bedd92049473}{getProjection}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_projection_a6e8724244a0eef1c466f78e2950ae722}{update}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_projection_a0cc757d30461250b940d969b523007ec}{getWidth}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_projection_a09200a7451b32ef066069906c9882bdc}{getHeigth}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_projection_a0e80663b12902c5281281c745f9f8899}{setWidth}}(\textcolor{keywordtype}{int}\ width);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_projection_a2005005e61f30387e259ac475ce2ce79}{setHeigth}}(\textcolor{keywordtype}{int}\ heigth);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \ glm::mat4\ projection\{\ 1.0f\ \};\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ width;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ heigth;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PROJECTION}}
+
+\end{DoxyCode}

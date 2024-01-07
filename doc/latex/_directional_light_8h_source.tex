@@ -1,0 +1,27 @@
+\doxysection{Directional\+Light.\+h}
+\hypertarget{_directional_light_8h_source}{}\label{_directional_light_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/DirectionalLight.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/DirectionalLight.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ DIRECTIONAL\_LIGHT}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ DIRECTIONAL\_LIGHT}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LIB\_API\ \mbox{\hyperlink{class_directional_light}{DirectionalLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_light}{Light}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_directional_light_aa01e05ffd9813207f481a918a39bc9cf}{DirectionalLight}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\ name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ lightNumber,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ ambient,\ \textcolor{keyword}{const}\ glm::vec4\ diffuse,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ specular);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_directional_light_ac4aca6c806e752c65ffea9b2f237b245}{\string~DirectionalLight}}()\ \{\};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directional_light_a93f005171624ad2c4976499396881c6b}{render}}(glm::mat4\ cameraInv)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directional_light_aa266558d1e22c05c684bd7cc04e17cbb}{setTransform}}(glm::mat4\ transform)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DIRECTIONAL\_LIGHT}}
+
+\end{DoxyCode}

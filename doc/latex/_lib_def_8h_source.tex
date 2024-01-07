@@ -1,0 +1,24 @@
+\doxysection{Lib\+Def.\+h}
+\hypertarget{_lib_def_8h_source}{}\label{_lib_def_8h_source}\index{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/LibDef.h@{C:/Scuola/SUPSI/terzo anno/Grafica/Progetto/engine/LibDef.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ VERSION\ //}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Generic\ info:}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LIB\_NAME\ \ \ \ \ \ "{}Engine\ v0.1a"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ LIB\_VERSION\ \ \ 10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifdef\ \_WINDOWS}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ Export\ API:}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ Specifies\ i/o\ linkage\ (VC++\ spec):}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ ENGINE\_EXPORTS}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ LIB\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ LIB\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ Under\ Linux}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#define\ LIB\_API\ \ }\textcolor{comment}{//\ Dummy\ declaration}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

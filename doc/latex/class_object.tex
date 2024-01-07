@@ -1,0 +1,167 @@
+\doxysection{Object Class Reference}
+\hypertarget{class_object}{}\label{class_object}\index{Object@{Object}}
+
+
+Base class for objects in a 3D graphics environment.  
+
+
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object_a40860402e64d8008fb42329df7097cdb}{Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_object}{Object} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_object_a8ec0afba66553a1e53637cf582e0ecaa}{Object}} (int id, const std\+::string name)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_object}{Object} class with specified ID and name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_object_ae8f5483f459e46687bd01e6f9977afd3}{\texorpdfstring{$\sim$}{\string~}\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_object}{Object} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_object_af3558f9e2b46d677f0ac4d6d3c97b118}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Gets the ID of the object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_object_acb9b466607cb80beaaa30ece2f7f570a}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_object_ac27109fdd91080a828a8e338993c25e8}{set\+Name}} (const std\+::string name)
+\begin{DoxyCompactList}\small\item\em Sets the name of the object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_object_a43c18a818c62ac94e9a2aaf6cd127cfd}{render}} (glm\+::mat4 camera\+Inv)
+\begin{DoxyCompactList}\small\item\em Virtual render method for the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_object_ada9fbb1e54498897eebbd38e05f012f2}{get\+Next\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Static method to get the next available ID for an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for objects in a 3D graphics environment. 
+
+This class serves as a base for various objects in a 3D graphics context. It provides fundamental attributes like ID and name, along with a basic render method. It is designed to be extended by other specific classes that require these basic properties. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_object_a40860402e64d8008fb42329df7097cdb}\label{class_object_a40860402e64d8008fb42329df7097cdb} 
+\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Object\+::\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor for \doxylink{class_object}{Object} class. 
+
+Initializes a new \doxylink{class_object}{Object} instance with a unique ID. \Hypertarget{class_object_a8ec0afba66553a1e53637cf582e0ecaa}\label{class_object_a8ec0afba66553a1e53637cf582e0ecaa} 
+\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Object\+::\+Object (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_object}{Object} class with specified ID and name. 
+
+Initializes a new \doxylink{class_object}{Object} instance with a given ID and name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & An integer representing the ID of the object. \\
+\hline
+{\em name} & A std\+::string representing the name of the object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_object_ae8f5483f459e46687bd01e6f9977afd3}\label{class_object_ae8f5483f459e46687bd01e6f9977afd3} 
+\index{Object@{Object}!````~Object@{\texorpdfstring{$\sim$}{\string~}Object}}
+\index{````~Object@{\texorpdfstring{$\sim$}{\string~}Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Object()}{\string~Object()}}
+{\footnotesize\ttfamily Object\+::\texorpdfstring{$\sim$}{\string~}\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{class_object}{Object} class. 
+
+Cleans up resources used by the \doxylink{class_object}{Object} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_object_af3558f9e2b46d677f0ac4d6d3c97b118}\label{class_object_af3558f9e2b46d677f0ac4d6d3c97b118} 
+\index{Object@{Object}!getId@{getId}}
+\index{getId@{getId}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Object\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the ID of the object. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the ID of the object. 
+\end{DoxyReturn}
+\Hypertarget{class_object_acb9b466607cb80beaaa30ece2f7f570a}\label{class_object_acb9b466607cb80beaaa30ece2f7f570a} 
+\index{Object@{Object}!getName@{getName}}
+\index{getName@{getName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Object\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of the object. 
+
+\begin{DoxyReturn}{Returns}
+A std\+::string representing the name of the object. 
+\end{DoxyReturn}
+\Hypertarget{class_object_ada9fbb1e54498897eebbd38e05f012f2}\label{class_object_ada9fbb1e54498897eebbd38e05f012f2} 
+\index{Object@{Object}!getNextId@{getNextId}}
+\index{getNextId@{getNextId}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getNextId()}{getNextId()}}
+{\footnotesize\ttfamily static int Object\+::get\+Next\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Static method to get the next available ID for an object. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the next available ID. 
+\end{DoxyReturn}
+\Hypertarget{class_object_a43c18a818c62ac94e9a2aaf6cd127cfd}\label{class_object_a43c18a818c62ac94e9a2aaf6cd127cfd} 
+\index{Object@{Object}!render@{render}}
+\index{render@{render}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void Object\+::render (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{camera\+Inv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual render method for the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+Inv} & A glm\+::mat4 representing the inverse of the camera\textquotesingle{}s matrix. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_directional_light_a93f005171624ad2c4976499396881c6b}{Directional\+Light}}, \mbox{\hyperlink{class_fake_shadow_a61ec252e567248052d074cba39557ef2}{Fake\+Shadow}}, \mbox{\hyperlink{class_light_a845dc902d69068f81f8a91ecdab4a603}{Light}}, \mbox{\hyperlink{class_material_a9e2449a67a26da790518b7c52ce78578}{Material}}, \mbox{\hyperlink{class_mesh_a0bc5d2ea431f5698c997acec7d220b98}{Mesh}}, \mbox{\hyperlink{class_node_a5aa86ae9db7e5285fecfd3d90efff303}{Node}}, \mbox{\hyperlink{class_point_light_a382dd11d45d8a6c81f89465cae329547}{Point\+Light}}, \mbox{\hyperlink{class_spot_light_a75f5ee7d9cf1729a96dd8cf441b9d48c}{Spot\+Light}}, \mbox{\hyperlink{class_texture_a2cf944f50edf3f301b095186e354cbf6}{Texture}}, and \mbox{\hyperlink{class_list_a77796843f9119d48366b892816af7f98}{List}}.
+
+\Hypertarget{class_object_ac27109fdd91080a828a8e338993c25e8}\label{class_object_ac27109fdd91080a828a8e338993c25e8} 
+\index{Object@{Object}!setName@{setName}}
+\index{setName@{setName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Object\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the name of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A std\+::string representing the new name of the object. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Scuola/\+SUPSI/terzo anno/\+Grafica/\+Progetto/engine/object.\+h\end{DoxyCompactItemize}
