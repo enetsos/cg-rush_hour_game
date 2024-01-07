@@ -3,6 +3,8 @@
 x64
 ./client/x64
 ./engine/x64
+./UnitTest/Debug
+./UnitTest/Release
 *.o
 *.so
 rush-hour
