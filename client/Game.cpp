@@ -1,11 +1,33 @@
 #include "Game.h"
 
-Game::Game(std::vector<Node*> cars, std::vector<std::vector<int>> originalCarPosition) : cars(cars), originalCarPosition(originalCarPosition) {
+Game::Game(std::vector<Node*> cars, std::vector<std::vector<int>> originalCarPosition, Node* teaPot, Node* brokenTeaPot) : cars(cars), originalCarPosition(originalCarPosition), teaPot(teaPot), brokenTeaPot(brokenTeaPot){
     for (auto& car : cars)
         carsOriginalTransform.push_back(car->getTransform());
 
     // 6x6 grid
     grid = originalCarPosition;
+
+    // set emission of teapot
+    std::shared_ptr<Material> material = dynamic_cast<Mesh*>(teaPot)->getMaterial();
+    if (material) {
+		glm::vec4 baseEmission = glm::vec4(0.5f, 0.5f, 1.0f, 1.0f); 
+		material->setEmission(baseEmission);
+	}
+
+    material = dynamic_cast<Mesh*>(brokenTeaPot)->getMaterial();
+    if (material) {
+        glm::vec4 baseEmission = glm::vec4(0.5f, 0.5f, 1.0f, 1.0f); 
+        material->setEmission(baseEmission);
+    }
+
+    // low emission of cars
+    for (auto& car : cars) {
+		material = dynamic_cast<Mesh*>(car)->getMaterial();
+        if (material) {
+			glm::vec4 baseEmission = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); 
+			material->setEmission(baseEmission);
+		}
+	}
 
 };
 
@@ -71,10 +93,41 @@ bool Game::moveCarOnGrid(glm::vec2 direction) {
             if (grid.at(i).at(j) == activeCar) {
                 switch (activeCar){
                 case 0:
+                    // if grid is out of bound
+                    if (direction.x < 0) {
+                        printf("J: %d\n", j);
+
+
+                        if (j + 2 >= grid[i].size()) {
+                            isWinning = true;
+                            return true;
+                        }
+                            
+
+
+                        // move right
+                        if (grid[i][j + 2] == -1) {
+                            grid[i][j] = -1;
+                            grid[i][j + 2] = activeCar;
+                            return true;
+                        }
+
+                    }
+                    else if (direction.x > 0) {
+                        if (j - 1 < 0)
+                            return false;
+                        // move left
+                        if (grid[i][j - 1] == -1 && direction.x > 0) {
+                            grid[i][j + 1] = -1;
+                            grid[i][j - 1] = activeCar;
+                            return true;
+                        }
+                    }
+                    return false;
+
                 case 2:
                 case 4:
                     if (direction.x < 0) {
-                        printf("j: %d\n", j);
                         if (j + 2 > grid[i].size()) 
                             return false;
 
@@ -213,22 +266,54 @@ void Game::biLux() {
     if (elapsed >= glowDuration) {
         // Reset timer
         lastUpdateTime = currentTime;
-        isGlowingUp = !isGlowingUp; // Change the direction of the glow effect
+        isGlowingUp = !isGlowingUp;
     }
 
     float glowIntensity = isGlowingUp ? (elapsed / glowDuration) : (1.0f - elapsed / glowDuration);
+    float maxIntensity = 2.0f;  // Increase for a stronger glow effect
 
     Node* activeCarNode = cars.at(activeCar);
     Mesh* activeCarMesh = dynamic_cast<Mesh*>(activeCarNode);
     if (activeCarMesh) {
         std::shared_ptr<Material> material = activeCarMesh->getMaterial();
         if (material) {
-            glm::vec4 baseEmission = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f); // Base color for glow
-            material->setEmission(baseEmission * glowIntensity);
+            glm::vec4 baseEmission = glm::vec4(0.5f, 0.5f, 1.0f, 1.0f); // A more vibrant color for glow
+            material->setEmission(baseEmission * glowIntensity * maxIntensity);
         }
     }
+
+}
+
+void Game::win() {
+
+    if (glm::distance(cars.at(activeCar)->getTransform()[3], teaPot->getTransform()[3]) < 85.0f) {
+        // Update the car's transform
+        cars.at(activeCar)->setTransform(cars.at(activeCar)->getTransform() * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -2.0f, 0.0f * movementSpeed)));
+    }
+    else {
+        swapTeaPot();
+        isRunning = false;
+    }
+
 }
 
 void Game::update() {
     biLux();
+
+    if (isWinning)
+        win();
+}
+
+void Game::swapTeaPot() {
+    
+
+    // Get the current transformation matrix
+    glm::mat4 transform = teaPot->getTransform();
+    glm::mat4 transformOld = brokenTeaPot->getTransform();
+
+    
+    // Set the new transformation matrix
+    brokenTeaPot->setTransform(transform);
+    teaPot->setTransform(transformOld);
+    
 }

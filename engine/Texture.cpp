@@ -55,3 +55,4 @@ void LIB_API Texture::setTexId(std::string file) {
 }
 
 void Texture::setPath(std::string path) { Texture::path = path; }
+

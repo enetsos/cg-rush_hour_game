@@ -19,12 +19,12 @@
 Engine engine;
 UIProjection *ui;
 
-float cameraX = 0.0f;
-float cameraY = 75.0f;
-float cameraZ = 60.0f;
-float rotationX = -20.0f;
-float rotationY = 0.0f;
-float rotationZ = 0.0f;
+float cameraX = 70.0f;
+float cameraY = 100.0f;
+float cameraZ = 0.0f;
+float rotationX = 45.0f;
+float rotationY = 70.0f;
+float rotationZ = -45.0f;
 float cameraSpeed = 2.0f;
 float rotationSpeed = 2.0f;
 
@@ -33,7 +33,7 @@ float stationaryCameraY = 190.0f;
 float stationaryCameraZ = 12.0f;
 float stationaryRotationX = -90.0f;
 float stationaryRotationY = 0.0f;
-float stationaryRotationZ = 0.0f;
+float stationaryRotationZ = 90.0f;
 
 Node *root;
 bool isActive = true;
@@ -47,21 +47,21 @@ Camera *stationaryCamera = nullptr;
 Camera *activeCamera = nullptr;
 
 void keyboardCallback(int key) {
-   
+
   if (activeCamera == freeCamera) {
     switch (key) {
       // Free camera movement
     case 'w':
-      cameraZ--;
-      break;
-    case 's':
-      cameraZ++;
-      break;
-    case 'a':
       cameraX--;
       break;
-    case 'd':
+    case 's':
       cameraX++;
+      break;
+    case 'a':
+      cameraZ++;
+      break;
+    case 'd':
+        cameraZ--;
       break;
     case 'e':
       cameraY++;
@@ -72,16 +72,16 @@ void keyboardCallback(int key) {
 
       // Free camera rotation
     case '8':
-      rotationX++;
-      break;
-    case '2':
-      rotationX--;
-      break;
-    case '6':
       rotationY--;
       break;
+    case '2':
+        rotationY++;
+      break;
+    case '6':
+      rotationX++;
+      break;
     case '4':
-      rotationY++;
+      rotationX--;
       break;
     case '7':
       rotationZ--;
@@ -156,12 +156,9 @@ void displayCallback() {
     activeCamera->setTransform(translation_cam * rotationX_cam * rotationY_cam *
                                rotationZ_cam);
 
-    
-
-
   }
-
-  game->update();
+  if(game->isRunning)
+    game->update();
 
   // draw scene
   engine.getList().render(activeCamera->getInverse());
@@ -219,6 +216,7 @@ int main(int argc, char *argv[]) {
 
   ((FakeShadow *)root->findByName("Table_shadow"))->setShadowParent(floor);
   ((FakeShadow *)root->findByName("Teapot_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("BrokenTeaPot_shadow"))->setShadowParent(table);
   ((FakeShadow *)root->findByName("Sphere_shadow"))->setShadowParent(floor);
 
   ((FakeShadow *)root->findByName("Car001_shadow"))->setShadowParent(table);
@@ -254,6 +252,10 @@ int main(int argc, char *argv[]) {
   Node* car007 = grid->findByName("Car007");
   Node* car008 = grid->findByName("Car008");
 
+  Node* teaPot = root->findByName("Teapot");
+  Node* brokenTeaPot = root->findByName("BrokenTeaPot");
+
+  
   std::vector<Node*> cars{car001, car002, car003, car004, car005, car006, car007, car008};
 
   std::vector<std::vector<int>> originalCarPosition = {
@@ -265,7 +267,7 @@ int main(int argc, char *argv[]) {
 	  {5, -1, -1, -1, -1, -1}
    };
 
-  game = new Game(cars, originalCarPosition);
+  game = new Game(cars, originalCarPosition, teaPot, brokenTeaPot);
   game->setMovementSpeed(0.5f);
 
 
