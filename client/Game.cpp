@@ -24,8 +24,7 @@ Game::Game(std::vector<Node*> cars, std::vector<std::vector<int>> originalCarPos
     for (auto& car : cars) {
 		material = dynamic_cast<Mesh*>(car)->getMaterial();
         if (material) {
-			glm::vec4 baseEmission = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); 
-			material->setEmission(baseEmission);
+			material->setShininess(-5.0f);
 		}
 	}
 
@@ -260,28 +259,26 @@ glm::vec3 Game::getOrientation(const Node* node) {
 }
 
 void Game::biLux() {
-    auto currentTime = std::chrono::high_resolution_clock::now();
-    float elapsed = std::chrono::duration<float>(currentTime - lastUpdateTime).count();
-
-    if (elapsed >= glowDuration) {
-        // Reset timer
-        lastUpdateTime = currentTime;
+    if (elapsedTime >= glowDuration) {
+        elapsedTime -= glowDuration;
         isGlowingUp = !isGlowingUp;
     }
 
-    float glowIntensity = isGlowingUp ? (elapsed / glowDuration) : (1.0f - elapsed / glowDuration);
-    float maxIntensity = 2.0f;  // Increase for a stronger glow effect
+    float glowIntensity = isGlowingUp ? (elapsedTime / glowDuration) : (1.0f - elapsedTime / glowDuration);
 
-    Node* activeCarNode = cars.at(activeCar);
-    Mesh* activeCarMesh = dynamic_cast<Mesh*>(activeCarNode);
-    if (activeCarMesh) {
-        std::shared_ptr<Material> material = activeCarMesh->getMaterial();
-        if (material) {
-            glm::vec4 baseEmission = glm::vec4(0.5f, 0.5f, 1.0f, 1.0f); // A more vibrant color for glow
-            material->setEmission(baseEmission * glowIntensity * maxIntensity);
+    updateCarEmission(activeCar, baseEmissionOn * glowIntensity);
+    updateCarEmission(activeCar == 0 ? cars.size() - 1 : activeCar - 1, baseEmissionOff);
+}
+
+void Game::updateCarEmission(int carIndex, const glm::vec4& emission) {
+    Node* carNode = cars.at(carIndex);
+    Mesh* carMesh = dynamic_cast<Mesh*>(carNode); // Consider optimizing this
+    if (carMesh) {
+        std::shared_ptr<Material> material = carMesh->getMaterial();
+        if (material && material->getEmission() != emission) {
+            material->setEmission(emission);
         }
     }
-
 }
 
 void Game::win() {
@@ -298,6 +295,8 @@ void Game::win() {
 }
 
 void Game::update() {
+    elapsedTime += 0.05f;
+
     biLux();
 
     if (isWinning)

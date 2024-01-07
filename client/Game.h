@@ -45,9 +45,12 @@ private:
   void biLux();
   void win();
   void swapTeaPot();
+  void updateCarEmission(int carIndex, const glm::vec4& emission);
 
-  std::chrono::high_resolution_clock::time_point lastUpdateTime;
-  float glowDuration = 3.0f;
+  glm::vec4 baseEmissionOff = glm::vec4(0.0f, 0.0f, 0.0f, 0.0f);
+  glm::vec4 baseEmissionOn = glm::vec4(0.5f, 0.5f, 1.0f, 1.0f) * 2.0f;
+  float elapsedTime = 0.0f;
+  float glowDuration = 1.0f;
   bool isGlowingUp = true;
 
   float movementSpeed = 1.0f;

@@ -37,3 +37,5 @@ Texture LIB_API *Material::getTexture() { return texture; }
 void LIB_API Material::setEmission(glm::vec4 emission) {
   this->emission = emission;
 }
+
+void Material::setShininess(float shininess) { this->shininess = shininess; }
