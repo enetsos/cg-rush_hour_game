@@ -100,6 +100,10 @@ void keyboardCallback(int key) {
     engine.setCamera(activeCamera);
     break;
 
+  case 'r':
+      game->reset();
+      break;
+
     // Application controls
   case '.':
     isActive = false;
@@ -157,18 +161,38 @@ void displayCallback() {
                                rotationZ_cam);
 
   }
-  if(game->isRunning)
+  if (game->isRunning) {
+    ui->editLabel(11, ""); 
     game->update();
+  }
+  else
+      ui->editLabel(11, "You won!");
 
   // draw scene
   engine.getList().render(activeCamera->getInverse());
 
   if (showUI) {
     ui->editLabel(0, "FPS: " + std::to_string(engine.getFps()));
-    ui->editLabel(2, "[+/-] - Switch car: " + std::to_string(game->getActiveCar()));
+    ui->editLabel(2, "[+/-] - Switch car: " + std::to_string(game->getActiveCar() + 1));
     ui->editLabel(
-        7, "[c] - change camera: " +
+        3, "[c] - change camera: " +
                std::string(activeCamera == freeCamera ? "free" : "stationary"));
+
+    if (activeCamera == freeCamera) {
+        ui->editLabel(7, "[w/a/s/d] - move camera");
+        ui->editLabel(8, "[q/e] - camera down/up");
+        ui->editLabel(9, "[8/4/2/6] - rotate camera");
+        ui->editLabel(10, "[9/7] - camera zoom");
+    }
+    else
+    {
+        ui->editLabel(7, "");
+		ui->editLabel(8, "");
+		ui->editLabel(9, "");
+		ui->editLabel(10, "");
+    }
+
+    
     ui->print();
   }
 
@@ -188,7 +212,7 @@ void displayCallback() {
 int main(int argc, char *argv[]) {
   engine = Engine();
   engine.setTexturePath("./scene/");
-  engine.init("RobotArm", keyboardCallback, displayCallback);
+  engine.init("Rush Hour", keyboardCallback, displayCallback);
   root = engine.loadScene("./scene/ProjectScene.OVO");
 
   freeCamera = (Camera *)root->findByName("freeCamera");
@@ -232,13 +256,18 @@ int main(int argc, char *argv[]) {
   // Set menu
   ui = engine.getUI();
   ui->addLabel("FPS");
+  ui->addLabel("Drives the red car into the teapot!");
+  ui->addLabel("2");
+  ui->addLabel("3");
+ 
   ui->addLabel("[F1] - Show/Hide Menu");
-  ui->addLabel("[+/-]");
-  ui->addLabel("[up/down/left/right] - rotate robot joint");
-  ui->addLabel("[space] - grab ball");
-  ui->addLabel("[w/a/s/d] - move camera");
-  ui->addLabel("[8/4/2/6] - rotate camera");
-  ui->addLabel("[c]");
+  ui->addLabel("[up/down/left/right] - move the active car");
+  ui->addLabel("[r] - reset");
+  ui->addLabel("");
+  ui->addLabel("");
+  ui->addLabel("");
+  ui->addLabel("");
+  ui->addLabel("");
   
 
   // Prepare the game

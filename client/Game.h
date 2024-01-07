@@ -26,6 +26,7 @@ public:
   void setActiveCar(int activeCar);
   int getActiveCar();
   void update();
+  void reset();
 
   bool isRunning = true;
 
@@ -38,6 +39,8 @@ private:
   std::vector<std::vector<int>> originalCarPosition;
   Node* teaPot;
   Node* brokenTeaPot;
+
+  Game* originalGame;
 
   glm::vec3 getOrientation(const Node *node);
   bool moveCarOnGrid(glm::vec2 direction);

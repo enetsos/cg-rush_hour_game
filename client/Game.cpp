@@ -28,6 +28,7 @@ Game::Game(std::vector<Node*> cars, std::vector<std::vector<int>> originalCarPos
 		}
 	}
 
+    
 };
 
 Game::~Game() {};
@@ -295,6 +296,7 @@ void Game::win() {
 }
 
 void Game::update() {
+    
     elapsedTime += 0.05f;
 
     biLux();
@@ -303,8 +305,34 @@ void Game::update() {
         win();
 }
 
+void Game::reset() {
+    // Reset car positions and transformations
+    for (size_t i = 0; i < cars.size(); ++i) {
+        cars[i]->setTransform(carsOriginalTransform[i]);
+    }
+
+    // Reset the positions of the cars on the grid to their original positions
+    grid = originalCarPosition;
+
+    swapTeaPot();
+
+    // Reset game state variables
+    elapsedTime = 0.0f;
+    isGlowingUp = true;
+    activeCar = 0;
+    isWinning = false;
+    isRunning = true;
+
+    for (size_t i = 1; i < cars.size(); ++i) {
+        updateCarEmission(i, baseEmissionOff);
+    }
+
+    
+}
 void Game::swapTeaPot() {
     
+    if (!isWinning)
+        return;
 
     // Get the current transformation matrix
     glm::mat4 transform = teaPot->getTransform();
