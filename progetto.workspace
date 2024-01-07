@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
-	<Workspace title="Progetto workspace">
+	<Workspace title="Workspace">
 		<Project filename="client/client.cbp" />
 		<Project filename="engine/engine.cbp" />
 	</Workspace>
