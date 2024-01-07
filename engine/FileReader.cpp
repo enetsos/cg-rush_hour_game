@@ -9,7 +9,7 @@
 #include "light.h"
 #include "mesh.h"
 #include <GL/freeglut.h>
-#include <gtc/packing.hpp>
+#include <glm/gtc/packing.hpp>
 #include <string>
 #pragma warning(disable : 4996)
 

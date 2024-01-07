@@ -1,5 +1,5 @@
 #include "LibDef.h"
-#include <glm.hpp>
+#include <glm/glm.hpp>
 
 #ifndef VERTEX
 #define VERTEX

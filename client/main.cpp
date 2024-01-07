@@ -3,11 +3,11 @@
 //////////////
 
 // Library header:
-#include "engine.h"
 #include "Game.h"
+#include "engine.h"
 
 // C/C++:
-#include <glm.hpp>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -38,7 +38,7 @@ float stationaryRotationZ = 90.0f;
 Node *root;
 bool isActive = true;
 bool showUI = true;
-Game* game;
+Game *game;
 
 float movementDistance = 82.0f;
 
@@ -61,7 +61,7 @@ void keyboardCallback(int key) {
       cameraZ++;
       break;
     case 'd':
-        cameraZ--;
+      cameraZ--;
       break;
     case 'e':
       cameraY++;
@@ -75,7 +75,7 @@ void keyboardCallback(int key) {
       rotationY--;
       break;
     case '2':
-        rotationY++;
+      rotationY++;
       break;
     case '6':
       rotationX++;
@@ -101,8 +101,8 @@ void keyboardCallback(int key) {
     break;
 
   case 'r':
-      game->reset();
-      break;
+    game->reset();
+    break;
 
     // Application controls
   case '.':
@@ -114,23 +114,23 @@ void keyboardCallback(int key) {
 
     // Robot arm controls
   case '+':
-      game->setActiveCar((game->getActiveCar() + 8 + 1) % 8);
+    game->setActiveCar((game->getActiveCar() + 8 + 1) % 8);
     break;
   case '-':
-      game->setActiveCar((game->getActiveCar() + 8 - 1) % 8);
+    game->setActiveCar((game->getActiveCar() + 8 - 1) % 8);
     break;
   case KEY_UP:
-      game->moveCar(glm::vec2(0.0f, movementDistance));
-      break;
+    game->moveCar(glm::vec2(0.0f, movementDistance));
+    break;
   case KEY_DOWN:
-      game->moveCar(glm::vec2(0.0f, -movementDistance));
-      break;
+    game->moveCar(glm::vec2(0.0f, -movementDistance));
+    break;
   case KEY_RIGHT:
-      game->moveCar(glm::vec2(-movementDistance, 0.0f));
-      break;
+    game->moveCar(glm::vec2(-movementDistance, 0.0f));
+    break;
   case KEY_LEFT:
-      game->moveCar(glm::vec2(movementDistance, 0.0f));
-      break;
+    game->moveCar(glm::vec2(movementDistance, 0.0f));
+    break;
   case ' ':
     break;
   }
@@ -159,40 +159,36 @@ void displayCallback() {
                     glm::vec3(0.0f, 0.0f, 1.0f));
     activeCamera->setTransform(translation_cam * rotationX_cam * rotationY_cam *
                                rotationZ_cam);
-
   }
   if (game->isRunning) {
-    ui->editLabel(11, ""); 
+    ui->editLabel(11, "");
     game->update();
-  }
-  else
-      ui->editLabel(11, "You won!");
+  } else
+    ui->editLabel(11, "You won!");
 
   // draw scene
   engine.getList().render(activeCamera->getInverse());
 
   if (showUI) {
     ui->editLabel(0, "FPS: " + std::to_string(engine.getFps()));
-    ui->editLabel(2, "[+/-] - Switch car: " + std::to_string(game->getActiveCar() + 1));
+    ui->editLabel(2, "[+/-] - Switch car: " +
+                         std::to_string(game->getActiveCar() + 1));
     ui->editLabel(
         3, "[c] - change camera: " +
                std::string(activeCamera == freeCamera ? "free" : "stationary"));
 
     if (activeCamera == freeCamera) {
-        ui->editLabel(7, "[w/a/s/d] - move camera");
-        ui->editLabel(8, "[q/e] - camera down/up");
-        ui->editLabel(9, "[8/4/2/6] - rotate camera");
-        ui->editLabel(10, "[9/7] - camera zoom");
-    }
-    else
-    {
-        ui->editLabel(7, "");
-		ui->editLabel(8, "");
-		ui->editLabel(9, "");
-		ui->editLabel(10, "");
+      ui->editLabel(7, "[w/a/s/d] - move camera");
+      ui->editLabel(8, "[q/e] - camera down/up");
+      ui->editLabel(9, "[8/4/2/6] - rotate camera");
+      ui->editLabel(10, "[9/7] - camera zoom");
+    } else {
+      ui->editLabel(7, "");
+      ui->editLabel(8, "");
+      ui->editLabel(9, "");
+      ui->editLabel(10, "");
     }
 
-    
     ui->print();
   }
 
@@ -240,7 +236,8 @@ int main(int argc, char *argv[]) {
 
   ((FakeShadow *)root->findByName("Table_shadow"))->setShadowParent(floor);
   ((FakeShadow *)root->findByName("Teapot_shadow"))->setShadowParent(table);
-  ((FakeShadow *)root->findByName("BrokenTeaPot_shadow"))->setShadowParent(table);
+  ((FakeShadow *)root->findByName("BrokenTeaPot_shadow"))
+      ->setShadowParent(table);
   ((FakeShadow *)root->findByName("Sphere_shadow"))->setShadowParent(floor);
 
   ((FakeShadow *)root->findByName("Car001_shadow"))->setShadowParent(table);
@@ -252,14 +249,13 @@ int main(int argc, char *argv[]) {
   ((FakeShadow *)root->findByName("Car007_shadow"))->setShadowParent(table);
   ((FakeShadow *)root->findByName("Car008_shadow"))->setShadowParent(table);
 
-
   // Set menu
   ui = engine.getUI();
   ui->addLabel("FPS");
   ui->addLabel("Drives the red car into the teapot!");
   ui->addLabel("2");
   ui->addLabel("3");
- 
+
   ui->addLabel("[F1] - Show/Hide Menu");
   ui->addLabel("[up/down/left/right] - move the active car");
   ui->addLabel("[r] - reset");
@@ -268,37 +264,30 @@ int main(int argc, char *argv[]) {
   ui->addLabel("");
   ui->addLabel("");
   ui->addLabel("");
-  
 
   // Prepare the game
-  Node* grid = root->findByName("Grid");
-  Node* car001 = grid->findByName("Car001");
-  Node* car002 = grid->findByName("Car002");
-  Node* car003 = grid->findByName("Car003");
-  Node* car004 = grid->findByName("Car004");
-  Node* car005 = grid->findByName("Car005");
-  Node* car006 = grid->findByName("Car006");
-  Node* car007 = grid->findByName("Car007");
-  Node* car008 = grid->findByName("Car008");
+  Node *grid = root->findByName("Grid");
+  Node *car001 = grid->findByName("Car001");
+  Node *car002 = grid->findByName("Car002");
+  Node *car003 = grid->findByName("Car003");
+  Node *car004 = grid->findByName("Car004");
+  Node *car005 = grid->findByName("Car005");
+  Node *car006 = grid->findByName("Car006");
+  Node *car007 = grid->findByName("Car007");
+  Node *car008 = grid->findByName("Car008");
 
-  Node* teaPot = root->findByName("Teapot");
-  Node* brokenTeaPot = root->findByName("BrokenTeaPot");
+  Node *teaPot = root->findByName("Teapot");
+  Node *brokenTeaPot = root->findByName("BrokenTeaPot");
 
-  
-  std::vector<Node*> cars{car001, car002, car003, car004, car005, car006, car007, car008};
+  std::vector<Node *> cars{car001, car002, car003, car004,
+                           car005, car006, car007, car008};
 
   std::vector<std::vector<int>> originalCarPosition = {
-      {3,  2,  2,  6,  6,  6},
-      {3, -1, -1, -1, -1, -1},
-      {0,  0, -1, -1, -1,  1},
-	  {5, -1, -1, -1, -1,  1},
-	  {5,  4,  4,  7,  7,  7},
-	  {5, -1, -1, -1, -1, -1}
-   };
+      {3, 2, 2, 6, 6, 6},     {3, -1, -1, -1, -1, -1}, {0, 0, -1, -1, -1, 1},
+      {5, -1, -1, -1, -1, 1}, {5, 4, 4, 7, 7, 7},      {5, -1, -1, -1, -1, -1}};
 
   game = new Game(cars, originalCarPosition, teaPot, brokenTeaPot);
   game->setMovementSpeed(0.5f);
-
 
   while (isActive) {
     engine.begin();

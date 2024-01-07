@@ -4,7 +4,7 @@ TARGET := lib$(BASE_NAME).so
 MAIN_SRC_FILES := $(wildcard *.cpp)
 MAIN_OBJ_FILES := $(patsubst %.cpp,%.o,$(MAIN_SRC_FILES))
 TESTS_RUNNER := $(BASE_NAME)-tests-runner
-TEST_SRC_FILES := $(wildcard *_test.cpp)
+TEST_SRC_FILES := $(wildcard ../UnitTest/*.cpp)
 TEST_OBJ_FILES := $(patsubst %.cpp,%.o,$(TEST_SRC_FILES))
 DEPENDENCIES_DIR := dependencies
 
@@ -18,20 +18,23 @@ LIBS = -lglut -lGL -lGLU -lfreeimage
 install: $(TARGET)
 	@echo "Engine installation done!"
 
-$(TARGET): $(MAIN_OBJ_FILES) #$(TESTS_RUNNER)
+$(TARGET): $(MAIN_OBJ_FILES)
 	$(CXX) $(LD_FLAGS) -o $(TARGET) $(MAIN_OBJ_FILES) $(LIBS)
 	@echo "$(TARGET) build done!"
 
-# $(TESTS_RUNNER): $(TEST_OBJ_FILES)
-# 	# Build your test runner executable here
-# 	$(CXX) -o $(TESTS_RUNNER) $(TEST_OBJ_FILES) $(LIBS)
-# 	@echo "$(TESTS_RUNNER) build done!"
-# 	# Execute your tests here (on test failure, exit with exit code = 1)
-# 	# ...
-
 %.o: %.cpp
-	# Compile your sources here
 	$(CXX) $(CXX_FLAGS) -o $@ $<
+
+# Test targets
+$(TESTS_RUNNER): $(TEST_OBJ_FILES)
+	$(CXX) -o $(TESTS_RUNNER) $(TEST_OBJ_FILES) $(LIBS)
+	@echo "$(TESTS_RUNNER) build done!"
+
+../UnitTest/%.o: ../UnitTest/%.cpp
+	$(CXX) $(CXX_FLAGS) -o $@ $<
+
+test: $(TESTS_RUNNER)
+	./$(TESTS_RUNNER)
 
 clean:
 	@rm -f $(TESTS_RUNNER)
@@ -39,4 +42,4 @@ clean:
 	@rm -f $(TARGET)
 	@rm -f $(MAIN_OBJ_FILES)
 
-.PHONY: clean install
+.PHONY: clean install test
