@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;ENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FREEGLUT_STATIC;FREEIMAGE_LIB</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\dependencies\freeglut\include;..\dependencies\glm\include\glm;..\dependencies\freeimage\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\dependencies\freeglut\include;..\dependencies\glm\include;..\dependencies\freeimage\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

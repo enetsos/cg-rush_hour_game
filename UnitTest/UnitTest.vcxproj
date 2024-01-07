@@ -60,7 +60,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>FREEGLUT_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../engine;..\dependencies\glm\include\glm;..\dependencies\freeglut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../engine;..\dependencies\glm\include;..\dependencies\freeglut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
