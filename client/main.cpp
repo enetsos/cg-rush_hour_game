@@ -127,7 +127,7 @@ void keyboardCallback(int key) {
     showUI = !showUI;
     break;
 
-    // Robot arm controls
+    // Cars controls
   case '+':
     game->setActiveCar((game->getActiveCar() + 8 + 1) % 8);
     break;

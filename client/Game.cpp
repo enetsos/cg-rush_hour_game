@@ -47,11 +47,16 @@ void Game::setActiveCar(int activeCar) {
     return;
 
   this->activeCar = activeCar;
+
+  updateCarEmission(activeCar == 0 ? cars.size() - 1 : activeCar - 1,
+      baseEmissionOff);
 }
 
 int Game::getActiveCar() { return activeCar; }
 
 void Game::moveCar(glm::vec2 direction) {
+
+
   Node *car = cars.at(activeCar);
 
   // Get the car's orientation in Euler angles
@@ -83,6 +88,9 @@ void Game::moveCar(glm::vec2 direction) {
 
   // Update the car's transform
   car->setTransform(car->getTransform() * translation);
+
+  if (isWinning)
+      win();
 }
 
 bool Game::moveCarOnGrid(glm::vec2 direction) {
@@ -94,7 +102,6 @@ bool Game::moveCarOnGrid(glm::vec2 direction) {
         case 0:
           // if grid is out of bound
           if (direction.x < 0) {
-            printf("J: %d\n", j);
 
             if (j + 2 >= grid[i].size()) {
               isWinning = true;
@@ -201,12 +208,12 @@ bool Game::moveCarOnGrid(glm::vec2 direction) {
               return true;
             }
           } else if (direction.y > 0) {
-            if (i - 3 < 0)
+            if (i - 1 < 0)
               return false;
 
-            if (grid[i - 3][j] == -1) {
-              grid[i + 3][j] = -1;
-              grid[i - 3][j] = activeCar;
+            if (grid[i - 1][j] == -1) {
+              grid[i + 2][j] = -1;
+              grid[i - 1][j] = activeCar;
               return true;
             }
           }
@@ -258,8 +265,7 @@ void Game::biLux() {
                                     : (1.0f - elapsedTime / glowDuration);
 
   updateCarEmission(activeCar, baseEmissionOn * glowIntensity);
-  updateCarEmission(activeCar == 0 ? cars.size() - 1 : activeCar - 1,
-                    baseEmissionOff);
+  
 }
 
 void Game::updateCarEmission(int carIndex, const glm::vec4 &emission) {
@@ -274,18 +280,21 @@ void Game::updateCarEmission(int carIndex, const glm::vec4 &emission) {
 }
 
 void Game::win() {
-
-  if (glm::distance(cars.at(activeCar)->getTransform()[3],
-                    teaPot->getTransform()[3]) < 85.0f) {
-    // Update the car's transform
-    cars.at(activeCar)->setTransform(
-        cars.at(activeCar)->getTransform() *
-        glm::translate(glm::mat4(1.0f),
-                       glm::vec3(0.0f, -2.0f, 0.0f * movementSpeed)));
-  } else {
-    swapTeaPot();
-    isRunning = false;
-  }
+    while (isRunning) {
+        if (glm::distance(cars.at(activeCar)->getTransform()[3],
+            teaPot->getTransform()[3]) < 85.0f) {
+            // Update the car's transform
+            cars.at(activeCar)->setTransform(
+                cars.at(activeCar)->getTransform() *
+                glm::translate(glm::mat4(1.0f),
+                    glm::vec3(0.0f, -2.0f, 0.0f * movementSpeed)));
+        }
+        else {
+            swapTeaPot();
+            isRunning = false;
+        }
+    }
+  
 }
 
 void Game::update() {
@@ -293,9 +302,6 @@ void Game::update() {
   elapsedTime += 0.05f;
 
   biLux();
-
-  if (isWinning)
-    win();
 }
 
 void Game::reset() {
