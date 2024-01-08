@@ -9,3 +9,10 @@ x64
 *.so
 rush-hour
 rush-hour.tar.gz
+.owncloudsync.log
+.sync_journal.db
+.sync_journal.db-wal
+Desktop.ini
+Private/
+SWITCHdrive Help.pdf
+UnitTest/Debug/

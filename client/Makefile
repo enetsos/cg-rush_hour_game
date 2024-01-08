@@ -12,7 +12,7 @@ DEPENDENCIES_DIR := ../dependencies
 
 CXX = g++
 CXX_FLAGS = -std=c++11 -O2
-CXX_FLAGS += -I$(DEPENDENCIES_DIR)/glm/include/glm
+CXX_FLAGS += -I$(DEPENDENCIES_DIR)/glm/include
 CXX_FLAGS += -I$(ENGINE_DIR)
 LDFLAGS = -L$(ENGINE_DIR) -l$(ENGINE_LIB_NAME)
 TAR_GZ = tar zcvf
