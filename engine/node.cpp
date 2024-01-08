@@ -8,8 +8,8 @@ LIB_API Node::Node(int id, const std::string name, Node *parent)
 
   if (parent != nullptr)
     parent->addChild(this);
-  else
-    parent = nullptr;
+
+  parent = nullptr;
 }
 
 LIB_API Node::Node(int id, const std::string name) : Node(id, name, nullptr) {}
