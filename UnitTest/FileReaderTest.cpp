@@ -7,7 +7,7 @@
 void fileReaderTest() {
 	List list = List();
 	FileReader filereader = FileReader();
-	Node* root = filereader.readFile("..\\client\\test\\simple3dScene.ovo");
+	Node* root = filereader.readFile(".\\test\\simple3dScene.ovo");
 	list.addEntry(root);
 
 	assert(root->getName() == "[root]");

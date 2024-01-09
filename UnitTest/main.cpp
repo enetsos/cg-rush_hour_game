@@ -68,5 +68,7 @@ int main() {
 	std::cout << "Rush Hour - All Test Passed" << std::endl;
 	std::cout << "=======================================" << std::endl;
 
+	Sleep(1000);
+
 	return 0;
 }
