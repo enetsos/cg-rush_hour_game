@@ -7,14 +7,14 @@ MAIN_OBJ_FILES := $(patsubst %.cpp,%.o,$(MAIN_SRC_FILES))
 ENGINE_BASE_NAME := engine
 ENGINE_DIR := ../engine
 ENGINE_LIB_NAME := $(ENGINE_BASE_NAME)
-ENGINE_LIB_FILENAME := lib$(ENGINE_LIB_NAME).so
+ENGINE_LIB_FILENAME := ./lib$(ENGINE_LIB_NAME).so
 DEPENDENCIES_DIR := ../dependencies
 
 CXX = g++
 CXX_FLAGS = -std=c++11 -O2
 CXX_FLAGS += -I$(DEPENDENCIES_DIR)/glm/include
 CXX_FLAGS += -I$(ENGINE_DIR)
-LDFLAGS = -L$(ENGINE_DIR) -l$(ENGINE_LIB_NAME)
+LDFLAGS = -L$(ENGINE_DIR) -L. -l$(ENGINE_LIB_NAME)
 TAR_GZ = tar zcvf
 
 package: $(TARGET_ARCHIVE)
@@ -23,7 +23,7 @@ package: $(TARGET_ARCHIVE)
 $(TARGET_ARCHIVE): $(TARGET)
 	# Package your distribution tar.gz archive here with the necessary distribution artifacts
 	# Example:
-	tar zcvf $(TARGET_ARCHIVE) -C ../engine libengine.so
+	tar zcvf $(TARGET_ARCHIVE) -C . libengine.so
 	@echo "$(TARGET_ARCHIVE) package done!"
 
 $(TARGET): $(MAIN_OBJ_FILES)
