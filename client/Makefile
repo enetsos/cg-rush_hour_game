@@ -14,7 +14,7 @@ CXX = g++
 CXX_FLAGS = -std=c++11 -O2
 CXX_FLAGS += -I$(DEPENDENCIES_DIR)/glm/include
 CXX_FLAGS += -I$(ENGINE_DIR)
-LDFLAGS = -L. -l$(ENGINE_LIB_NAME)
+LDFLAGS = -L$(ENGINE_DIR) -L. ./lib$(ENGINE_LIB_NAME).so
 TAR_GZ = tar zcvf
 
 package: $(TARGET_ARCHIVE)
